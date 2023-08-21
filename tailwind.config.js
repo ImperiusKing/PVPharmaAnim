@@ -22,7 +22,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#131424',
+        primary: '#1F4C75',
         secondary: '#393A47',
         accent: '#F13024',
       },
@@ -38,7 +38,7 @@ module.exports = {
       fontFamily: {
         poppins: [`var(--font-poppins)`, 'sans-serif'],
         inter: [`var(--font-inter)`, 'sans-serif'],
-        lemonMilk: [`LEMONMILK`, 'sans-serif'],
+        lemonMilk: [`LemonMilk`],
       },
     },
   },

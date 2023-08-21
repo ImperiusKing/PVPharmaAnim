@@ -18,6 +18,18 @@
   color: #f13024;
 }
 
+@font-face {
+  font-family: 'LemonMilk';
+  font-weight: 500;
+  src: url(/font/LEMONMILK-Light.otf) format('woff');
+}
+
+@font-face {
+  font-family: 'LemonMilk-bold';
+  font-weight: 400;
+  src: url(/font/LEMONMILK-Bold.otf) format('woff');
+}
+
 @layer base {
   body {
     @apply bg-secondary overflow-hidden leading-relaxed;
