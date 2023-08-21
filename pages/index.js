@@ -1,16 +1,9 @@
 import React from 'react';
-
-const Home = () => {
-  return <div>Home</div>;
-};
-
-export default Home;
-
 import ReactDOM from 'react-dom';
 import { useQuery } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
 import { gql } from '@apollo/client';
-import client from './apollo-client'; // Relative path to apolloClient.js
+import client from '../apollo-client'; // Relative path to apolloClient.js
 import App from '../pages/_app'; // Your main application component
 
 const Home = ({ page }) => {

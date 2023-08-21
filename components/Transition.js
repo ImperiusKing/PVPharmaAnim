@@ -1,4 +1,5 @@
 import {motion} from 'framer-motion';
+import Image from 'next/image';
 
 //variants
 const transitionVariants = {
@@ -19,15 +20,17 @@ const transitionVariants = {
 const Transition = () => {
   return (
     <>
-      <motion.div 
-        className='fixed top-0 bottom 0 right-full h-screen z-30 bg-[#2e2257]'
-        variants={transitionVariants}
-        initial='initial'
-        animate='animate'
-        exit='exit'
-        transition={{ delay: 0.2, duration:  0.6, ease: 'easeInOut'}}
-      >
-        1
+       <motion.div
+      className='fixed top-0 bottom 0 right-full h-screen z-30 bg-[#FFFFFF]'
+      variants={transitionVariants}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+      transition={{ delay: 100, duration: 0.6, ease: 'easeInOut' }}
+    >
+        <div className='flex justify-center items-center h-full'>
+    <     Image src='/PhucVinh_Logo PNG-03.png' width={300} height={300} alt='' /> 
+        </div>
       </motion.div>
       <motion.div 
         className='fixed top-0 bottom 0 right-full h-screen z-20 bg-[#3b2d71]'
