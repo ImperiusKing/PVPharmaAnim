@@ -17,6 +17,12 @@ const transitionVariants = {
   },
 };
 
+const fadeInVariants = {
+    initial: { opacity: 0 , y: -10},
+    animate: { opacity: 1 , y:0},
+    exit: { opacity: 0 },
+  };
+
 const Transition = () => {
   return (
     <>
@@ -26,54 +32,76 @@ const Transition = () => {
         initial='initial'
         animate='animate'
         exit='exit'
-        transition={{ delay: 100000, duration: 0.6, ease: 'easeInOut' }}
+        transition={{ delay: 5, duration: 0.6, ease: 'easeInOut' }}
       >
         <div className='flex justify-center flex-col items-center h-full'>
           <div className='flex items-center gap-4'>
             <div className='flex flex-col text-left'>
-              <h2 className='text-primary font-bold font-lemonMilk-bold uppercase text-[8rem]'>
-                Phúc
-              </h2>
-              <h4 className='text-black font-lemonMilk uppercase -mt-[2.5rem] ml-[5px]'>
+              <motion.div
+                initial='initial'
+                animate='animate'
+                exit ='exit'
+                variants={fadeInVariants}
+                transition= {{ delay:  1, duration: 1, ease: 'easeInOut'}}
+              >
+                <h2 className='text-primary font-bold font-lemonMilk-bold uppercase text-[6.8rem]'>
+                  Phúc
+                </h2>
+              </motion.div>  
+              <motion.div
+                initial='initial'
+                animate='animate'
+                exit ='exit'
+                variants={fadeInVariants}
+                transition= {{ delay:  2.5, duration: 1, ease: 'easeInOut'}}
+              >
+              <h4 className='text-black font-lemonMilk uppercase text-[1rem] -mt-[2.5rem] ml-[7px]'>
                 Pharmaceuticals
               </h4>
+              </motion.div>
             </div>
-            <Image
-              src='/PhucVinh_Logo PNG-03.png'
-              width={400}
-              height={400}
-              alt=''
-            />
+              <motion.div
+                initial='initial'
+                animate='animate'
+                exit ='exit'
+                variants={fadeInVariants}
+                transition= {{ delay:  .5, duration: 1, ease: 'easeInOut'}}
+              >
+                <Image
+                  src='/PhucVinh_Logo PNG-03.png'
+                  width={200}
+                  height={200}
+                  alt=''
+                />
+              </motion.div>
             <div className='flex flex-col text-right'>
-              <h2 className='text-primary font-bold font-lemonMilk-bold uppercase text-[8rem]'>
-                Vinh
-              </h2>
-              <h4 className='text-black font-lemonMilk uppercase -mt-[2.5rem] mr-[5px]'>
+              <motion.div
+                initial='initial'
+                animate='animate'
+                exit ='exit'
+                variants={fadeInVariants}
+                transition= {{ delay:  1.5, duration: 1, ease: 'easeInOut'}}
+              >
+                <h2 className='text-primary font-bold font-lemonMilk-bold uppercase text-[6.8rem]'>
+                  Vinh
+                </h2>
+              </motion.div> 
+              <motion.div
+                initial='initial'
+                animate='animate'
+                exit ='exit'
+                variants={fadeInVariants}
+                transition= {{ delay:  3, duration: 1, ease: 'easeInOut'}}
+              >
+              <h4 className='text-black font-lemonMilk uppercase text-[1rem] -mt-[2.5rem] mr-[7px]'>
                 Since 2003
               </h4>
+              </motion.div>
             </div>
           </div>
-          {/* <svg width="100%" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-            <text
-              x="226"
-              y="351"
-              fill="#1F4C75"
-              fontFamily="LemonMilk"
-              fontWeight="bold"
-              fontSize="180"
-            >
-              Your Text Here
-            </text>
-          </svg> */}
+          {}
         </div>
-        {/* <div className='flex justify-center items-center h-full'>
-          <Image
-            src='/PhucVinh_Logo PNG-03.png'
-            width={300}
-            height={300}
-            alt=''
-          />
-        </div> */}
+        {}
       </motion.div>
       <motion.div
         className='fixed top-0 bottom 0 right-full h-screen z-20 bg-[#3b2d71]'
@@ -82,9 +110,7 @@ const Transition = () => {
         animate='animate'
         exit='exit'
         transition={{ delay: 0.4, duration: 0.6, ease: 'easeInOut' }}
-      >
-        1
-      </motion.div>
+      ></motion.div>
       <motion.div
         className='fixed top-0 bottom 0 right-full h-screen z-10 bg-[#4b3792]'
         variants={transitionVariants}
