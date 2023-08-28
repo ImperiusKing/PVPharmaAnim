@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
 //variants
@@ -25,14 +25,14 @@ const fadeInVariants = {
 
 const Transition = () => {
   return (
-    <>
+    <AnimatePresence>
       <motion.div
         className='fixed top-0 bottom 0 right-full h-screen z-30 bg-[#FFFFFF]'
         variants={transitionVariants}
         initial='initial'
         animate='animate'
         exit='exit'
-        transition={{ delay: 5, duration: 0.6, ease: 'easeInOut' }}
+        transition={{ delay: 3.5, duration: 2, ease: 'easeInOut' }}
       >
         <div className='flex justify-center flex-col items-center h-full'>
           <div className='flex items-center gap-4'>
@@ -53,7 +53,7 @@ const Transition = () => {
                 animate='animate'
                 exit ='exit'
                 variants={fadeInVariants}
-                transition= {{ delay:  2.5, duration: 1, ease: 'easeInOut'}}
+                transition= {{ delay:  2, duration: 1, ease: 'easeInOut'}}
               >
               <h4 className='text-black font-lemonMilk uppercase text-[1rem] -mt-[2.5rem] ml-[7px]'>
                 Pharmaceuticals
@@ -91,7 +91,7 @@ const Transition = () => {
                 animate='animate'
                 exit ='exit'
                 variants={fadeInVariants}
-                transition= {{ delay:  3, duration: 1, ease: 'easeInOut'}}
+                transition= {{ delay:  2.5, duration: 1, ease: 'easeInOut'}}
               >
               <h4 className='text-black font-lemonMilk uppercase text-[1rem] -mt-[2.5rem] mr-[7px]'>
                 Since 2003
@@ -119,7 +119,7 @@ const Transition = () => {
         exit='exit'
         transition={{ delay: 0.6, duration: 0.6, ease: 'easeInOut' }}
       ></motion.div>
-    </>
+    </AnimatePresence>
   );
 };
 
