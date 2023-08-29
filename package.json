@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.1",
+    "@ionic/react": "^7.3.1",
     "@next/font": "^13.4.4",
     "framer-motion": "^10.12.16",
     "graphql": "^16.8.0",

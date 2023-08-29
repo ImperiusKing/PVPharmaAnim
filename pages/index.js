@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/client';
 import { gql } from '@apollo/client';
 import client from '../apollo-client'; // Relative path to apolloClient.js
 import App from '../pages/_app'; // Your main application component
-import ProjectsBtn from '../components/ProjectsBtn';
+import HeaderButton from '../components/HeaderButton';
 
 //fonts
 import { Inter } from 'next/font/google';
@@ -46,8 +46,11 @@ const Home =() => {
   return (
     <div className= 'bg - primary/60 h-full'>
       {}
-      <div className= ' w-full h-full bg-cover bg-no-repeat' style={{ backgroundImage: 'url("/cover.png")' }}>
-        <div className= 'h-full w-[500px] bg-black bg-opacity-80 absolute top-0 left-0 flex flex-col justify-center'> 
+      <div className= ' w-full h-full bg-cover bg-no-repeat' style={{ backgroundImage: 'url("/homepage-cover.jpg")' }}>
+        {/* <div className='absolute ml-80 top-1/2 transform -translate-y-1/10'>
+          <HeaderButton/>
+        </div> */}
+        {/* <div className= 'h-full w-[500px] bg-black bg-opacity-80 absolute top-0 left-0 flex flex-col justify-center'> 
           <div className='text-left flex flex-col justify-center xl:pt-20 xl:text-left h-full container mx-auto' style={{ marginLeft: '10px' }}>
             <h1 className='text-white font-inter font-black text-8xl -mt-10 mb-5 whitespace-nowrap'>
               20 NĂM <br /> 1 CHẶNG ĐƯỜNG 
@@ -59,7 +62,7 @@ const Home =() => {
               <ProjectsBtn />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )
