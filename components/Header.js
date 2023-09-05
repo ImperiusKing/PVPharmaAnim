@@ -3,7 +3,7 @@
 //     <header className='flex items-center justify-between p-4 bg-white'>
 //       {/* Logo */}
 //       <div className='ml-20'>
-//         
+//
 //       </div>
 
 //       {/* Right-justified text elements */}
@@ -18,20 +18,30 @@
 // };
 
 // nav data
-import React, {useState} from "react";
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { IoMdMenu, IoIosClose, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import {
+  IoMdMenu,
+  IoIosClose,
+  IoIosArrowDown,
+  IoIosArrowUp,
+} from 'react-icons/io';
 
 import HeaderButton from './HeaderButton';
 
 export const navData = [
   // { name: 'home', path: '/' },
-  { name: 'VỀ CHÚNG TÔI', path: '/about', submenu:true, sublinks: [
+  {
+    name: 'VỀ CHÚNG TÔI',
+    path: '/about',
+    submenu: true,
+    sublinks: [
       { heading: 'Text 1', path: '/about/heading1' },
       { heading: 'Text 2', path: '/about/heading2' },
       { heading: 'Text 3', path: '/about/heading3' },
-  ] },
+    ],
+  },
   { name: 'SẢN PHẨM', path: '/services' },
   { name: 'TRUYỀN THÔNG', path: '/work' },
   // { name: 'testimonials', path: '/testimonials'},
@@ -53,7 +63,7 @@ const Header = () => {
   };
 
   return (
-    <nav className='bg-white'>
+    <nav className='bg-white h-[8rem]'>
       <div className='absolute w-full top-0 left-0 flex items-center font-medium justify-around'>
         <div className='z-50 p-5 md:w-auto w-full flex justify-between'>
           <Link href='/'>
@@ -76,17 +86,26 @@ const Header = () => {
                 >
                   {link.name}
                   <span className='ml-2'>
-                    {openSubMenu === index ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                    {openSubMenu === index ? (
+                      <IoIosArrowUp />
+                    ) : (
+                      <IoIosArrowDown />
+                    )}
                   </span>
                 </div>
                 {link.submenu && (
                   <div
                     className='absolute top-full right-0 bg-white border border-gray-300 p-4'
-                    style={{ display: openSubMenu === index ? "block" : "none" }}
+                    style={{
+                      display: openSubMenu === index ? 'block' : 'none',
+                    }}
                   >
                     {link.sublinks.map((sublink, subindex) => (
                       <div key={subindex}>
-                        <Link href={sublink.path} className='py-2 block font-light'>
+                        <Link
+                          href={sublink.path}
+                          className='py-2 block font-light'
+                        >
                           {sublink.heading}
                         </Link>
                       </div>

@@ -9,7 +9,6 @@ const transitionVariants = {
   },
   animate: {
     x: '0%',
-    width: '0%',
   },
   exit: {
     x: ['0%', '100%'],
@@ -18,10 +17,10 @@ const transitionVariants = {
 };
 
 const fadeInVariants = {
-    initial: { opacity: 0 , y: -10},
-    animate: { opacity: 1 , y:0},
-    exit: { opacity: 0 },
-  };
+  initial: { opacity: 0, y: -10 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0 },
+};
 
 const Transition = () => {
   return (
@@ -40,62 +39,62 @@ const Transition = () => {
               <motion.div
                 initial='initial'
                 animate='animate'
-                exit ='exit'
+                exit='exit'
                 variants={fadeInVariants}
-                transition= {{ delay:  1, duration: 1, ease: 'easeInOut'}}
+                transition={{ delay: 1, duration: 1, ease: 'easeInOut' }}
               >
                 <h2 className='text-primary font-bold font-lemonMilk-bold uppercase text-[6.8rem]'>
                   Phúc
                 </h2>
-              </motion.div>  
+              </motion.div>
               <motion.div
                 initial='initial'
                 animate='animate'
-                exit ='exit'
+                exit='exit'
                 variants={fadeInVariants}
-                transition= {{ delay:  2, duration: 1, ease: 'easeInOut'}}
+                transition={{ delay: 2, duration: 1, ease: 'easeInOut' }}
               >
-              <h4 className='text-black font-lemonMilk uppercase text-[1rem] -mt-[2.5rem] ml-[7px]'>
-                Pharmaceuticals
-              </h4>
+                <h4 className='text-black font-lemonMilk uppercase text-[1rem] -mt-[2.5rem] ml-[7px]'>
+                  Pharmaceuticals
+                </h4>
               </motion.div>
             </div>
-              <motion.div
-                initial='initial'
-                animate='animate'
-                exit ='exit'
-                variants={fadeInVariants}
-                transition= {{ delay:  .5, duration: 1, ease: 'easeInOut'}}
-              >
-                <Image
-                  src='/PhucVinh_Logo PNG-03.png'
-                  width={200}
-                  height={200}
-                  alt=''
-                />
-              </motion.div>
+            <motion.div
+              initial='initial'
+              animate='animate'
+              exit='exit'
+              variants={fadeInVariants}
+              transition={{ delay: 0.5, duration: 1, ease: 'easeInOut' }}
+            >
+              <Image
+                src='/PhucVinh_Logo PNG-03.png'
+                width={200}
+                height={200}
+                alt=''
+              />
+            </motion.div>
             <div className='flex flex-col text-right'>
               <motion.div
                 initial='initial'
                 animate='animate'
-                exit ='exit'
+                exit='exit'
                 variants={fadeInVariants}
-                transition= {{ delay:  1.5, duration: 1, ease: 'easeInOut'}}
+                transition={{ delay: 1.5, duration: 1, ease: 'easeInOut' }}
               >
                 <h2 className='text-primary font-bold font-lemonMilk-bold uppercase text-[6.8rem]'>
                   Vinh
                 </h2>
-              </motion.div> 
+              </motion.div>
               <motion.div
                 initial='initial'
                 animate='animate'
-                exit ='exit'
+                exit='exit'
                 variants={fadeInVariants}
-                transition= {{ delay:  2.5, duration: 1, ease: 'easeInOut'}}
+                transition={{ delay: 2.5, duration: 1, ease: 'easeInOut' }}
               >
-              <h4 className='text-black font-lemonMilk uppercase text-[1rem] -mt-[2.5rem] mr-[7px]'>
-                Since 2003
-              </h4>
+                <h4 className='text-black font-lemonMilk uppercase text-[1rem] -mt-[2.5rem] mr-[7px]'>
+                  Since 2003
+                </h4>
               </motion.div>
             </div>
           </div>
