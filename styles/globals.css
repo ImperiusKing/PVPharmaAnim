@@ -56,15 +56,15 @@
     @apply h-14;
   }
   .btn-lg {
-    @apply bg-primary h-[54px] rounded-[5px] px-4 transition-all duration-300
+    @apply bg-primary h-[54px] rounded-[5px] px-4 transition-all duration-300;
   }
-  .btn-primary{
+  .btn-primary {
     @apply bg-primary;
   }
-  .btn-secondary{
+  .btn-secondary {
     @apply bg-secondary;
-  } 
-  .btn-accent{
+  }
+  .btn-accent {
     @apply bg-accent;
   }
   .ht {
@@ -76,9 +76,9 @@
   .wrapper {
     position: absolute;
     height: 80vw;
-    transform: translate (-50%,-50%);
-    top:50%;
-    left:50%;
+    transform: translate (-50%, -50%);
+    top: 50%;
+    left: 50%;
     display: flex;
   }
   .container {
@@ -106,14 +106,14 @@
     text-align: center;
     pad: 0.7em 0;
     font-weight: 400;
-    line-height:0;
+    line-height: 0;
   }
-  
+
   @media screen and (max-width: 1024px) {
-    .wrapper{
+    .wrapper {
       height: 85vw;
     }
-    .container{
+    .container {
       height: auto;
       width: 26vmin;
       font-size: 12px;
@@ -125,7 +125,7 @@
     height: 100vh; /* Set the height of the entire page */
     overflow: hidden; /* Hide the overflow of the entire page */
   }
-  
+
   .section {
     height: 100vh; /* Set the height of each section */
     overflow-y: scroll; /* Enable scrolling within each section */
@@ -144,4 +144,11 @@
   .textarea {
     @apply w-full h-[180px] p-6 capitalize rounded-lg resize-none;
   }
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
 }
