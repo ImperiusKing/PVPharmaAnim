@@ -18,6 +18,7 @@ const inter = Inter({
 import Image from 'next/image';
 import Link from 'next/link';
 import { AwardCarousel } from '../components/home/AwardCarousel';
+import { Footer } from '../components/home/Footer';
 import { HighlightCarousel } from '../components/home/HighlighCarousel';
 import { PartnerCarousel } from '../components/home/PartnerCarousel';
 import { Product } from '../components/home/ProductCard';
@@ -25,7 +26,7 @@ import { ProductCarousel } from '../components/home/ProductCarousel';
 
 const Home = () => {
   return (
-    <div className='mb-[10rem]'>
+    <div>
       <img
         src='/homepage-cover.jpg'
         className='w-full bg-contain bg-no-repeat aspect-auto'
@@ -254,6 +255,8 @@ const Home = () => {
           ]}
         />
       </div>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

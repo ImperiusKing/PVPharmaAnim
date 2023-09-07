@@ -3,7 +3,6 @@ import { NextButton, PrevButton } from './NavigateButtons';
 
 export const HighlightCarousel = ({ highlights }) => {
   const [items, setItems] = useState(highlights);
-  console.log(highlights);
 
   return (
     <div className='flex items-center flex-col w-[80%]'>
