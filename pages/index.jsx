@@ -107,13 +107,13 @@ const Home = () => {
         </p>
       </div>
       {/* Video */}
-      <div className='mt-4 mb-[6rem]'>
+      <div className='flex justify-center mt-4 mb-[6rem]'>
         <iframe
-          className='w-full'
+          className='w-80%'
           width='1280'
           height='720'
-          src='https://www.youtube.com/embed/qOBoigGLaJ8'
-          title='arsenal vs Liverpool 3-2 peter drury commentary highlights and all goas'
+          src='https://www.youtube.com/embed/YUv3xXed5pE'
+          title='Giới thiệu về Công ty Cổ phần Dược Phúc Vinh'
           frameborder='0'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           allowfullscreen
