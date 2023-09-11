@@ -17,12 +17,12 @@ export const AwardCarousel = ({ awards }) => {
           >
             <div className='rounded-xl border-4 h-[356px] bg-white border-[#DBDCDD] w-full flex items-center justify-center'>
               <div
-                style={{ '--image-url': `url(${award.image})` }}
+                style={{ '--image-url': `url(${award.image.url})` }}
                 className='w-[80%] h-[80%] bg-[image:var(--image-url)] bg-center bg-contain bg-no-repeat'
               />
             </div>
             <h4 className='text-[#414042] max-w-[80%] text-xs text-center'>
-              {award.description}
+              {award.title}
             </h4>
           </div>
         ))}

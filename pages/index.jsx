@@ -8,7 +8,6 @@ import { Inter } from 'next/font/google';
 
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-inter',
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
 });
 
@@ -23,10 +22,11 @@ import { HighlightCarousel } from '../components/home/HighlighCarousel';
 import { PartnerCarousel } from '../components/home/PartnerCarousel';
 import { Product } from '../components/home/ProductCard';
 import { ProductCarousel } from '../components/home/ProductCarousel';
+import { WorkCard } from '../components/home/WorkCard';
 
-const Home = () => {
+const Home = ({ page, products, highlights, works, awards }) => {
   return (
-    <div>
+    <div className={inter.className}>
       <img
         src='/homepage-cover.jpg'
         className='w-full bg-contain bg-no-repeat aspect-auto'
@@ -35,53 +35,22 @@ const Home = () => {
       {/* Counter */}
       <div className='flex mt-4 w-full relative'>
         <div className='bg-primary w-[30%] pt-[8rem] px-[5rem] text-left flex text-white tracking-wide flex-col'>
-          <h4 className='uppercase font-bold text-[3rem]'>THÀNH TỰU</h4>
+          <h4 className='uppercase font-bold text-[3rem]'>{page.heroTitle2}</h4>
           <p className='text-white mt-4 font-extralight w-[85%]'>
-            Trải qua gần 20 năm xây dựng và trưởng thành, Dược PhúcVinh đã có
-            những bước tiến vững chãi, ngày càng khẳng định vị thế và uy tín của
-            mình trong ngành Dược.
+            {page.heroText2}
           </p>
           <button className='bg-primary border-white w-fit border-2 mt-12 text-white px-6 py-2 rounded-full'>
             Về chúng tôi
           </button>
         </div>
         <div className='flex flex-col bg-[#E6E7E8] w-[70%] items-center pb-[14rem] pt-[4rem]'>
-          <div className='flex w-[40%] items-center space-x-8 border-b-2 border-[#cccdcf] pb-4'>
-            <div className='text-[#58595B] font-bold text-[2.5rem]'>20+</div>
-            <div className='text-[#58595B] text-[1.3rem] font-extralight w-[14rem] leading-[22px]'>
-              Năm đồng hành cùng sức khỏe người Việt
-            </div>
-          </div>
-          <div className='flex w-[40%] items-center space-x-8 border-b-2 border-[#cccdcf] pb-4'>
-            <div className='text-[#58595B] font-bold text-[2.5rem]'>500+</div>
-            <div className='text-[#58595B] text-[1.3rem] font-extralight w-[14rem] leading-[22px]'>
-              Năm đồng hành cùng sức khỏe người Việt
-            </div>
-          </div>
-          <div className='flex w-[40%] items-center space-x-8 border-b-2 border-[#cccdcf] pb-4'>
-            <div className='text-[#58595B] font-bold text-[2.5rem]'>10+</div>
-            <div className='text-[#58595B] text-[1.3rem] font-extralight w-[14rem] leading-[22px]'>
-              Năm đồng hành cùng sức khỏe người Việt
-            </div>
-          </div>
-          <div className='flex w-[40%] items-center space-x-8 border-b-2 border-[#cccdcf] pb-4'>
-            <div className='text-[#58595B] font-bold text-[2.5rem]'>300+</div>
-            <div className='text-[#58595B] text-[1.3rem] font-extralight w-[14rem] leading-[22px]'>
-              Năm đồng hành cùng sức khỏe người Việt
-            </div>
-          </div>
-          <div className='flex w-[40%] items-center space-x-8 border-b-2 border-[#cccdcf] pb-4'>
-            <div className='text-[#58595B] font-bold text-[2.5rem]'>500K+</div>
-            <div className='text-[#58595B] text-[1.3rem] font-extralight w-[14rem] leading-[22px]'>
-              Năm đồng hành cùng sức khỏe người Việt
-            </div>
-          </div>
-          <div className='flex w-[40%] items-center space-x-8 border-b-2 border-[#cccdcf] pb-4'>
-            <div className='text-[#58595B] font-bold text-[2.5rem]'>20+</div>
-            <div className='text-[#58595B] text-[1.3rem] font-extralight w-[14rem] leading-[22px]'>
-              Năm đồng hành cùng sức khỏe người Việt
-            </div>
-          </div>
+          {works.map((work) => (
+            <WorkCard
+              key={work.id}
+              description={work.description}
+              amount={work.amount}
+            />
+          ))}
         </div>
         <div className='bg-white w-[90%] justify-between items-center px-8 py-4 flex absolute bottom-8 left-[50%] translate-x-[-50%] rounded-lg'>
           <div className='w-[15%] text-[#4D4D4F] text-xl text-center'>
@@ -100,11 +69,10 @@ const Home = () => {
           alt='Phuc Vinh text'
         />
         <h2 className='uppercase font-bold text-[#414042] text-[3rem] mt-6'>
-          THƯƠNG HIỆU UY TÍN VÀ CHẤT LƯỢNG
+          {page.heroTitle3}
         </h2>
         <p className='text-[#58595b] w-[39%] text-[1.3rem] text-center mt-4'>
-          Dược Phúc Vinh đã có những bước tiến vững chãi, ngày càng khẳng định
-          vị thế và uy tín trong ngành Dược.
+          {page.heroText3}
         </p>
       </div>
       {/* Video */}
@@ -123,32 +91,17 @@ const Home = () => {
       {/* Products */}
       <div className='flex flex-col items-center space-y-12 mt-8'>
         <h4 className='uppercase font-bold text-[#414042] text-4xl'>
-          DÂY CHUYỀN NHÀ MÁY SẢN XUẤT
+          {page.heroTitle4}
         </h4>
         <div className='w-90% flex mx-auto space-x-8 justify-around'>
-          <Product
-            name='THUỐC TỪ DƯỢC LIỆU'
-            image='/products/product_1.png'
-            description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-              voluptatem esse maiores aspernatur deserunt nostrum eius
-              consequatur qui porro ullam iure'
-          />
-
-          <Product
-            name='THUỐC TỪ DƯỢC LIỆU'
-            image='/products/product_1.png'
-            description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-              voluptatem esse maiores aspernatur deserunt nostrum eius
-              consequatur qui porro ullam iure'
-          />
-
-          <Product
-            name='THUỐC TỪ DƯỢC LIỆU'
-            image='/products/product_1.png'
-            description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-              voluptatem esse maiores aspernatur deserunt nostrum eius
-              consequatur qui porro ullam iure'
-          />
+          {products.map((product) => (
+            <Product
+              key={product.image.id}
+              name={product.title}
+              image={product.image.url}
+              description={product.description}
+            />
+          ))}
         </div>
         <ProductCarousel
           products={[
@@ -184,21 +137,12 @@ const Home = () => {
           direction='rtl'
         />
       </div>
-      {/* Highligh */}
+      {/* Highlight */}
       <div className='flex flex-col items-center justify-center space-y-12 mt-16'>
         <h4 className='uppercase font-bold text-[#414042] text-4xl mb-10'>
-          SẢN PHẨM TIÊU BIỂU
+          {page.heroTitle5}
         </h4>
-        <HighlightCarousel
-          highlights={[
-            {
-              title: 'AN TÂM NGỦ NGON PV',
-              image: '/highlights/highlight_1.png',
-            },
-            { title: 'BỔ THẬN PV PLUS', image: '/highlights/highlight_2.png' },
-            { title: 'MOTABIC', image: '/highlights/highlight_3.png' },
-          ]}
-        />
+        <HighlightCarousel highlights={highlights} />
         <Link href='/' className='rounded-[2rem] p-[2px] bg-primary'>
           <div className='px-12 py-4 rounded-[2rem] border-2 border-white uppercase text-white font-bold'>
             Về chúng tôi
@@ -207,53 +151,10 @@ const Home = () => {
       </div>
       {/* Awards */}
       <div className='flex flex-col pl-[5rem] mt-[6rem]'>
-        <h4 className='uppercase text-[#414042] text-4xl mb-10'>GIẢI THƯỞNG</h4>
-        <AwardCarousel
-          awards={[
-            {
-              description:
-                'THƯƠNG HIỆU DẪN ĐẦU VIỆT NĂM 2022 DÀNH CHO SẢN PHẨM BỔ THẬN PV PLUS',
-              image: '/awards/award_1.png',
-            },
-            {
-              description: 'TOP 10 - NĂM 2012 CHO SẢN PHẨM BỔTHẬN PV',
-              image: '/awards/award_2.png',
-            },
-            {
-              description:
-                'THỰC PHẨM CHỨC NĂNGVIÊN NANG MỀM SẢN PHẨM UYTÍN CHẤT LƯỢNGVÌ SỨC KHỎE CỘNG ĐỒNG',
-              image: '/awards/award_3.png',
-            },
-            {
-              description:
-                'CHỨNG NHẬN NHÂNTỐ MỚI THỜI ĐẠI HỒ CHÍ MINHTRAO CHO ÔNGTRẦN MINHVỊNH',
-              image: '/awards/award_1.png',
-            },
-            {
-              description:
-                'THỰC PHẨM CHỨC NĂNGVIÊN NANG MỀM SẢN PHẨM UYTÍN CHẤT LƯỢNGVÌ SỨC KHỎE CỘNG ĐỒNG',
-              image: '/awards/award_3.png',
-            },
-            {
-              description: 'TOP 10 - NĂM 2012 CHO SẢN PHẨM BỔTHẬN PV',
-              image: '/awards/award_2.png',
-            },
-            {
-              description: 'TOP 10 - NĂM 2012 CHO SẢN PHẨM BỔTHẬN PV',
-              image: '/awards/award_2.png',
-            },
-            {
-              description:
-                'THỰC PHẨM CHỨC NĂNGVIÊN NANG MỀM SẢN PHẨM UYTÍN CHẤT LƯỢNGVÌ SỨC KHỎE CỘNG ĐỒNG',
-              image: '/awards/award_3.png',
-            },
-            {
-              description:
-                'CHỨNG NHẬN NHÂNTỐ MỚI THỜI ĐẠI HỒ CHÍ MINHTRAO CHO ÔNGTRẦN MINHVỊNH',
-              image: '/awards/award_1.png',
-            },
-          ]}
-        />
+        <h4 className='uppercase text-[#414042] text-4xl mb-10'>
+          {page.heroTitle7}
+        </h4>
+        <AwardCarousel awards={awards} />
       </div>
       {/* Footer */}
       <Footer />
@@ -270,11 +171,163 @@ export async function getStaticProps() {
   } = await client.query({
     query: GET_PAGE_DATA,
   });
-  console.log(page);
+
+  const products = [
+    {
+      title: page.dc1Title,
+      description: page.dc1Text,
+      image: {
+        id: page.dc1Background.id,
+        width: page.dc1Background.width,
+        height: page.dc1Background.height,
+        url: page.dc1Background.url,
+      },
+    },
+    {
+      title: page.dc2Title,
+      description: page.dc2Text,
+      image: {
+        id: page.dc2Background.id,
+        width: page.dc2Background.width,
+        height: page.dc2Background.height,
+        url: page.dc2Background.url,
+      },
+    },
+    {
+      title: page.dc3Title,
+      description: page.dc3Text,
+      image: {
+        id: page.dc3Background.id,
+        width: page.dc3Background.width,
+        height: page.dc3Background.height,
+        url: page.dc3Background.url,
+      },
+    },
+  ];
+
+  const highlights = [
+    {
+      title: page.sp1Title,
+      image: {
+        id: page.sp1Background.id,
+        url: page.sp1Background.url,
+      },
+    },
+    {
+      title: page.sp2Title,
+      image: {
+        id: page.sp2Background.id,
+        url: page.sp2Background.url,
+      },
+    },
+    {
+      title: page.sp3Title,
+      image: {
+        id: page.sp3Background.id,
+        url: page.sp3Background.url,
+      },
+    },
+  ];
+
+  const works = [
+    {
+      id: Math.floor(Math.random() * 10000),
+      amount: page.tt1Title,
+      description: page.tt1Text,
+    },
+    {
+      id: Math.floor(Math.random() * 10000),
+      amount: page.tt2Title,
+      description: page.tt2Text,
+    },
+    {
+      id: Math.floor(Math.random() * 10000),
+      amount: page.tt3Title,
+      description: page.tt3Text,
+    },
+    {
+      id: Math.floor(Math.random() * 10000),
+      amount: page.tt4Title,
+      description: page.tt4Text,
+    },
+    {
+      id: Math.floor(Math.random() * 10000),
+      amount: page.tt5Title,
+      description: page.tt5Text,
+    },
+    {
+      id: Math.floor(Math.random() * 10000),
+      amount: page.tt6Title,
+      description: page.tt6Text,
+    },
+  ];
+
+  const awards = [
+    {
+      title: page.gt1Title,
+      image: {
+        id: page.gt1Background.id,
+        url: page.gt1Background.url,
+      },
+    },
+    {
+      title: page.gt2Title,
+      image: {
+        id: page.gt2Background.id,
+        url: page.gt2Background.url,
+      },
+    },
+    {
+      title: page.gt3Title,
+      image: {
+        id: page.gt3Background.id,
+        url: page.gt3Background.url,
+      },
+    },
+    {
+      title: page.gt4Title,
+      image: {
+        id: page.gt4Background.id,
+        url: page.gt4Background.url,
+      },
+    },
+    {
+      title: page.gt5Title,
+      image: {
+        id: page.gt5Background.id,
+        url: page.gt5Background.url,
+      },
+    },
+    {
+      title: page.gt6Title,
+      image: {
+        id: page.gt6Background.id,
+        url: page.gt6Background.url,
+      },
+    },
+    {
+      title: page.gt7Title,
+      image: {
+        id: page.gt7Background.id,
+        url: page.gt7Background.url,
+      },
+    },
+    {
+      title: page.gt8Title,
+      image: {
+        id: page.gt8Background.id,
+        url: page.gt8Background.url,
+      },
+    },
+  ];
 
   return {
     props: {
       page,
+      products,
+      highlights,
+      works,
+      awards,
     },
   };
 }
@@ -282,17 +335,169 @@ export async function getStaticProps() {
 const GET_PAGE_DATA = gql`
   query PageHome {
     page(where: { slug: "home" }) {
+      id
+      dc1Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      dc1Text
+      dc1Title
+      dc2Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      dc2Text
+      dc2Title
+      dc3Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      dc3Text
+      dc3Title
+      gt1Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      gt1Title
+      gt2Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      gt2Title
+      gt3Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      gt3Title
+      gt4Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      gt4Title
+      gt5Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      gt5Title
+      gt6Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      gt6Title
+      gt7Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      gt7Title
+      gt8Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      gt8Title
+      heroBackground {
+        id
+        width
+        height
+        size
+        url
+      }
+      heroBackground3 {
+        id
+        width
+        height
+        size
+        url
+      }
+      heroBackground6 {
+        id
+        width
+        height
+        size
+        url
+      }
       heroLink
       heroText
+      heroText2
+      heroText3
       heroTitle
+      heroTitle2
+      heroTitle3
+      heroTitle4
+      heroTitle5
+      heroTitle6
+      heroTitle7
       id
       name
       slug
-      heroBackground {
+      sp1Background {
+        id
         width
-        url
         height
+        size
+        url
       }
+      sp1Title
+      sp2Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      sp2Title
+      sp3Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      sp3Title
+      tt1Text
+      tt1Title
+      tt2Text
+      tt2Title
+      tt3Text
+      tt3Title
+      tt4Text
+      tt4Title
+      tt5Text
+      tt5Title
+      tt6Text
+      tt6Title
     }
   }
 `;
