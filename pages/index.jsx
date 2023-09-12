@@ -227,6 +227,27 @@ export async function getStaticProps() {
         url: page.sp3Background.url,
       },
     },
+    {
+      title: page.sp1Title,
+      image: {
+        id: page.sp1Background.id + '1',
+        url: page.sp1Background.url,
+      },
+    },
+    {
+      title: page.sp2Title,
+      image: {
+        id: page.sp2Background.id + '2',
+        url: page.sp2Background.url,
+      },
+    },
+    {
+      title: page.sp3Title,
+      image: {
+        id: page.sp3Background.id + '3',
+        url: page.sp3Background.url,
+      },
+    },
   ];
 
   const works = [
