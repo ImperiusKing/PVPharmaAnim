@@ -288,3 +288,8 @@ html {
 .swiper-pagination .swiper-pagination-bullet-active {
   background: var(--primary);
 }
+
+.transition-background {
+  background: rgb(76,184,227);
+background: linear-gradient(0deg, rgba(76,184,227,1) 0%, rgba(36,75,117,1) 70%);
+}
