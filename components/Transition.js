@@ -35,17 +35,19 @@ const fadeInVariants = {
 const Transition = () => {
   return (
     <AnimatePresence>
-      <div className='transition-background text-white flex justify-center flex-col items-center h-full'>
- <TypeAnimation
-      sequence={[
-        // Same substring at the start will only be typed out once, initially
-        'PV Pharma',
-        5000, // wait 1s before replacing "Mice" with "Hamsters"
-      ]}
-      wrapper="span"
-      speed={25}
-      style={{ fontSize: '2em', display: 'inline-block' }}
-    />
+      <div className='transition-background text-white flex justify-center items-center h-screen w-screen fixed top-0 left-0'>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <TypeAnimation
+            sequence={[
+              // Same substring at the start will only be typed out once, initially
+              'PVPHARMA',
+              5000, // wait 1s before replacing "Mice" with "Hamsters"
+            ]}
+            wrapper="span"
+            speed={25}
+            style={{ fontSize: '3em', display: 'inline-block' }}
+          />
+        </div>
       </div>
     </AnimatePresence>
   );

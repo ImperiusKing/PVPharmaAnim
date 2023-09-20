@@ -228,6 +228,20 @@ export async function getStaticProps() {
       },
     },
     {
+      title: page.sp4Title,
+      image: {
+        id: page.sp4Background.id,
+        url: page.sp4Background.url,
+      },
+    },
+    {
+      title: page.sp5Title,
+      image: {
+        id: page.sp5Background.id,
+        url: page.sp5Background.url,
+      },
+    },
+    {
       title: page.sp1Title,
       image: {
         id: page.sp1Background.id + '1',
@@ -246,6 +260,20 @@ export async function getStaticProps() {
       image: {
         id: page.sp3Background.id + '3',
         url: page.sp3Background.url,
+      },
+    },
+    {
+      title: page.sp4Title,
+      image: {
+        id: page.sp4Background.id + '4',
+        url: page.sp4Background.url,
+      },
+    },
+    {
+      title: page.sp5Title,
+      image: {
+        id: page.sp5Background.id + '5',
+        url: page.sp5Background.url,
       },
     },
   ];
@@ -276,11 +304,11 @@ export async function getStaticProps() {
       amount: page.tt5Title,
       description: page.tt5Text,
     },
-    {
-      id: Math.floor(Math.random() * 10000),
-      amount: page.tt6Title,
-      description: page.tt6Text,
-    },
+    // {
+    //   id: Math.floor(Math.random() * 10000),
+    //   amount: page.tt6Title,
+    //   description: page.tt6Text,
+    // },
   ];
 
   const awards = [
@@ -507,6 +535,22 @@ const GET_PAGE_DATA = gql`
         url
       }
       sp3Title
+      sp4Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      sp4Title
+      sp5Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      sp5Title
       tt1Text
       tt1Title
       tt2Text
