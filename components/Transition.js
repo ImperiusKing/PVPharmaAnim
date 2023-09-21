@@ -35,7 +35,7 @@ const fadeInVariants = {
 const Transition = () => {
   return (
     <AnimatePresence>
-      <div className='transition-background text-white flex justify-center items-center h-screen w-screen fixed top-0 left-0'>
+      <div className='transition-background text-white flex justify-center items-center h-full w-full fixed top-0 left-0'>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <TypeAnimation
             sequence={[
