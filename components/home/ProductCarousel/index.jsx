@@ -5,8 +5,8 @@ import { ProductButton } from './ProductButton';
 
 export const ProductCarousel = ({ products, direction = 'ltr' }) => {
   const [emblaRef] = useEmblaCarousel(
-    { loop: true, align: 'center', slidesToScroll: 5, direction },
-    [Autoplay()]
+    { loop: true, align: 'center', slidesToScroll: 1, direction, duration: 40 },
+    [Autoplay({delay: 1500})]
   );
 
   return (

@@ -13,7 +13,7 @@ export const WorkCard = ({ amount, description }) => {
       if (counter < number) {
         setCounter(counter + 1);
       }
-    }, 20);
+    }, 1500  / (number * 1.0));
     return () => clearInterval(interval);
   }, [counter, number]);
 

@@ -77,16 +77,27 @@ const Home = ({ page, products, highlights, works, awards }) => {
       </div>
       {/* Video */}
       <div className='flex justify-center mt-4 mb-[6rem]'>
-        <iframe
-          className='w-80%'
-          width='1280'
-          height='720'
-          src='https://www.youtube.com/embed/YUv3xXed5pE'
-          title='Giới thiệu về Công ty Cổ phần Dược Phúc Vinh'
-          frameborder='0'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-          allowfullscreen
-        ></iframe>
+        <div
+          onClick={(e) => {
+            e.currentTarget.nextElementSibling.style.display = 'block';
+            e.currentTarget.style.display = 'none';
+          }}
+        >
+          <img src='/avatar.png' />
+        </div>
+        <div className='hidden'>
+          <iframe
+            id='video'
+            className='w-80%'
+            width='1280'
+            height='720'
+            src='https://www.youtube.com/embed/YUv3xXed5pE?autoplay=1'
+            title='Giới thiệu về Công ty Cổ phần Dược Phúc Vinh'
+            frameborder='0'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
       {/* Products */}
       <div className='flex flex-col items-center space-y-12 mt-8'>
