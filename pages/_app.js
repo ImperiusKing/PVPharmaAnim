@@ -1,23 +1,29 @@
+'use client';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
+import Transition from '../components/Transition';
 import '../styles/globals.css';
 
-//router
-import { useRouter } from 'next/router';
-
-//framer.motion
-import { AnimatePresence, motion } from 'framer-motion';
-import Transition from '../components/Transition';
-
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
+  const [show, setShown] = useState(false);
+
+  useEffect(() => {
+    AOS.init({});
+
+    const timeout = setTimeout(() => setShown(true), 5300);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  // useEffect(() => {
+  // }, [show]);
+
   return (
     <Layout>
-      <AnimatePresence mode='wait'>
-        <motion.div key={router.route} className='h-full'>
-          <Transition />
-          <Component {...pageProps} />
-        </motion.div>
-      </AnimatePresence>
+      <Transition />
+      {show ? <Component {...pageProps} /> : null}
+      {/* <Component {...pageProps} /> */}
     </Layout>
   );
 }

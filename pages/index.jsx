@@ -28,12 +28,18 @@ const Home = ({ page, products, highlights, works, awards }) => {
   return (
     <div className={inter.className}>
       <img
+        data-aos='fade-up'
         src='/homepage-cover.jpg'
         className='w-full bg-contain bg-no-repeat aspect-auto'
         alt='hero image'
       />
       {/* Counter */}
-      <div className='flex mt-4 w-full relative'>
+      <div
+        data-aos='fade-up'
+        data-aos-offset='500'
+        data-aos-delay='1000'
+        className='flex mt-4 w-full relative'
+      >
         <div className='bg-primary w-[40%] pt-[8rem] px-[5rem] text-left flex text-white tracking-wide flex-col'>
           <h4 className='uppercase font-bold text-[3rem]'>{page.heroTitle2}</h4>
           <p className='text-white mt-4 font-extralight w-[85%]'>
@@ -62,7 +68,12 @@ const Home = ({ page, products, highlights, works, awards }) => {
         </div>
       </div>
       {/* Text */}
-      <div className='w-full bg-white items-center flex flex-col pb-[4rem]'>
+      <div
+        data-aos='fade-up'
+        data-aos-offset='1000'
+        data-aos-delay='1000'
+        className='w-full bg-white items-center flex flex-col pb-[4rem]'
+      >
         <Image
           className='w-[80%] mx-auto mt-6'
           src={PVText}
@@ -76,7 +87,12 @@ const Home = ({ page, products, highlights, works, awards }) => {
         </p>
       </div>
       {/* Video */}
-      <div className='flex justify-center mt-4 mb-[6rem]'>
+      <div
+        data-aos='fade-up'
+        data-aos-offset='1500'
+        data-aos-delay='1000'
+        className='flex justify-center mt-4 mb-[6rem]'
+      >
         <div
           onClick={(e) => {
             e.currentTarget.nextElementSibling.style.display = 'block';
@@ -100,7 +116,12 @@ const Home = ({ page, products, highlights, works, awards }) => {
         </div>
       </div>
       {/* Products */}
-      <div className='flex flex-col items-center space-y-12 mt-8'>
+      <div
+        data-aos='fade-up'
+        data-aos-offset='2200'
+        data-aos-delay='1000'
+        className='flex flex-col items-center space-y-12 mt-8'
+      >
         <h4 className='uppercase font-bold text-[#414042] text-4xl'>
           {page.heroTitle4}
         </h4>
@@ -149,7 +170,12 @@ const Home = ({ page, products, highlights, works, awards }) => {
         />
       </div>
       {/* Highlight */}
-      <div className='flex flex-col items-center justify-center space-y-12 mt-16'>
+      <div
+        data-aos='fade-up'
+        data-aos-offset='3000'
+        data-aos-delay='1000'
+        className='flex flex-col items-center justify-center space-y-12 mt-16'
+      >
         <h4 className='uppercase font-bold text-[#414042] text-4xl mb-10'>
           {page.heroTitle5}
         </h4>
@@ -161,7 +187,12 @@ const Home = ({ page, products, highlights, works, awards }) => {
         </Link>
       </div>
       {/* Awards */}
-      <div className='flex flex-col pl-[5rem] mt-[6rem]'>
+      <div
+        data-aos='fade-up'
+        data-aos-offset='3200'
+        data-aos-delay='1000'
+        className='flex flex-col pl-[5rem] mt-[6rem]'
+      >
         <h4 className='uppercase text-[#414042] text-4xl mb-10'>
           {page.heroTitle7}
         </h4>

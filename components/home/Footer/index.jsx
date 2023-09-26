@@ -2,7 +2,12 @@ import { VerifiedLogo } from './VerifiedLogo';
 
 export const Footer = () => {
   return (
-    <footer className='bg-[#414042] text-white w-full mt-[8rem] pb-8'>
+    <footer
+      data-aos='fade-up'
+      data-aos-offset='3100'
+      data-aos-delay='1000'
+      className='bg-[#414042] text-white w-full mt-[8rem] pb-8'
+    >
       <div className='mx-auto w-full p-4 py-6 lg:py-8'>
         <div className='md:flex md:justify-around'>
           <div className='mb-6 md:mb-0'>
