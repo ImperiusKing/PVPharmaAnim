@@ -26,9 +26,20 @@ const transitionVariants = {
   },
 };
 
+
 const fadeInVariants = {
   initial: { opacity: 0, y: 100 },
   animate: { opacity: 1, y: 50 },
+};
+
+const fadeInVariantsLeft = {
+  initial: { opacity: 0, x: -150 },
+  animate: { opacity: 1, x: 25 },
+};
+
+const fadeInVariantsRight = {
+  initial: { opacity: 0, x: 200 },
+  animate: { opacity: 1, x: 0 },
 };
 
 const Transition = () => {
@@ -39,7 +50,16 @@ const Transition = () => {
         initial='initial'
         animate='animate'
         exit='exit'
-        transition={{ delay: 3.5, duration: 1000, ease: 'easeInOut' }}
+        transition={{ delay: 5, duration: .75, ease: 'easeInOut' }}
+        className='bg-[#191919] flex justify-center items-center h-full w-full fixed top-0 left-0'
+    >
+      </motion.div>
+      <motion.div
+        variants={transitionVariants}
+        initial='initial'
+        animate='animate'
+        exit='exit'
+        transition={{ delay: 4, duration: 1, ease: 'easeInOut' }}
         className='transition-background text-white flex justify-center items-center h-full w-full fixed top-0 left-0'
       >
         <div
@@ -49,19 +69,27 @@ const Transition = () => {
             alignItems: 'center',
           }}
         >
-          <h1 className='absolute top-0 left-0 text-8xl opacity-[0.4] text-pharma'>
-            PV Pharma
-          </h1>
+              <motion.div
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                variants={fadeInVariantsLeft}
+                className='absolute top-0 left-0'
+                transition={{ delay: 2, duration: 1.5, ease: 'easeInOut' }}
+              >
+                <h1 className='mt-20 ml-20 text-8xl opacity-30 text-pharma'>
+                  PVPHARMA
+                </h1>
+              </motion.div>
           <TypeAnimation
             sequence={[
-              // Same substring at the start will only be typed out once, initially
               'PVPHARMA',
-              5000, // wait 1s before replacing "Mice" with "Hamsters"
+              5000, // wait 5s before continuing to the next sequence
             ]}
             cursor={false}
             wrapper='span'
-            speed={25}
-            style={{ fontSize: '3em', display: 'inline-block' }}
+            speed={7.5}
+            style={{ fontFamily: 'UTM Neo Sans IntelBold', fontSize: '80px', display: 'inline-block' }}
           />
           <div>
             <motion.div
@@ -69,16 +97,25 @@ const Transition = () => {
               animate='animate'
               exit='exit'
               variants={fadeInVariants}
-              transition={{ delay: 2, duration: 1, ease: 'easeInOut' }}
+              transition={{ delay: 1, duration: 1, ease: 'easeInOut' }}
             >
-              <h4 className='text-black font-lemonMilk uppercase text-[1rem] -mt-[2.5rem] ml-[7px]'>
-                Pharmaceuticals
+              <h4 className='text-white font-semibold uppercase text-[25px] -mt-[7rem] ml-[7px]'>
+                GIÁ TRỊ SỐNG KHỎE
               </h4>
             </motion.div>
           </div>
-          <h1 className='absolute top-[60vh] right-0 text-8xl opacity-[0.4] text-pharma'>
-            PV Pharma
+          <motion.div
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                variants={fadeInVariantsRight}
+                className='absolute bottom-0 right-0'
+                transition={{ delay: 2, duration: 1.5, ease: 'easeInOut' }}
+              >
+          <h1 className='mb-20 mr-20 text-8xl opacity-[0.4] text-pharma'>
+            PVPHARMA
           </h1>
+          </motion.div>
         </div>
       </motion.div>
     </AnimatePresence>

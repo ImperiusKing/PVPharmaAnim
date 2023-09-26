@@ -38,6 +38,9 @@ module.exports = {
       fontFamily: {
         inter: [`var(--font-inter)`, 'sans-serif'],
         lemonMilk: [`LemonMilk`],
+        fontFamily: {
+          'neo-sans': ['UTM Neo Sans IntelBold', 'sans']
+        }
       },
     },
   },

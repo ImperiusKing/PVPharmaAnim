@@ -13,16 +13,16 @@ export const PartnerCarousel = () => {
     <div className='embla w-full' ref={emblaRef}>
       <div className='embla__container flex items-center justify-between gap-6'>
         <div className={styles.emblaSlide}>
-          <Image width={250} height={73} src='/partners/bulb.png' />
+          <Image width={200} height={73} src='/partners/bulb.png' />
         </div>
         <div className={styles.emblaSlide}>
-          <Image width={250} height={73} src='/partners/pharmacity.png' />
+          <Image width={200} height={73} src='/partners/pharmacity.png' />
         </div>
         <div className={styles.emblaSlide}>
-          <Image width={250} height={73} src='/partners/phuongchinh.png' />
+          <Image width={200} height={73} src='/partners/phuongchinh.png' />
         </div>
         <div className={styles.emblaSlide}>
-          <Image width={250} height={73} src='/partners/ankhang.png' />
+          <Image width={200} height={73} src='/partners/ankhang.png' />
         </div>
       </div>
     </div>

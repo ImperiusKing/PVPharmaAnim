@@ -34,7 +34,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
       />
       {/* Counter */}
       <div className='flex mt-4 w-full relative'>
-        <div className='bg-primary w-[30%] pt-[8rem] px-[5rem] text-left flex text-white tracking-wide flex-col'>
+        <div className='bg-primary w-[40%] pt-[8rem] px-[5rem] text-left flex text-white tracking-wide flex-col'>
           <h4 className='uppercase font-bold text-[3rem]'>{page.heroTitle2}</h4>
           <p className='text-white mt-4 font-extralight w-[85%]'>
             {page.heroText2}
