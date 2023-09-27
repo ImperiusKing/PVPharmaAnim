@@ -13,7 +13,7 @@ export const AwardCarousel = ({ awards }) => {
         {awards.map((award, index) => (
           <div
             key={index}
-            className='flex flex-col rounded-xl p-[5px] space-y-4 transition-all ml-8 w-[286px] h-[437px] flex-[0_0_auto] min-w-0 ml-4 items-center bg-[#E1E1E1]'
+            className='flex flex-col rounded-xl p-[5px] space-y-4 transition-all ml-8 w-[200px] h-[300px] flex-[0_0_auto] min-w-0 ml-4 items-center bg-[#E1E1E1]'
           >
             <div className='rounded-xl border-4 h-[356px] bg-white border-[#DBDCDD] w-full flex items-center justify-center'>
               <div
@@ -21,7 +21,7 @@ export const AwardCarousel = ({ awards }) => {
                 className='w-[80%] h-[80%] bg-[image:var(--image-url)] bg-center bg-contain bg-no-repeat'
               />
             </div>
-            <h4 className='text-[#414042] max-w-[80%] text-xs text-center'>
+            <h4 className='text-[#414042] max-w-[80%] text-[10px] text-center'>
               {award.title}
             </h4>
           </div>

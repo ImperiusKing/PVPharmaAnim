@@ -28,8 +28,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
   return (
     <div className={inter.className}>
       <img
-        data-aos='fade-up'
-        src='/homepage-cover.jpg'
+        src='/homepage-cover-1.png'
         className='w-full bg-contain bg-no-repeat aspect-auto'
         alt='hero image'
       />
@@ -37,15 +36,15 @@ const Home = ({ page, products, highlights, works, awards }) => {
       <div
         data-aos='fade-up'
         data-aos-offset='500'
-        data-aos-delay='1000'
-        className='flex mt-4 w-full relative'
+        data-aos-delay='500'
+        className='flex mt-4 w-9/10 mx-auto relative'
       >
-        <div className='bg-primary w-[40%] pt-[8rem] px-[5rem] text-left flex text-white tracking-wide flex-col'>
-          <h4 className='uppercase font-bold text-[3rem]'>{page.heroTitle2}</h4>
-          <p className='text-white mt-4 font-extralight w-[85%]'>
+        <div className='bg-primary w-[60%] pt-[15rem] px-[5rem] text-left flex text-white tracking-wide flex-col justify-start'>
+          <h4 className='uppercase font-bold text-[60px] ml-20'>{page.heroTitle2}</h4>
+          <p className='text-white text-[13px] mt-4 font-extralight w-[85%] ml-20'>
             {page.heroText2}
           </p>
-          <button className='bg-primary border-white w-fit border-2 mt-12 text-white px-6 py-2 rounded-full'>
+          <button className='bg-primary border-white w-fit border-2 mt-12 text-white px-6 py-2 rounded-full ml-20'>
             Về chúng tôi
           </button>
         </div>
@@ -54,6 +53,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
             <WorkCard
               key={work.id}
               description={work.description}
+              descriptionx={work.descriptionx}
               amount={work.amount}
             />
           ))}
@@ -71,26 +71,26 @@ const Home = ({ page, products, highlights, works, awards }) => {
       <div
         data-aos='fade-up'
         data-aos-offset='1000'
-        data-aos-delay='1000'
+        data-aos-delay='500'
         className='w-full bg-white items-center flex flex-col pb-[4rem]'
       >
         <Image
-          className='w-[80%] mx-auto mt-6'
+          className='w-[90%] mx-auto mt-[50px]'
           src={PVText}
           alt='Phuc Vinh text'
         />
-        <h2 className='uppercase font-bold text-[#414042] text-[3rem] mt-6'>
+        <h2 className='uppercase font-bold text-[#414042] text-[45px] mt-[20px]'>
           {page.heroTitle3}
         </h2>
-        <p className='text-[#58595b] w-[39%] text-[1.3rem] text-center mt-4'>
+        <p className='text-[#58595b] w-[39%] text-[15px] text-center mt-4'>
           {page.heroText3}
         </p>
       </div>
       {/* Video */}
       <div
         data-aos='fade-up'
-        data-aos-offset='1500'
-        data-aos-delay='1000'
+        data-aos-offset='1000'
+        data-aos-delay='500'
         className='flex justify-center mt-4 mb-[6rem]'
       >
         <div
@@ -99,7 +99,8 @@ const Home = ({ page, products, highlights, works, awards }) => {
             e.currentTarget.style.display = 'none';
           }}
         >
-          <img src='/avatar.png' />
+          {/* <img src={page.heroBackground3} /> */}
+          <img src='thumbnail.png' /> 
         </div>
         <div className='hidden'>
           <iframe
@@ -118,14 +119,14 @@ const Home = ({ page, products, highlights, works, awards }) => {
       {/* Products */}
       <div
         data-aos='fade-up'
-        data-aos-offset='2200'
-        data-aos-delay='1000'
+        data-aos-offset='1000'
+        data-aos-delay='500'
         className='flex flex-col items-center space-y-12 mt-8'
       >
-        <h4 className='uppercase font-bold text-[#414042] text-4xl'>
+        <h4 className='uppercase font-bold text-[#414042] text-[45px]'>
           {page.heroTitle4}
         </h4>
-        <div className='w-90% flex mx-auto space-x-8 justify-around'>
+        <div className='w-90% flex mx-auto justify-center gap-[50px] ml-[50px] mr-[50px]'>
           {products.map((product) => (
             <Product
               key={product.image.id}
@@ -172,28 +173,39 @@ const Home = ({ page, products, highlights, works, awards }) => {
       {/* Highlight */}
       <div
         data-aos='fade-up'
-        data-aos-offset='3000'
-        data-aos-delay='1000'
+        data-aos-offset='1000'
+        data-aos-delay='500'
         className='flex flex-col items-center justify-center space-y-12 mt-16'
       >
-        <h4 className='uppercase font-bold text-[#414042] text-4xl mb-10'>
+        <h4 className='uppercase font-bold text-[#414042] text-[45px] mb-10'>
           {page.heroTitle5}
         </h4>
         <HighlightCarousel highlights={highlights} />
         <Link href='/' className='rounded-[2rem] p-[2px] bg-primary'>
-          <div className='px-12 py-4 rounded-[2rem] border-2 border-white uppercase text-white font-bold'>
+          <div className='px-12 py-4 rounded-[2rem] border-2 border-white uppercase text-white font-bold text-[12px]'>
             Về chúng tôi
           </div>
         </Link>
       </div>
+      {/* History */}
+      <div
+        data-aos='fade-up'
+        data-aos-offset='1000'
+        data-aos-delay='500'>
+        <img
+        src='lichsu.png'
+        className='w-full bg-contain bg-no-repeat aspect-auto mt-[80px]'
+        >
+        </img>
+        </div>
       {/* Awards */}
       <div
         data-aos='fade-up'
-        data-aos-offset='3200'
-        data-aos-delay='1000'
+        data-aos-offset='1000'
+        data-aos-delay='500'
         className='flex flex-col pl-[5rem] mt-[6rem]'
       >
-        <h4 className='uppercase text-[#414042] text-4xl mb-10'>
+        <h4 className='uppercase text-[#414042] text-[45px] font-bold mb-10'>
           {page.heroTitle7}
         </h4>
         <AwardCarousel awards={awards} />
@@ -325,26 +337,31 @@ export async function getStaticProps() {
       id: Math.floor(Math.random() * 10000),
       amount: page.tt1Title,
       description: page.tt1Text,
+      descriptionx: page.tt1Textx,
     },
     {
       id: Math.floor(Math.random() * 10000),
       amount: page.tt2Title,
       description: page.tt2Text,
+      descriptionx: page.tt2Textx,
     },
     {
       id: Math.floor(Math.random() * 10000),
       amount: page.tt3Title,
       description: page.tt3Text,
+      descriptionx: page.tt3Textx,
     },
     {
       id: Math.floor(Math.random() * 10000),
       amount: page.tt4Title,
       description: page.tt4Text,
+      descriptionx: page.tt4Textx,
     },
     {
       id: Math.floor(Math.random() * 10000),
       amount: page.tt5Title,
       description: page.tt5Text,
+      descriptionx: page.tt5Textx,
     },
     // {
     //   id: Math.floor(Math.random() * 10000),
@@ -408,6 +425,20 @@ export async function getStaticProps() {
       image: {
         id: page.gt8Background.id,
         url: page.gt8Background.url,
+      },
+    },
+    {
+      title: page.gt9Title,
+      image: {
+        id: page.gt9Background.id,
+        url: page.gt9Background.url,
+      },
+    },
+    {
+      title: page.gt10Title,
+      image: {
+        id: page.gt10Background.id,
+        url: page.gt10Background.url,
       },
     },
   ];
@@ -518,6 +549,22 @@ const GET_PAGE_DATA = gql`
         url
       }
       gt8Title
+      gt9Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      gt9Title
+      gt10Background {
+        id
+        width
+        height
+        size
+        url
+      }
+      gt10Title
       heroBackground {
         id
         width
@@ -594,14 +641,19 @@ const GET_PAGE_DATA = gql`
       }
       sp5Title
       tt1Text
+      tt1Textx
       tt1Title
       tt2Text
+      tt2Textx
       tt2Title
       tt3Text
+      tt3Textx
       tt3Title
       tt4Text
+      tt4Textx
       tt4Title
       tt5Text
+      tt5Textx
       tt5Title
       tt6Text
       tt6Title

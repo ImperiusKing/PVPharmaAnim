@@ -64,7 +64,7 @@ const Header = () => {
 
   return (
     <nav className='bg-white h-[8rem]'>
-      <div className='absolute w-full top-0 left-0 flex items-center font-medium justify-around'>
+      <div className='absolute w-full h-50px top-0 left-0 flex items-center font-medium justify-around'>
         <div className='z-2 p-5 md:w-auto w-full flex justify-between'>
           <Link href='/'>
             <img src='logo.png' alt='Logo' className='md:cursor-pointer h-20' />

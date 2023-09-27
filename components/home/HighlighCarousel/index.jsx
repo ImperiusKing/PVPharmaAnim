@@ -43,7 +43,7 @@ export const HighlightCarousel = ({ highlights }) => {
                   className='w-[90%] h-[90%] bg-[image:var(--image-url)] bg-contain bg-no-repeat'
                 />
               </div>
-              <h4>{highlight.title}</h4>
+              <h4 className='text-[15px]'>{highlight.title}</h4>
             </div>
           </SwiperSlide>
         ))}

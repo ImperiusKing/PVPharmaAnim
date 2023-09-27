@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     AOS.init({});
 
-    const timeout = setTimeout(() => setShown(true), 5300);
+    const timeout = setTimeout(() => setShown(true), 300);
     return () => clearTimeout(timeout);
   }, []);
 

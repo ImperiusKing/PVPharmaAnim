@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import localFont from 'next/font/local';
 import { TypeAnimation } from 'react-type-animation';
@@ -15,7 +16,7 @@ const staggerContainer = (staggerChildren, delayChildren) => ({
 
 const transitionVariants = {
   animate: {
-    y: '100%',
+    y: '-100%',
     height: '100%',
   },
   initial: {
@@ -45,23 +46,34 @@ const fadeInVariantsRight = {
 const utm = localFont({ src: '../public/font/utm.ttf' });
 
 const Transition = () => {
+  
+  // useEffect(() => {
+  //   // Disable scrolling on component mount
+  //   document.body.style.overflow = 'hidden';
+
+  //   return () => {
+  //     // Re-enable scrolling on component unmount
+  //     document.body.style.overflow = '';
+  //   };
+  // }, []);
+
   return (
     <AnimatePresence>
-      <motion.div
+      {/* <motion.div
         variants={transitionVariants}
         initial='initial'
         animate='animate'
         exit='exit'
         transition={{ delay: 5, duration: 0.75, ease: 'easeInOut' }}
-        className='bg-[#191919] flex justify-center items-center h-full w-full fixed top-0 left-0'
-      ></motion.div>
+        className='bg-[#0089CE] flex justify-center items-center h-full w-full fixed top-0 left-0'
+      ></motion.div> */}
       <motion.div
         variants={transitionVariants}
         initial='initial'
         animate='animate'
         exit='exit'
-        transition={{ delay: 4, duration: 1, ease: 'easeInOut' }}
-        className='transition-background text-white flex justify-center items-center h-full w-full fixed top-0 left-0'
+        transition={{ delay: 400, duration: 1, ease: 'easeInOut' }}
+        className='transition-background text-white flex justify-center items-center h-full w-full fixed top-0 left-0 overflow-hidden'
       >
         <div
           style={{
@@ -79,14 +91,14 @@ const Transition = () => {
             transition={{ delay: 2, duration: 1.5, ease: 'easeInOut' }}
           >
             <h1
-              className={`mt-20 ml-20 text-8xl opacity-30 text-pharma ${utm.className}`}
+              className={` ml-10 text-[120px] opacity-10 text-pharma ${utm.className}`}
             >
-              PVPHARMA
+              PV PHARMA
             </h1>
           </motion.div>
           <TypeAnimation
             sequence={[
-              'PVPHARMA',
+              'PV PHARMA',
               5000, // wait 5s before continuing to the next sequence
             ]}
             cursor={false}
@@ -95,6 +107,7 @@ const Transition = () => {
             style={{
               fontSize: '80px',
               display: 'inline-block',
+              marginBottom: '90px',
             }}
             className={utm.className}
           />
@@ -107,9 +120,9 @@ const Transition = () => {
               transition={{ delay: 1, duration: 1, ease: 'easeInOut' }}
             >
               <h4
-                className={`text-white font-semibold uppercase text-[25px] -mt-[7rem] ml-[7px] ${utm.className}`}
+                className={`text-white uppercase text-[25px] -mt-[15rem] ml-[7px]`}
               >
-                GIÁ TRỊ SỐNG KHỎE
+                GIÁ TRỊ CỦA SỐNG KHỎE
               </h4>
             </motion.div>
           </div>
@@ -122,9 +135,9 @@ const Transition = () => {
             transition={{ delay: 2, duration: 1.5, ease: 'easeInOut' }}
           >
             <h1
-              className={`mb-20 mr-20 text-8xl opacity-[0.4] text-pharma ${utm.className}`}
+              className={` mr-10 text-[120px] opacity-20 text-pharma ${utm.className}`}
             >
-              PVPHARMA
+              PV PHARMA
             </h1>
           </motion.div>
         </div>
