@@ -47,15 +47,15 @@ const utm = localFont({ src: '../public/font/utm.ttf' });
 
 const Transition = () => {
   
-  // useEffect(() => {
-  //   // Disable scrolling on component mount
-  //   document.body.style.overflow = 'hidden';
+  useEffect(() => {
+    // Disable scrolling on component mount
+    document.body.style.overflow = 'hidden';
+  }, []);
 
-  //   return () => {
-  //     // Re-enable scrolling on component unmount
-  //     document.body.style.overflow = '';
-  //   };
-  // }, []);
+    const handleAnimationComplete = () => {
+      // Re-enable scrolling once the transition animation completes
+      document.body.style.overflow = '';
+    };
 
   return (
     <AnimatePresence>
@@ -72,8 +72,9 @@ const Transition = () => {
         initial='initial'
         animate='animate'
         exit='exit'
-        transition={{ delay: 400, duration: 1, ease: 'easeInOut' }}
-        className='transition-background text-white flex justify-center items-center h-full w-full fixed top-0 left-0 overflow-hidden'
+        transition={{ delay: 4, duration: 1, ease: 'easeInOut' }}
+        onAnimationComplete={handleAnimationComplete}
+        className='transition-background text-white flex justify-center items-center h-full w-full fixed top-0 left-0'
       >
         <div
           style={{
