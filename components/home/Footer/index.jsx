@@ -14,16 +14,16 @@ export const Footer = () => {
             <a href='https://flowbite.com/' className='flex items-center'>
               <img
                 src='/logo_without_text.png'
-                className='h-8 mr-3'
+                className='h-[50px] mr-3'
                 alt='FlowBite Logo'
               />
             </a>
           </div>
           <div>
-            <h2 className='mb-6 text-sm font-semibold text-white uppercase dark:text-white'>
+            <h2 className='mb-6 text-lg font-bold text-white uppercase dark:text-white'>
               Về công ty
             </h2>
-            <ul className='text-white dark:text-gray-400 font-medium flex flex-col space-y-2'>
+            <ul className='text-white dark:text-gray-400 font-light flex flex-col space-y-2'>
               <li className=''>
                 <a href='https://flowbite.com/' className='hover:underline'>
                   Thuốc tân dược
@@ -42,10 +42,10 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h2 className='mb-6 text-sm font-semibold text-white uppercase dark:text-white'>
+            <h2 className='mb-6 text-lg font-bold text-white uppercase dark:text-white'>
               SẢN PHẨM
             </h2>
-            <ul className='text-white dark:text-gray-400 font-medium space-y-2'>
+            <ul className='text-white dark:text-gray-400 font-light space-y-2'>
               <li className=''>
                 <a
                   href='https://github.com/themesberg/flowbite'
@@ -73,10 +73,10 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h2 className='mb-6 uppercase text-sm font-semibold text-white dark:text-white'>
+            <h2 className='mb-6 uppercase text-lg font-bold text-white dark:text-white'>
               TRUYỀN THÔNG
             </h2>
-            <ul className='text-white dark:text-gray-400 font-medium space-y-2'>
+            <ul className='text-white dark:text-gray-400 font-light space-y-2'>
               <li className=''>
                 <a
                   href='https://github.com/themesberg/flowbite'
@@ -104,10 +104,10 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h2 className='mb-6 uppercase text-sm font-semibold text-white dark:text-white'>
+            <h2 className='mb-6 uppercase text-lg font-bold text-white dark:text-white'>
               LIÊN HỆ
             </h2>
-            <ul className='text-white dark:text-gray-400 font-medium space-y-2'>
+            <ul className='text-white dark:text-gray-400 font-light space-y-2'>
               <li className=''>
                 <a
                   href='https://github.com/themesberg/flowbite'
@@ -144,8 +144,8 @@ export const Footer = () => {
                 className='text-white hover:text-white dark:hover:text-white'
               >
                 <svg
-                  width='41'
-                  height='41'
+                  width='30'
+                  height='30'
                   viewBox='0 0 41 41'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
@@ -191,8 +191,8 @@ export const Footer = () => {
                 className='text-white hover:text-white dark:hover:text-white'
               >
                 <svg
-                  width='41'
-                  height='41'
+                  width='30'
+                  height='30'
                   viewBox='0 0 41 41'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
@@ -214,8 +214,8 @@ export const Footer = () => {
                 className='text-white hover:text-white dark:hover:text-white'
               >
                 <svg
-                  width='40'
-                  height='41'
+                  width='30'
+                  height='30'
                   viewBox='0 0 40 41'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
@@ -236,9 +236,9 @@ export const Footer = () => {
             <VerifiedLogo />
           </div>
         </div>
-        <div className='sm:flex mt-12 sm:items-center flex-col space-y-2 sm:justify-between'>
+        <div className='sm:flex mt-3 sm:items-center flex-col space-y-2 sm:justify-between'>
           <h4 className='uppercase text-lg text-white sm:text-center'>
-            CÔNG TY CP DƯỢC PHÚC VINH
+            CÔNG TY CỔ PHẦN DƯỢC PHÚC VINH
           </h4>
           <p className='text-sm text-white sm:text-center'>
             PV Pharmaceutical Joint Stock Company

@@ -35,7 +35,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
       {/* Counter */}
       <div
         data-aos='fade-up'
-        data-aos-offset='500'
+        data-aos-offset='510'
         data-aos-delay='500'
         className='flex mt-4 w-9/10 mx-auto relative'
       >
@@ -45,7 +45,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
             {page.heroText2}
           </p>
           <button className='bg-primary border-white w-fit border-2 mt-12 text-white px-6 py-2 rounded-full ml-20'>
-            Về chúng tôi
+            VỀ CHÚNG TÔI
           </button>
         </div>
         <div className='flex flex-col bg-[#E6E7E8] w-[70%] items-center pb-[14rem] pt-[4rem]'>
@@ -70,7 +70,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
       {/* Text */}
       <div
         data-aos='fade-up'
-        data-aos-offset='1000'
+        data-aos-offset='510'
         data-aos-delay='500'
         className='w-full bg-white items-center flex flex-col pb-[4rem]'
       >
@@ -89,7 +89,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
       {/* Video */}
       <div
         data-aos='fade-up'
-        data-aos-offset='1000'
+        data-aos-offset='510'
         data-aos-delay='500'
         className='flex justify-center mt-4 mb-[6rem]'
       >
@@ -100,7 +100,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
           }}
         >
           {/* <img src={page.heroBackground3} /> */}
-          <img src='thumbnail.png' /> 
+          <img src='thumbnail1.png' /> 
         </div>
         <div className='hidden'>
           <iframe
@@ -119,7 +119,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
       {/* Products */}
       <div
         data-aos='fade-up'
-        data-aos-offset='1000'
+        data-aos-offset='510'
         data-aos-delay='500'
         className='flex flex-col items-center space-y-12 mt-8'
       >
@@ -173,7 +173,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
       {/* Highlight */}
       <div
         data-aos='fade-up'
-        data-aos-offset='1000'
+        data-aos-offset='510'
         data-aos-delay='500'
         className='flex flex-col items-center justify-center space-y-12 mt-16'
       >
@@ -190,10 +190,10 @@ const Home = ({ page, products, highlights, works, awards }) => {
       {/* History */}
       <div
         data-aos='fade-up'
-        data-aos-offset='1000'
+        data-aos-offset='510'
         data-aos-delay='500'>
         <img
-        src='lichsu.png'
+        src='lichsu1.png'
         className='w-full bg-contain bg-no-repeat aspect-auto mt-[80px]'
         >
         </img>
@@ -201,7 +201,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
       {/* Awards */}
       <div
         data-aos='fade-up'
-        data-aos-offset='1000'
+        data-aos-offset='510'
         data-aos-delay='500'
         className='flex flex-col pl-[5rem] mt-[6rem]'
       >

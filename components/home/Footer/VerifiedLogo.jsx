@@ -1,8 +1,8 @@
 export const VerifiedLogo = () => {
   return (
     <svg
-      width='194'
-      height='74'
+      width='150'
+      height='50'
       viewBox='0 0 194 74'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'

@@ -37,7 +37,7 @@ export const HighlightCarousel = ({ highlights }) => {
               key={highlight.image.id}
               className={`flex flex-col space-y-4 transition-all w-full flex-[0_0_auto] min-w-0 items-center`}
             >
-              <div className='rounded-xl border-4 w-[450px] h-[300px] border-[#DBDCDD] w-full flex items-center justify-center ml-20 mr-20'>
+              <div className='rounded-xl w-[500px] h-[350px] border-[#DBDCDD] w-full flex items-center justify-center'>
                 <div
                   style={{ '--image-url': `url(${highlight.image.url})` }}
                   className='w-[90%] h-[90%] bg-[image:var(--image-url)] bg-contain bg-no-repeat'
