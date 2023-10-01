@@ -15,7 +15,6 @@ const inter = Inter({
 
 //variants
 import Image from 'next/image';
-import Link from 'next/link';
 import { AwardCarousel } from '../components/home/AwardCarousel';
 import { Footer } from '../components/home/Footer';
 import { HighlightCarousel } from '../components/home/HighlighCarousel';
@@ -40,7 +39,9 @@ const Home = ({ page, products, highlights, works, awards }) => {
         className='flex mt-4 w-9/10 mx-auto relative'
       >
         <div className='bg-primary w-[60%] pt-[15rem] px-[5rem] text-left flex text-white tracking-wide flex-col justify-start'>
-          <h4 className='uppercase font-bold text-[60px] ml-20'>{page.heroTitle2}</h4>
+          <h4 className='uppercase font-bold text-[60px] ml-20'>
+            {page.heroTitle2}
+          </h4>
           <p className='text-white text-[13px] mt-4 font-extralight w-[85%] ml-20'>
             {page.heroText2}
           </p>
@@ -100,7 +101,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
           }}
         >
           {/* <img src={page.heroBackground3} /> */}
-          <img src='thumbnail1.png' /> 
+          <img src='/thumbnail.png' />
         </div>
         <div className='hidden'>
           <iframe
@@ -108,11 +109,11 @@ const Home = ({ page, products, highlights, works, awards }) => {
             className='w-80%'
             width='1280'
             height='720'
-            src='https://www.youtube.com/embed/YUv3xXed5pE?autoplay=1'
+            src='https://www.youtube.com/embed/YUv3xXed5pE'
             title='Giới thiệu về Công ty Cổ phần Dược Phúc Vinh'
-            frameborder='0'
+            frameBorder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       </div>
@@ -181,23 +182,19 @@ const Home = ({ page, products, highlights, works, awards }) => {
           {page.heroTitle5}
         </h4>
         <HighlightCarousel highlights={highlights} />
-        <Link href='/' className='rounded-[2rem] p-[2px] bg-primary'>
+        {/* <Link href='/' className='rounded-[2rem] p-[2px] bg-primary'>
           <div className='px-12 py-4 rounded-[2rem] border-2 border-white uppercase text-white font-bold text-[12px]'>
             Về chúng tôi
           </div>
-        </Link>
+        </Link> */}
       </div>
       {/* History */}
-      <div
-        data-aos='fade-up'
-        data-aos-offset='510'
-        data-aos-delay='500'>
+      <div data-aos='fade-up' data-aos-offset='510' data-aos-delay='500'>
         <img
-        src='lichsu1.png'
-        className='w-full bg-contain bg-no-repeat aspect-auto mt-[80px]'
-        >
-        </img>
-        </div>
+          src='lichsu1.png'
+          className='w-full bg-contain bg-no-repeat aspect-auto mt-[80px]'
+        ></img>
+      </div>
       {/* Awards */}
       <div
         data-aos='fade-up'

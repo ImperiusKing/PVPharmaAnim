@@ -1,6 +1,5 @@
 import React from 'react';
 import 'swiper/css';
-//import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import { EffectCoverflow, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -31,8 +30,8 @@ export const HighlightCarousel = ({ highlights }) => {
         modules={[EffectCoverflow, Navigation]}
         className='swiper_container'
       >
-        {highlights.map((highlight) => (
-          <SwiperSlide key={highlight.image.id}>
+        {highlights.map((highlight, index) => (
+          <SwiperSlide key={`${highlight.image.id}-${index}`}>
             <div
               key={highlight.image.id}
               className={`flex flex-col space-y-4 transition-all w-full flex-[0_0_auto] min-w-0 items-center`}

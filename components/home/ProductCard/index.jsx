@@ -12,8 +12,10 @@ export const Product = ({ name, image, description }) => {
           className='rounded-tl-2xl rounded-tr-2xl'
           alt='product'
         />
-        <div class='absolute h-[2rem] -bottom-[6rem] group-hover:bottom-[0] group-hover:h-fit bg-gray-300 group-hover:bg-primary/[.90] transition
-        -all duration-300 transform '>
+        <div
+          className='absolute h-[2rem] -bottom-[6rem] group-hover:bottom-[0] group-hover:h-fit bg-gray-300 group-hover:bg-primary/[.90] transition
+        -all duration-300 transform '
+        >
           <p className='text-white text-center my-4 w-3/4 mx-auto'>
             {description}
           </p>
