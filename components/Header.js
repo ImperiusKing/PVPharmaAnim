@@ -76,48 +76,50 @@ const Header = () => {
             {open ? <IoIosClose /> : <IoMdMenu />}
           </div>
         </div>
-        <ul className='md:flex hidden uppercase items-center gap-8 text-black'>
-          {navData.map((link, index) => (
-            <li key={index}>
-              <div className='relative'>
-                <div
-                  className='py-7 px-3 inline-block cursor-pointer group flex items-center justify-between'
-                  onClick={() => handleSubMenuClick(index)}
-                >
-                  {link.name}
-                  <span className='ml-2'>
-                    {openSubMenu === index ? (
-                      <IoIosArrowUp />
-                    ) : (
-                      <IoIosArrowDown />
-                    )}
-                  </span>
-                </div>
-                {link.submenu && (
+        <div className='flex items-center'>
+          <ul className='md:flex hidden uppercase items-center gap-8 text-black'>
+            {navData.map((link, index) => (
+              <li key={index}>
+                <div className='relative'>
                   <div
-                    className='absolute top-full right-0 bg-white border border-gray-300 p-4'
-                    style={{
-                      display: openSubMenu === index ? 'block' : 'none',
-                    }}
+                    className='py-7 px-3 inline-block cursor-pointer group flex items-center justify-between'
+                    onClick={() => handleSubMenuClick(index)}
                   >
-                    {link.sublinks.map((sublink, subindex) => (
-                      <div key={subindex}>
-                        <Link
-                          href={sublink.path}
-                          className='py-2 block font-light'
-                        >
-                          {sublink.heading}
-                        </Link>
-                      </div>
-                    ))}
+                    {link.name}
+                    <span className='ml-2'>
+                      {openSubMenu === index ? (
+                        <IoIosArrowUp />
+                      ) : (
+                        <IoIosArrowDown />
+                      )}
+                    </span>
                   </div>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
-        <div className='md:block hidden'>
-          <HeaderButton />
+                  {link.submenu && (
+                    <div
+                      className='absolute top-full right-0 bg-white border border-gray-300 p-4'
+                      style={{
+                        display: openSubMenu === index ? 'block' : 'none',
+                      }}
+                    >
+                      {link.sublinks.map((sublink, subindex) => (
+                        <div key={subindex}>
+                          <Link
+                            href={sublink.path}
+                            className='py-2 block font-light'
+                          >
+                            {sublink.heading}
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className='md:block hidden'>
+            <HeaderButton />
+          </div>
         </div>
         {/* Mobile Navigation */}
         <ul

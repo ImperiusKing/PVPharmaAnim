@@ -2,6 +2,7 @@ import { gql } from '@apollo/client';
 import React from 'react';
 import client from '../apollo-client'; // Relative path to apolloClient.js
 import PVText from '../public/PV_text.svg';
+import testImage from '../public/test.png';
 
 //fonts
 import { Inter } from 'next/font/google';
@@ -128,8 +129,9 @@ const Home = ({ page, products, highlights, works, awards }) => {
           {page.heroTitle4}
         </h4>
         <div className='w-90% flex mx-auto justify-center gap-[50px] ml-[50px] mr-[50px]'>
-          {products.map((product) => (
+          {products.map((product, index) => (
             <Product
+              index={index}
               key={product.image.id}
               name={product.title}
               image={product.image.url}
@@ -189,11 +191,21 @@ const Home = ({ page, products, highlights, works, awards }) => {
         </Link> */}
       </div>
       {/* History */}
-      <div data-aos='fade-up' data-aos-offset='510' data-aos-delay='500'>
+      <div
+        data-aos='fade-up'
+        data-aos-offset='510'
+        data-aos-delay='500'
+        className='relative'
+      >
         <img
           src='lichsu1.png'
           className='w-full bg-contain bg-no-repeat aspect-auto mt-[80px]'
         ></img>
+        <Image
+          src={testImage}
+          alt='test'
+          className='absolute top-[50%] left-[7%] w-[10rem] h-[10rem] z-20'
+        />
       </div>
       {/* Awards */}
       <div
@@ -360,11 +372,6 @@ export async function getStaticProps() {
       description: page.tt5Text,
       descriptionx: page.tt5Textx,
     },
-    // {
-    //   id: Math.floor(Math.random() * 10000),
-    //   amount: page.tt6Title,
-    //   description: page.tt6Text,
-    // },
   ];
 
   const awards = [
