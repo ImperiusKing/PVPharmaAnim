@@ -1,7 +1,7 @@
 export const VerifiedLogo = () => {
   return (
     <svg
-      width='150'
+      width='137'
       height='50'
       viewBox='0 0 194 74'
       fill='none'

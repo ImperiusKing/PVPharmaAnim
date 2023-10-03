@@ -2,7 +2,14 @@ import { gql } from '@apollo/client';
 import React from 'react';
 import client from '../apollo-client'; // Relative path to apolloClient.js
 import PVText from '../public/PV_text.svg';
-import testImage from '../public/test.png';
+
+//framer.motion
+import { AnimatePresence, motion } from 'framer-motion';
+
+const fadeInVariantsUp = {
+  initial: { opacity: 0, y: 100 },
+  animate: { opacity: 1, y: 50 },
+};
 
 //fonts
 import { Inter } from 'next/font/google';
@@ -12,7 +19,6 @@ const inter = Inter({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
 });
 
-//framer.motion
 
 //variants
 import Image from 'next/image';
@@ -102,7 +108,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
           }}
         >
           {/* <img src={page.heroBackground3} /> */}
-          <img src='/thumbnail.png' />
+          <img src='/thumbnail2.png' />
         </div>
         <div className='hidden'>
           <iframe
@@ -197,15 +203,27 @@ const Home = ({ page, products, highlights, works, awards }) => {
         data-aos-delay='500'
         className='relative'
       >
-        <img
-          src='lichsu1.png'
-          className='w-full bg-contain bg-no-repeat aspect-auto mt-[80px]'
-        ></img>
-        <Image
-          src={testImage}
-          alt='test'
-          className='absolute top-[50%] left-[7%] w-[10rem] h-[10rem] z-20'
+        <img src='lichsu1.png' className='w-full bg-contain bg-no-repeat aspect-auto' alt='Background Image' />
+        <motion.img 
+          src='h1.png' 
+          alt='test' 
+          className='absolute top-[37.3%] left-[3.5%] w-[22.5%] h-[41%] z-20'
+          initial="initial"
+          animate="animate"
+          variants={fadeInVariantsUp}
+
+          
+          transition={{ delay: 0, duration: 1, ease: 'easeInOut' }}
         />
+        <img src='h2.png' alt='test' className='absolute top-[66.7%] left-[12.5%] w-[22.5%] h-[41%] z-20' />
+        <img src='h3.png' alt='test' className='absolute top-[32.7%] left-[18.2%] w-[22.5%] h-[41%] z-20' />
+        <img src='h4.png' alt='test' className='absolute top-[55%] left-[30.5%] w-[22.5%] h-[41%] z-20' />
+        <img src='h5.png' alt='test' className='absolute top-[20%] left-[37.5%] w-[22.5%] h-[41%] z-20' />
+        <img src='h6.png' alt='test' className='absolute top-[42%] left-[46%] w-[22.5%] h-[41%] z-20' />
+        <img src='h7.png' alt='test' className='absolute top-[5%] left-[54%] w-[22.5%] h-[41%] z-20' />
+        <img src='h8.png' alt='test' className='absolute top-[34.5%] left-[65%] w-[22.5%] h-[41%] z-20' />
+        <img src='h9.png' alt='test' className='absolute top-[24%] left-[74%] w-[22.5%] h-[41%] z-20' />
+        <img src='h10.png' alt='test' className='absolute top-[8.5%] left-[82.5%] w-[22.5%] h-[41%] z-20' />
       </div>
       {/* Awards */}
       <div

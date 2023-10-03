@@ -8,44 +8,44 @@ export const Footer = () => {
       data-aos-delay='500'
       className='bg-[#414042] text-white w-full mt-[8rem] pb-8'
     >
-      <div className='mx-auto w-full p-4 py-6 lg:py-8'>
+      <div className='mx-20 w-full p-4 py-6 lg:py-8'>
         <div className='md:flex md:justify-around'>
           <div className='mb-6 md:mb-0'>
             <a href='https://flowbite.com/' className='flex items-center'>
               <img
-                src='/logo_without_text.png'
+                src='/logo1.png'
                 className='h-[50px] mr-3'
                 alt='FlowBite Logo'
               />
             </a>
           </div>
           <div>
-            <h2 className='mb-6 text-lg font-bold text-white uppercase dark:text-white'>
-              Về công ty
+            <h2 className='mt-6 text-[1.4rem] font-bold text-white uppercase dark:text-white'>
+              VỀ DƯỢC PHÚC VINH
             </h2>
-            <ul className='text-white dark:text-gray-400 font-light flex flex-col space-y-2'>
+            <ul className='mt-5 text-white text-[1.15rem] dark:text-gray-400 font-light flex flex-col space-y-2'>
               <li className=''>
                 <a href='https://flowbite.com/' className='hover:underline'>
-                  Thuốc tân dược
+                  Mục tiêu - Sứ mệnh - Giá trị cốt lõi
                 </a>
               </li>
               <li>
                 <a href='https://tailwindcss.com/' className='hover:underline'>
-                  Thuốc từ dược liệu
+                  Lịch sử hình thành và phát triển
                 </a>
               </li>
               <li>
                 <a href='https://tailwindcss.com/' className='hover:underline'>
-                  Thực phẩm bảo vệ sức khỏe
+                  Hệ thống phân phối
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 className='mb-6 text-lg font-bold text-white uppercase dark:text-white'>
+            <h2 className='mt-6 text-[1.4rem] font-bold text-white uppercase dark:text-white'>
               SẢN PHẨM
             </h2>
-            <ul className='text-white dark:text-gray-400 font-light space-y-2'>
+            <ul className='mt-5 text-white text-[1.15rem] dark:text-gray-400 font-light flex flex-col space-y-2'>
               <li className=''>
                 <a
                   href='https://github.com/themesberg/flowbite'
@@ -73,10 +73,10 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h2 className='mb-6 uppercase text-lg font-bold text-white dark:text-white'>
+            <h2 className='mt-6 text-[1.4rem] font-bold text-white uppercase dark:text-white'>
               TRUYỀN THÔNG
             </h2>
-            <ul className='text-white dark:text-gray-400 font-light space-y-2'>
+            <ul className='mt-5 text-white text-[1.15rem] dark:text-gray-400 font-light flex flex-col space-y-2'>
               <li className=''>
                 <a
                   href='https://github.com/themesberg/flowbite'
@@ -104,48 +104,14 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h2 className='mb-6 uppercase text-lg font-bold text-white dark:text-white'>
-              LIÊN HỆ
-            </h2>
-            <ul className='text-white dark:text-gray-400 font-light space-y-2'>
-              <li className=''>
-                <a
-                  href='https://github.com/themesberg/flowbite'
-                  className='hover:underline '
-                >
-                  Tin tức
-                </a>
-              </li>
-              <li>
-                <a
-                  href='https://discord.gg/4eeurUVvTy'
-                  className='hover:underline'
-                >
-                  Tuyển dụng
-                </a>
-              </li>
-              <li>
-                <a
-                  href='https://discord.gg/4eeurUVvTy'
-                  className='hover:underline'
-                >
-                  Cẩm nang sức khỏe
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h2 className='mb-6 uppercase text-sm font-semibold text-white dark:text-white'>
-              Kết nối với chúng tôi
-            </h2>
-            <div className='flex mt-4 my-8 space-x-5 sm:justify-center sm:mt-0'>
+            <div className='flex mt-6 my-8 space-x-5 sm:justify-center sm:mt-6'>
               <a
                 href='#'
                 className='text-white hover:text-white dark:hover:text-white'
               >
                 <svg
-                  width='30'
-                  height='30'
+                  width='36'
+                  height='36'
                   viewBox='0 0 41 41'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
@@ -191,8 +157,8 @@ export const Footer = () => {
                 className='text-white hover:text-white dark:hover:text-white'
               >
                 <svg
-                  width='30'
-                  height='30'
+                  width='36'
+                  height='36'
                   viewBox='0 0 41 41'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
@@ -214,8 +180,8 @@ export const Footer = () => {
                 className='text-white hover:text-white dark:hover:text-white'
               >
                 <svg
-                  width='30'
-                  height='30'
+                  width='36'
+                  height='36'
                   viewBox='0 0 40 41'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
@@ -236,11 +202,11 @@ export const Footer = () => {
             <VerifiedLogo />
           </div>
         </div>
-        <div className='sm:flex mt-3 sm:items-center flex-col space-y-2 sm:justify-between'>
-          <h4 className='uppercase text-lg text-white sm:text-center'>
+        <div className='sm:flex mt-10 sm:items-center flex-col space-y-2 sm:justify-between'>
+          <h4 className='uppercase text-[1.2rem] font-bold text-white sm:text-center'>
             CÔNG TY CỔ PHẦN DƯỢC PHÚC VINH
           </h4>
-          <p className='text-sm text-white sm:text-center'>
+          <p className='text-[1rem] text-white sm:text-center'>
             PV Pharmaceutical Joint Stock Company
           </p>
           <div className='flex items-center space-x-2'>
@@ -260,10 +226,13 @@ export const Footer = () => {
                 fill='white'
               />
             </svg>
-            <p className='text-xs text-white sm:text-center'>
+            <p className='text-[.9rem] text-white sm:text-center'>
               Lô CN4 - 6.2 KCN Thạch Thất - Quốc Oai, xã Phùng Xá, huyện Thạch
               Thất,TP. Hà Nội.
             </p>
+          </div>
+          <div className='sm:flex-shrink-0'>
+            <img src='hotline1.png' alt='Hotline' className='w-auto h-full' />
           </div>
         </div>
       </div>

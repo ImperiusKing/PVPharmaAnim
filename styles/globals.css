@@ -36,7 +36,7 @@
     @apply text-4xl mb-6 font-bold;
   }
   .h3 {
-    @apply text-x1 mb-4 font-semibold;
+    @apply text-xl mb-4 font-semibold;
   }
   .description {
     @apply text-base xl:text-xl xl:leading-8;
