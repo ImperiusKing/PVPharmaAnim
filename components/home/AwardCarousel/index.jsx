@@ -9,13 +9,13 @@ export const AwardCarousel = ({ awards }) => {
 
   return (
     <div className='embla w-full' ref={emblaRef}>
-      <div className='embla__container flex items-center w-full justify-between'>
+      <div className='embla__container flex  w-full justify-between'>
         {awards.map((award, index) => (
           <div
             key={index}
-            className='flex flex-col rounded-xl p-[5px] space-y-4 transition-all ml-8 w-[200px] h-[250px] flex-[0_0_auto] min-w-0 ml-4 items-center bg-[#FFFFFF]'
+            className='flex flex-col rounded-xl p-[5px] space-y-4 transition-all w-[200px] h-[250px] flex-[0_0_auto] min-w-0 ml-4 items-center bg-[#FFFFFF]'
           >
-            <div className='rounded-xl h-[400px] bg-white border-[#DBDCDD] w-full flex items-center justify-center'>
+            <div className='rounded-xl h-[205px] min-h-[205px] bg-white border-[#DBDCDD] w-full flex items-center justify-center'>
               <div
                 style={{ '--image-url': `url(${award.image.url})` }}
                 className='w-[90%] h-[90%] bg-[image:var(--image-url)] bg-center bg-contain bg-no-repeat'

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ReactVisibilitySensor from 'react-visibility-sensor';
 import client from '../apollo-client'; // Relative path to apolloClient.js
 import PVText from '../public/PV_text.svg';
+import History from '../public/lichsu1.png';
 //framer.motion
 import { motion } from 'framer-motion';
 
@@ -36,6 +37,31 @@ const Home = ({ page, products, highlights, works, awards }) => {
       setHistoryVisible(true);
     }
   }
+
+  const topPositions = [
+    '30.3%',
+    '66.7%',
+    '32.7%',
+    '55%',
+    '20%',
+    '42%',
+    '5%',
+    '34.5%',
+    '24%',
+    '8.5%',
+  ];
+  const leftPositions = [
+    '3.5%',
+    '12.5%',
+    '18.2%',
+    '30.5%',
+    '37.5%',
+    '46%',
+    '54%',
+    '65%',
+    '74%',
+    '82.5%',
+  ];
 
   return (
     <div className={`${inter.className} overflow-x-hidden`}>
@@ -205,24 +231,33 @@ const Home = ({ page, products, highlights, works, awards }) => {
       {/* History */}
       <ReactVisibilitySensor onChange={onChange} offset={{ top: 200 }}>
         <div className='relative'>
-          <img
-            src='lichsu1.png'
+          <Image
+            src={History}
             className='w-full bg-contain bg-no-repeat aspect-auto'
             alt='Background Image'
           />
-          {historyVisible ? (
-            <motion.img
-              src='h1.png'
-              alt='test'
-              className='absolute top-[30.3%] left-[3.5%] w-[22.5%] h-[41%] z-20'
-              initial='initial'
-              animate='animate'
-              variants={fadeInVariantsUp}
-              transition={{ delay: 0, duration: 1, ease: 'easeInOut' }}
-            />           
-          ) : null}
-
-{/* {[...Array(10).keys()].map((_, index) => {
+          {topPositions.map((top, index) => {
+            const imageNumber = index + 1;
+            return (
+              historyVisible && (
+                <motion.img
+                  key={`h${imageNumber}.png`}
+                  src={`h${imageNumber}.png`}
+                  alt='test'
+                  className={`absolute top-[${top}] left-[${leftPositions[index]}] w-[22.5%] h-[41%] z-20`}
+                  initial='initial'
+                  animate='animate'
+                  variants={fadeInVariantsUp}
+                  transition={{
+                    delay: 0.5 * index,
+                    duration: 1,
+                    ease: 'easeInOut',
+                  }}
+                />
+              )
+            );
+          })}
+          {/* {[...Array(10).keys()].map((_, index) => {
     const imageNumber = index + 2; // Start from h2.png
     const topPositions = [
       '66.7%', '32.7%', '55%', '20%', '42%', '5%', '34.5%', '24%', '8.5%'
@@ -233,21 +268,10 @@ const Home = ({ page, products, highlights, works, awards }) => {
 
     if (index === 0 && !historyVisible) return null; // Skip rendering the first image when historyVisible is false
 
-    return (
-      <motion.img
-        key={`h${imageNumber}.png`}
-        src={`h${imageNumber}.png`}
-        alt='test'
-        className={`absolute top-[${topPositions[index]}] left-[${leftPositions[index]}] w-[22.5%] h-[41%] z-20`}
-        initial='initial'
-        animate='animate'
-        variants={fadeInVariantsUp}
-        transition={{ delay: 0.5 * index, duration: 1, ease: 'easeInOut' }}
-      />
-    );
+   
   })} */}
 
-          <img
+          {/* <img
             src='h2.png'
             alt='test'
             className='absolute top-[66.7%] left-[12.5%] w-[22.5%] h-[41%] z-20'
@@ -291,7 +315,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
             src='h10.png'
             alt='test'
             className='absolute top-[8.5%] left-[82.5%] w-[22.5%] h-[41%] z-20'
-          />
+          /> */}
         </div>
       </ReactVisibilitySensor>
       {/* Awards */}

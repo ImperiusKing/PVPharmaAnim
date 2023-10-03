@@ -205,7 +205,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className='flex items-center mt-[2%] justify-end'>
-          <div className='sm:flex mt-10 sm:items-center flex-col space-y-2 sm:justify-between'>
+          <div className='sm:flex mt-10 sm:items-center flex-col space-y-2 sm:justify-between w-3/4'>
             <h4 className='uppercase text-[1.2rem] font-bold text-white sm:text-center'>
               CÔNG TY CỔ PHẦN DƯỢC PHÚC VINH
             </h4>
@@ -235,7 +235,7 @@ export const Footer = () => {
               </p>
             </div>
           </div>
-          <div className='sm:flex-shrink-0 ml-auto flex flex-col justify-center items-center'>
+          <div className='sm:flex-shrink-0 ml-auto flex flex-col justify-center items-end w-1/4'>
             <Image src={hotline} alt='Hotline' className='w-[50%]' />
             <h4 className='uppercase text-sm font-bold text-white sm:text-center'>
               Tổng đài tư vấn miễn phí
