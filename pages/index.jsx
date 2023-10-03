@@ -214,13 +214,39 @@ const Home = ({ page, products, highlights, works, awards }) => {
             <motion.img
               src='h1.png'
               alt='test'
-              className='absolute top-[37.3%] left-[3.5%] w-[22.5%] h-[41%] z-20'
+              className='absolute top-[30.3%] left-[3.5%] w-[22.5%] h-[41%] z-20'
               initial='initial'
               animate='animate'
               variants={fadeInVariantsUp}
               transition={{ delay: 0, duration: 1, ease: 'easeInOut' }}
-            />
+            />           
           ) : null}
+
+{/* {[...Array(10).keys()].map((_, index) => {
+    const imageNumber = index + 2; // Start from h2.png
+    const topPositions = [
+      '66.7%', '32.7%', '55%', '20%', '42%', '5%', '34.5%', '24%', '8.5%'
+    ];
+    const leftPositions = [
+      '12.5%', '18.2%', '30.5%', '37.5%', '46%', '54%', '65%', '74%', '82.5%'
+    ];
+
+    if (index === 0 && !historyVisible) return null; // Skip rendering the first image when historyVisible is false
+
+    return (
+      <motion.img
+        key={`h${imageNumber}.png`}
+        src={`h${imageNumber}.png`}
+        alt='test'
+        className={`absolute top-[${topPositions[index]}] left-[${leftPositions[index]}] w-[22.5%] h-[41%] z-20`}
+        initial='initial'
+        animate='animate'
+        variants={fadeInVariantsUp}
+        transition={{ delay: 0.5 * index, duration: 1, ease: 'easeInOut' }}
+      />
+    );
+  })} */}
+
           <img
             src='h2.png'
             alt='test'

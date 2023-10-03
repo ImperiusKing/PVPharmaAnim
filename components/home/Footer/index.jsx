@@ -235,8 +235,8 @@ export const Footer = () => {
               </p>
             </div>
           </div>
-          <div className='sm:flex-shrink-0 ml-[5%]'>
-            <Image src={hotline} alt='Hotline' className='w-full' />
+          <div className='sm:flex-shrink-0 ml-auto flex flex-col justify-center items-center'>
+            <Image src={hotline} alt='Hotline' className='w-[50%]' />
             <h4 className='uppercase text-sm font-bold text-white sm:text-center'>
               Tổng đài tư vấn miễn phí
             </h4>
