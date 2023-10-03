@@ -320,3 +320,7 @@ html {
 .swiper-slide-active h4 {
   margin-top: -8rem !important;
 }
+
+body {
+  overflow-x: hidden;
+}

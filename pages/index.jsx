@@ -64,10 +64,10 @@ const Home = ({ page, products, highlights, works, awards }) => {
   ];
 
   return (
-    <div className={`${inter.className} overflow-x-hidden`}>
+    <div className={`${inter.className}`}>
       <img
         src='/homepage-cover-1.png'
-        className='w-full bg-contain bg-no-repeat aspect-auto'
+        className='w-full bg-contain bg-no-repeat aspect-auto overflow-hidden max-h-[100vh]'
         alt='hero image'
       />
       {/* Counter */}
