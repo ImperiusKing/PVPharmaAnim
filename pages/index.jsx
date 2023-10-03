@@ -1,10 +1,10 @@
 import { gql } from '@apollo/client';
-import React from 'react';
+import React, { useState } from 'react';
+import ReactVisibilitySensor from 'react-visibility-sensor';
 import client from '../apollo-client'; // Relative path to apolloClient.js
 import PVText from '../public/PV_text.svg';
-
 //framer.motion
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const fadeInVariantsUp = {
   initial: { opacity: 0, y: 100 },
@@ -19,7 +19,6 @@ const inter = Inter({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
 });
 
-
 //variants
 import Image from 'next/image';
 import { AwardCarousel } from '../components/home/AwardCarousel';
@@ -31,8 +30,15 @@ import { ProductCarousel } from '../components/home/ProductCarousel';
 import { WorkCard } from '../components/home/WorkCard';
 
 const Home = ({ page, products, highlights, works, awards }) => {
+  const [historyVisible, setHistoryVisible] = useState(false);
+  function onChange(isVisible) {
+    if (!historyVisible && isVisible) {
+      setHistoryVisible(true);
+    }
+  }
+
   return (
-    <div className={inter.className}>
+    <div className={`${inter.className} overflow-x-hidden`}>
       <img
         src='/homepage-cover-1.png'
         className='w-full bg-contain bg-no-repeat aspect-auto'
@@ -197,34 +203,71 @@ const Home = ({ page, products, highlights, works, awards }) => {
         </Link> */}
       </div>
       {/* History */}
-      <div
-        data-aos='fade-up'
-        data-aos-offset='510'
-        data-aos-delay='500'
-        className='relative'
-      >
-        <img src='lichsu1.png' className='w-full bg-contain bg-no-repeat aspect-auto' alt='Background Image' />
-        <motion.img 
-          src='h1.png' 
-          alt='test' 
-          className='absolute top-[37.3%] left-[3.5%] w-[22.5%] h-[41%] z-20'
-          initial="initial"
-          animate="animate"
-          variants={fadeInVariantsUp}
-
-          
-          transition={{ delay: 0, duration: 1, ease: 'easeInOut' }}
-        />
-        <img src='h2.png' alt='test' className='absolute top-[66.7%] left-[12.5%] w-[22.5%] h-[41%] z-20' />
-        <img src='h3.png' alt='test' className='absolute top-[32.7%] left-[18.2%] w-[22.5%] h-[41%] z-20' />
-        <img src='h4.png' alt='test' className='absolute top-[55%] left-[30.5%] w-[22.5%] h-[41%] z-20' />
-        <img src='h5.png' alt='test' className='absolute top-[20%] left-[37.5%] w-[22.5%] h-[41%] z-20' />
-        <img src='h6.png' alt='test' className='absolute top-[42%] left-[46%] w-[22.5%] h-[41%] z-20' />
-        <img src='h7.png' alt='test' className='absolute top-[5%] left-[54%] w-[22.5%] h-[41%] z-20' />
-        <img src='h8.png' alt='test' className='absolute top-[34.5%] left-[65%] w-[22.5%] h-[41%] z-20' />
-        <img src='h9.png' alt='test' className='absolute top-[24%] left-[74%] w-[22.5%] h-[41%] z-20' />
-        <img src='h10.png' alt='test' className='absolute top-[8.5%] left-[82.5%] w-[22.5%] h-[41%] z-20' />
-      </div>
+      <ReactVisibilitySensor onChange={onChange} offset={{ top: 200 }}>
+        <div className='relative'>
+          <img
+            src='lichsu1.png'
+            className='w-full bg-contain bg-no-repeat aspect-auto'
+            alt='Background Image'
+          />
+          {historyVisible ? (
+            <motion.img
+              src='h1.png'
+              alt='test'
+              className='absolute top-[37.3%] left-[3.5%] w-[22.5%] h-[41%] z-20'
+              initial='initial'
+              animate='animate'
+              variants={fadeInVariantsUp}
+              transition={{ delay: 0, duration: 1, ease: 'easeInOut' }}
+            />
+          ) : null}
+          <img
+            src='h2.png'
+            alt='test'
+            className='absolute top-[66.7%] left-[12.5%] w-[22.5%] h-[41%] z-20'
+          />
+          <img
+            src='h3.png'
+            alt='test'
+            className='absolute top-[32.7%] left-[18.2%] w-[22.5%] h-[41%] z-20'
+          />
+          <img
+            src='h4.png'
+            alt='test'
+            className='absolute top-[55%] left-[30.5%] w-[22.5%] h-[41%] z-20'
+          />
+          <img
+            src='h5.png'
+            alt='test'
+            className='absolute top-[20%] left-[37.5%] w-[22.5%] h-[41%] z-20'
+          />
+          <img
+            src='h6.png'
+            alt='test'
+            className='absolute top-[42%] left-[46%] w-[22.5%] h-[41%] z-20'
+          />
+          <img
+            src='h7.png'
+            alt='test'
+            className='absolute top-[5%] left-[54%] w-[22.5%] h-[41%] z-20'
+          />
+          <img
+            src='h8.png'
+            alt='test'
+            className='absolute top-[34.5%] left-[65%] w-[22.5%] h-[41%] z-20'
+          />
+          <img
+            src='h9.png'
+            alt='test'
+            className='absolute top-[24%] left-[74%] w-[22.5%] h-[41%] z-20'
+          />
+          <img
+            src='h10.png'
+            alt='test'
+            className='absolute top-[8.5%] left-[82.5%] w-[22.5%] h-[41%] z-20'
+          />
+        </div>
+      </ReactVisibilitySensor>
       {/* Awards */}
       <div
         data-aos='fade-up'
