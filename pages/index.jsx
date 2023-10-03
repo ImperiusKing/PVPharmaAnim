@@ -33,6 +33,7 @@ import { WorkCard } from '../components/home/WorkCard';
 const Home = ({ page, products, highlights, works, awards }) => {
   const [historyVisible, setHistoryVisible] = useState(false);
   function onChange(isVisible) {
+    console.log({ isVisible });
     if (!historyVisible && isVisible) {
       setHistoryVisible(true);
     }
@@ -40,7 +41,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
 
   const topPositions = [
     '30.3%',
-    '66.7%',
+    '63.7%',
     '32.7%',
     '55%',
     '20%',
@@ -244,6 +245,10 @@ const Home = ({ page, products, highlights, works, awards }) => {
                   key={`h${imageNumber}.png`}
                   src={`h${imageNumber}.png`}
                   alt='test'
+                  style={{
+                    top,
+                    left: leftPositions[index],
+                  }}
                   className={`absolute top-[${top}] left-[${leftPositions[index]}] w-[22.5%] h-[41%] z-20`}
                   initial='initial'
                   animate='animate'
