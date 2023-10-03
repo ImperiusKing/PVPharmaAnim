@@ -40,16 +40,16 @@ const Home = ({ page, products, highlights, works, awards }) => {
   }
 
   const topPositions = [
-    '30.3%',
-    '63.7%',
-    '32.7%',
-    '55%',
-    '20%',
-    '42%',
-    '5%',
-    '34.5%',
-    '24%',
-    '8.5%',
+    '31.5%',
+    '61%',
+    '27%',
+    '49%',
+    '14%',
+    '36.5%',
+    '0%',
+    '29%',
+    '18.5%',
+    '3%',
   ];
   const leftPositions = [
     '3.5%',
@@ -230,7 +230,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
         </Link> */}
       </div>
       {/* History */}
-      <ReactVisibilitySensor onChange={onChange} offset={{ top: 200 }}>
+      <ReactVisibilitySensor onChange={onChange} offset={{ top: 100 }}>
         <div className='relative'>
           <Image
             src={History}
@@ -254,7 +254,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
                   animate='animate'
                   variants={fadeInVariantsUp}
                   transition={{
-                    delay: 0.5 * index,
+                    delay: 0.3 * index,
                     duration: 1,
                     ease: 'easeInOut',
                   }}

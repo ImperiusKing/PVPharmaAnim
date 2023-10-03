@@ -70,7 +70,7 @@ const Header = () => {
             <img src='logo.png' alt='Logo' className='md:cursor-pointer h-20' />
           </Link>
           <div
-            className='text-3xl text-black md:hidden cursor-pointer'
+            className='text-4xl text-black md:hidden cursor-pointer'
             onClick={() => setOpen(!open)}
           >
             {open ? <IoIosClose /> : <IoMdMenu />}
@@ -82,7 +82,7 @@ const Header = () => {
               <li key={index}>
                 <div className='relative'>
                   <div
-                    className='py-7 px-3 inline-block cursor-pointer group flex items-center justify-between'
+                    className='py-7 inline-block cursor-pointer group flex items-center justify-between text-lg'
                     onClick={() => handleSubMenuClick(index)}
                   >
                     {link.name}
@@ -117,7 +117,7 @@ const Header = () => {
               </li>
             ))}
           </ul>
-          <div className='md:block hidden'>
+          <div className='md:block hidden pl-8'>
             <HeaderButton />
           </div>
         </div>
