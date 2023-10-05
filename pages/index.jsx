@@ -230,7 +230,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
         </Link> */}
       </div>
       {/* History */}
-      <ReactVisibilitySensor onChange={onChange} offset={{ top: 100 }}>
+      <ReactVisibilitySensor onChange={onChange} offset={{ top: 50 }}>
         <div className='relative'>
           <Image
             src={History}

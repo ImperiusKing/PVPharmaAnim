@@ -28,15 +28,15 @@ export const WorkCard = ({ amount, description, descriptionx }) => {
   return (
     <ReactVisibilitySensor onChange={onChange}>
       <div className='flex w-[60%] items-center space-x-2 border-b-2 border-[#cccdcf] pb-1 last:border-b-0'>
-        <div className='text-[#58595B] font-bold w-[100px] text-[5rem]'>
+        <div className='text-[#58595B] font-bold w-[80px] text-[5rem]'>
           {counter}
           {restString}
         </div>
         <div className='flex flex-col'>
-          <div className='text-[#58595B] text-[1.5rem] text-semibold w-[250px] leading-[22px] ml-[50px]'>
+          <div className='text-[#58595B] text-[1.5rem] text-semibold w-[300px] leading-[22px] pl-[90px]'>
             {description}
           </div>
-          <div className='text-[#58595B] text-[1.5rem] text-semibold w-[300px] leading-[22px] ml-[50px]'>
+          <div className='text-[#58595B] text-[1.5rem] text-semibold w-[350px] leading-[22px] pl-[90px]'>
             {' '}
             {/* Adjust margin-top and margin-left as needed */}
             {descriptionx}

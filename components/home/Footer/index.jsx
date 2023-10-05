@@ -6,8 +6,8 @@ export const Footer = () => {
   return (
     <footer
       data-aos='fade-up'
-      data-aos-offset='500'
-      data-aos-delay='500'
+      data-aos-offset='0'
+      data-aos-delay='200'
       className='bg-[#414042] text-white w-full mt-[8rem] pb-8'
     >
       <div className='px-[10%] w-full p-4 py-6 lg:py-8'>
