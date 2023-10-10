@@ -6,8 +6,8 @@ export const Footer = () => {
   return (
     <footer
       data-aos='fade-up'
-      data-aos-offset='500'
-      data-aos-delay='500'
+      data-aos-offset='0'
+      data-aos-delay='200'
       className='bg-[#414042] text-white w-full mt-[8rem] pb-8'
     >
       <div className='px-[10%] w-full p-4 py-6 lg:py-8'>
@@ -205,7 +205,12 @@ export const Footer = () => {
           </div>
         </div>
         <div className='flex items-center mt-[2%] justify-end'>
-          <div className='sm:flex mt-10 sm:items-center flex-col space-y-2 sm:justify-between w-3/4'>
+        <div className='sm:flex-shrink-0 ml-auto flex flex-col justify-center items-end w-1/4'>
+            <h4 className='uppercase text-sm font-bold text-white sm:text-center mr-10'>
+               
+            </h4>
+          </div>
+          <div className='sm:flex mt-10 pl-20 sm:items-center flex-col space-y-2 sm:justify-between w-3/4'>
             <h4 className='uppercase text-[1.2rem] font-bold text-white sm:text-center'>
               CÔNG TY CỔ PHẦN DƯỢC PHÚC VINH
             </h4>
@@ -236,8 +241,8 @@ export const Footer = () => {
             </div>
           </div>
           <div className='sm:flex-shrink-0 ml-auto flex flex-col justify-center items-end w-1/4'>
-            <Image src={hotline} alt='Hotline' className='w-[50%]' />
-            <h4 className='uppercase text-sm font-bold text-white sm:text-center'>
+            <Image src={hotline} alt='Hotline' className='w-[50%] mr-8' />
+            <h4 className='uppercase text-sm font-bold text-white sm:text-center mr-10'>
               Tổng đài tư vấn miễn phí
             </h4>
           </div>

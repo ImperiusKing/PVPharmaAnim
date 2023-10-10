@@ -2,6 +2,7 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect, useState } from 'react';
+import Transition from '../components/Transition';
 import Layout from '../components/Layout';
 import '../styles/globals.css';
 
@@ -20,7 +21,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Layout>
-      {/* <Transition /> */}
+      <Transition />
       <Component {...pageProps} />
       {/* {show ? <Component {...pageProps} /> : null} */}
       {/* <Component {...pageProps} /> */}
