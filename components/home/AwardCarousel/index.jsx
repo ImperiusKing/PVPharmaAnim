@@ -21,7 +21,7 @@ export const AwardCarousel = ({ awards }) => {
                 className='w-[90%] h-[90%] bg-[image:var(--image-url)] bg-center bg-contain bg-no-repeat'
               />
             </div>
-            <h4 className='text-[#414042] max-w-[80%] text-[10px] text-center'>
+            <h4 className='text-[#414042] max-w-[90%] text-[10px] text-center'>
               {award.title}
             </h4>
           </div>

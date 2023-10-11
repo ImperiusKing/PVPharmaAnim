@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Layout>
-      <Transition />
+      {/* <Transition /> */}
       <Component {...pageProps} />
       {/* {show ? <Component {...pageProps} /> : null} */}
       {/* <Component {...pageProps} /> */}
