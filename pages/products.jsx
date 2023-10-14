@@ -25,12 +25,10 @@ const Products = ({ products, productTypes }) => {
             <div className='relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8'>
               <div className='w-[60%] mx-auto text-center'>
                 <h1 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
-                  SCIENCE-BACKED BEAUTY PRODUCTS
+                  SẢN PHẨM
                 </h1>
-                <p className='mt-4 text-xl text-gray-500'>
-                  Stem Cell Skin care and Hair care Harnessing the world&apos;s
-                  most powerful exosomes and growth factors from our patented
-                  stem cell source.
+                <p className='mt-6 text-xl text-gray-500'>
+                  Sản phẩm của Dược Phúc Vinh được đi sâu nghiên cứu, phát triển và sản xuất một cách toàn diện với sứ mệnh: Mang đến cho cộng đồng những dược phẩm chất lượng, an toàn, có tác dụng phòng và trị bệnh cao.
                 </p>
               </div>
             </div>
@@ -75,7 +73,7 @@ const Products = ({ products, productTypes }) => {
                     }}
                     className={`${
                       isActive
-                        ? 'bg-primary text-white hover:bg-white hover:text-black'
+                        ? 'bg-primary text-white te hover:bg-white hover:text-black'
                         : 'hover:bg-primary hover:text-white bg-white text-black'
                     } transition-all border-[1px] border-black px-6 py-2 rounded-full`}
                   >
@@ -112,17 +110,15 @@ const Products = ({ products, productTypes }) => {
                 </DialogTrigger>
                 <DialogContent className='bg-white'>
                   <DialogHeader>
-                    <DialogTitle>Are you sure absolutely sure?</DialogTitle>
+                    <DialogTitle>THÔNG BÁO</DialogTitle>
                     <DialogDescription>
                       <p>
-                        This action cannot be undone. This will permanently
-                        delete your account and remove your data from our
-                        servers.
+                        Mọi thông tin trên website chỉ có tính chất tham khảo. Vui lòng xác nhận bạn là dược sĩ, bác sĩ & nhân viên y tế có nhu cầu tìm hiểu thông tin sản phẩm.
                       </p>
-                      <div className='flex justify-center mt-4 space-x-4'>
-                        <Button onClick={() => router.push('/')}>Yes</Button>
+                      <div className='flex justify-center mt-4 space-x-4 text-white'>
+                        <Button onClick={() => router.push('/')}>Xác nhận</Button>
                         <DialogClose asChild>
-                          <Button>No</Button>
+                          <Button>Quay lại</Button>
                         </DialogClose>
                       </div>
                     </DialogDescription>
@@ -139,13 +135,13 @@ const Products = ({ products, productTypes }) => {
 function getProductTypeLabel(productType) {
   switch (productType) {
     case 'thuocDongDuoc':
-      return 'Thuốc đông dược';
+      return 'THUỐC ĐÔNG DƯỢC';
     case 'thuocTanDuoc':
-      return 'Thuốc tân dược';
+      return 'THUỐC TÂN DƯỢC';
     case 'TPCN':
-      return 'Thực phẩm chức năng';
+      return 'THỰC PHẨM CHỨC NĂNG';
     case 'all':
-      return 'Tất cả';
+      return 'TẤT CẢ';
   }
 }
 
