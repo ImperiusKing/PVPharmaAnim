@@ -28,7 +28,10 @@ const Products = ({ products, productTypes }) => {
                   SẢN PHẨM
                 </h1>
                 <p className='mt-6 text-xl text-gray-500'>
-                  Sản phẩm của Dược Phúc Vinh được đi sâu nghiên cứu, phát triển và sản xuất một cách toàn diện với sứ mệnh: Mang đến cho cộng đồng những dược phẩm chất lượng, an toàn, có tác dụng phòng và trị bệnh cao.
+                  Sản phẩm của Dược Phúc Vinh được đi sâu nghiên cứu, phát triển
+                  và sản xuất một cách toàn diện với sứ mệnh: Mang đến cho cộng
+                  đồng những dược phẩm chất lượng, an toàn, có tác dụng phòng và
+                  trị bệnh cao.
                 </p>
               </div>
             </div>
@@ -111,12 +114,18 @@ const Products = ({ products, productTypes }) => {
                 <DialogContent className='bg-white'>
                   <DialogHeader>
                     <DialogTitle>THÔNG BÁO</DialogTitle>
-                    <DialogDescription className='w-30% font-regular' >
+                    <DialogDescription className='w-30% font-regular'>
                       <p>
-                        Mọi thông tin trên website chỉ có tính chất tham khảo. Vui lòng xác nhận bạn là dược sĩ, bác sĩ & nhân viên y tế có nhu cầu tìm hiểu thông tin sản phẩm
+                        Mọi thông tin trên website chỉ có tính chất tham khảo.
+                        Vui lòng xác nhận bạn là dược sĩ, bác sĩ & nhân viên y
+                        tế có nhu cầu tìm hiểu thông tin sản phẩm
                       </p>
                       <div className='flex justify-center mt-4 space-x-4 text-white'>
-                        <Button onClick={() => router.push('/')}>Xác nhận</Button>
+                        <Button
+                          onClick={() => router.push(`/product/${product.id}`)}
+                        >
+                          Xác nhận
+                        </Button>
                         <DialogClose asChild>
                           <Button>Quay lại</Button>
                         </DialogClose>
@@ -150,6 +159,7 @@ function isInSelectedTypes(productTypes, selectedTypes) {
     (type) => selectedTypes.findIndex((i) => i === type) >= 0
   );
 }
+
 export async function getStaticProps() {
   const {
     data: { products, ...rest },
@@ -157,6 +167,8 @@ export async function getStaticProps() {
     error,
   } = await client.query({
     query: GET_ALL_PRODUCTS,
+    fetchPolicy:
+      process.env.NODE_ENV === 'development' ? 'no-cache' : 'cache-first',
   });
 
   return {
@@ -169,26 +181,26 @@ export async function getStaticProps() {
 
 const GET_ALL_PRODUCTS = gql`
   query AllProducts {
-    products {
-         id
-    isFeatured
-    title
-    titleXd
-    who
-    usage
-    type
-    summary5
-    summary4
-    summary3
-    summary2
-    summary1
-    note
-    ingredient
-    howToUse
-    description
-    images {
-      url
-    }
+    products(first: 10000) {
+      id
+      isFeatured
+      title
+      titleXd
+      who
+      usage
+      type
+      summary5
+      summary4
+      summary3
+      summary2
+      summary1
+      note
+      ingredient
+      howToUse
+      description
+      images {
+        url
+      }
     }
     __type(name: "ProductTypes") {
       enumValues {
