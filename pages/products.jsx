@@ -111,9 +111,9 @@ const Products = ({ products, productTypes }) => {
                 <DialogContent className='bg-white'>
                   <DialogHeader>
                     <DialogTitle>THÔNG BÁO</DialogTitle>
-                    <DialogDescription>
+                    <DialogDescription className='w-30% font-regular' >
                       <p>
-                        Mọi thông tin trên website chỉ có tính chất tham khảo. Vui lòng xác nhận bạn là dược sĩ, bác sĩ & nhân viên y tế có nhu cầu tìm hiểu thông tin sản phẩm.
+                        Mọi thông tin trên website chỉ có tính chất tham khảo. Vui lòng xác nhận bạn là dược sĩ, bác sĩ & nhân viên y tế có nhu cầu tìm hiểu thông tin sản phẩm
                       </p>
                       <div className='flex justify-center mt-4 space-x-4 text-white'>
                         <Button onClick={() => router.push('/')}>Xác nhận</Button>
@@ -170,13 +170,25 @@ export async function getStaticProps() {
 const GET_ALL_PRODUCTS = gql`
   query AllProducts {
     products {
-      id
-      images {
-        url
-      }
-      title
-      type
-      description
+         id
+    isFeatured
+    title
+    titleXd
+    who
+    usage
+    type
+    summary5
+    summary4
+    summary3
+    summary2
+    summary1
+    note
+    ingredient
+    howToUse
+    description
+    images {
+      url
+    }
     }
     __type(name: "ProductTypes") {
       enumValues {
