@@ -100,15 +100,15 @@ const Products = ({ products, productTypes }) => {
                       <img
                         src={product.images[0].url}
                         alt={product.description}
-                        className='h-full w-full object-cover object-center group-hover:opacity-75'
+                        className='h-full w-full bg-white object-cover object-center group-hover:opacity-75'
                       />
                     </div>
-                    <h3 className='mt-4 text-sm text-gray-700'>
+                    <h3 className='mt-4 text-[1.5rem] text-gray-700'>
                       {product.title}
                     </h3>
-                    <p className='mt-1 text-lg font-medium text-gray-900'>
+                    {/* <p className='mt-1 text-lg font-medium text-gray-900'>
                       $48
-                    </p>
+                    </p> */}
                   </a>
                 </DialogTrigger>
                 <DialogContent className='bg-white'>
