@@ -78,13 +78,13 @@ export default function Page({ product }) {
             {product.ingredient && <TabsTrigger value='ingredients' className='text-[1.1rem]'>THÀNH PHẦN</TabsTrigger>}
             {product.usage && <TabsTrigger value='usage' className='text-[1.1rem]'>CÔNG DỤNG</TabsTrigger>}
             {product.who && <TabsTrigger value='who' className='text-[1.1rem]'>ĐỐI TƯỢNG</TabsTrigger>}
-            {product.howtoUse && <TabsTrigger value='howtoUse' className='text-[1.1rem]'>HƯỚNG DẪN SỬ DỤNG</TabsTrigger>}
+            {product.howToUse && <TabsTrigger value='howtoUse' className='text-[1.1rem]'>HƯỚNG DẪN SỬ DỤNG</TabsTrigger>}
             {product.note && <TabsTrigger value='note' className='text-[1.1rem]'>LƯU Ý</TabsTrigger>}
         </TabsList>
             {product.ingredient && <TabsContent value='ingredients' className='text-[1rem] text-black font-light'>{product.ingredient}</TabsContent>}
             {product.usage && <TabsContent value='usage' className='text-[1rem] text-black font-light'>{product.usage}</TabsContent>}
             {product.who && <TabsContent value='who' className='text-[1rem] text-black font-light'>{product.who}</TabsContent>}
-            {product.howtoUse && <TabsContent value='howtoUse' className='text-[1rem] text-black font-light'>{product.howtoUse}</TabsContent>}
+            {product.howToUse && <TabsContent value='howtoUse' className='text-[1rem] text-black font-light'>{product.howToUse}</TabsContent>}
             {product.note && <TabsContent value='note' className='text-[1rem] text-black font-light'>{product.note}</TabsContent>}
       </Tabs>
     </div>
