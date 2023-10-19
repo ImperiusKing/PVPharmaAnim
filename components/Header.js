@@ -42,7 +42,7 @@ export const navData = [
       { heading: 'Text 3', path: '/about/heading3' },
     ],
   },
-  { name: 'SẢN PHẨM', path: '/services', submenu: false },
+  { name: 'SẢN PHẨM', path: '/product' },
   { name: 'TRUYỀN THÔNG', path: '/work' },
   // { name: 'testimonials', path: '/testimonials'},
   // { name: 'contact', path: '/contact' },

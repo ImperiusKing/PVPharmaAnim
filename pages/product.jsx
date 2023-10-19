@@ -24,10 +24,10 @@ const Products = ({ products, productTypes }) => {
           <div className='py-16'>
             <div className='relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8'>
               <div className='w-[60%] mx-auto text-center'>
-                <h1 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
+                <h1 className='text-4xl font-black tracking-tight text-gray-900 sm:text-6xl'>
                   SẢN PHẨM
                 </h1>
-                <p className='mt-6 text-xl text-gray-500'>
+                <p className='mt-6 text-xl text-gray-600'>
                   Sản phẩm của Dược Phúc Vinh được đi sâu nghiên cứu, phát triển
                   và sản xuất một cách toàn diện với sứ mệnh: Mang đến cho cộng
                   đồng những dược phẩm chất lượng, an toàn, có tác dụng phòng và
@@ -103,7 +103,7 @@ const Products = ({ products, productTypes }) => {
                         className='h-full w-full bg-white object-cover object-center group-hover:opacity-75'
                       />
                     </div>
-                    <h3 className='mt-4 text-[1.5rem] text-gray-700'>
+                    <h3 className='mt-2 font-semibold text-[1.2rem] text-gray-700'>
                       {product.title}
                     </h3>
                     {/* <p className='mt-1 text-lg font-medium text-gray-900'>
