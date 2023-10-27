@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import client from '../apollo-client';
-import { Button } from '../components/Button';
+import client from '../../apollo-client';
+import { Button } from '../../components/Button';
 import {
   Dialog,
   DialogClose,
@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '../components/Dialog';
+} from '../../components/Dialog';
 
 const Products = ({ products, productTypes }) => {
   const [selectedTypes, setSelectedTypes] = useState([...productTypes]);

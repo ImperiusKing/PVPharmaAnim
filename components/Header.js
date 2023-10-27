@@ -43,7 +43,7 @@ export const navData = [
     ],
   },
   { name: 'SẢN PHẨM', path: '/product' },
-  { name: 'TRUYỀN THÔNG', path: '/work' },
+  { name: 'TIN TỨC', path: '/news' },
   // { name: 'testimonials', path: '/testimonials'},
   // { name: 'contact', path: '/contact' },
 ];
@@ -85,14 +85,20 @@ const Header = () => {
                     className='py-7 inline-block cursor-pointer group flex items-center justify-between text-lg'
                     onClick={() => handleSubMenuClick(index)}
                   >
-                    {link.name}
-                    <span className='ml-2'>
-                      {openSubMenu === index ? (
-                        <IoIosArrowUp />
-                      ) : (
-                        <IoIosArrowDown />
-                      )}
-                    </span>
+                    {link.sublinks == null ? (
+                      <Link href={link.path}>{link.name}</Link>
+                    ) : (
+                      link.name
+                    )}
+                    {link.sublinks != null ? (
+                      <span className='ml-2'>
+                        {openSubMenu === index ? (
+                          <IoIosArrowUp />
+                        ) : (
+                          <IoIosArrowDown />
+                        )}
+                      </span>
+                    ) : null}
                   </div>
                   {link.submenu && (
                     <div

@@ -23,6 +23,7 @@ const inter = Inter({
 //variants
 import Image from 'next/image';
 import { AwardCarousel } from '../components/home/AwardCarousel';
+import { Blog } from '../components/home/Blog';
 import { Footer } from '../components/home/Footer';
 import { HighlightCarousel } from '../components/home/HighlighCarousel';
 import { PartnerCarousel } from '../components/home/PartnerCarousel';
@@ -212,6 +213,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
           direction='rtl'
         />
       </div>
+      <Blog title='Tin tức' />
       {/* Highlight */}
       <div
         data-aos='fade-up'

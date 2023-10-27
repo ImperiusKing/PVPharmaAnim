@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { NextButton, PrevButton } from './NavigateButtons';
 
 export const HighlightCarousel = ({ highlights }) => {
-  console.log(highlights);
   return (
     <div className='highlight-container'>
       <Swiper
