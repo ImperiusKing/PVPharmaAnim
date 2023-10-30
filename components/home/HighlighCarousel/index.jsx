@@ -30,14 +30,14 @@ export const HighlightCarousel = ({ highlights }) => {
         className='swiper_container'
       >
         {highlights.map((highlight, index) => (
-          <SwiperSlide key={`${highlight.image.id}-${index}`}>
+          <SwiperSlide key={`${highlight.images[0].id}-${index}`}>
             <div
-              key={highlight.image.id}
+              key={highlight.images[0].id}
               className={`flex flex-col space-y-4 transition-all w-full flex-[0_0_auto] min-w-0 items-center`}
             >
               <div className='rounded-xl w-[500px] h-[350px] border-[#DBDCDD] w-full flex items-center justify-center'>
                 <div
-                  style={{ '--image-url': `url(${highlight.image.url})` }}
+                  style={{ '--image-url': `url(${highlight.images[0].url})` }}
                   className='w-[90%] h-[90%] bg-[image:var(--image-url)] bg-contain bg-no-repeat'
                 />
               </div>

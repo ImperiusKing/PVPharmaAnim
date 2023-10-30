@@ -98,14 +98,13 @@ const News = ({ news, newsTypes }) => {
   );
 };
 
-function truncateContent(content, wordLimit = 50) {
+export function truncateContent(content, wordLimit = 50) {
   const words = content.split(/\s+/); // splits by spaces
   if (words.length <= wordLimit) {
     return content;
   }
   return `${words.slice(0, wordLimit).join(' ')} ...`;
 }
-
 
 function getProductTypeLabel(productType) {
   switch (productType) {
@@ -120,7 +119,7 @@ function getProductTypeLabel(productType) {
   }
 }
 
-function formatDate(dt) {
+export function formatDate(dt) {
   const padL = (nr, len = 2, chr = `0`) => `${nr}`.padStart(2, chr);
 
   return `${padL(dt.getDate())}-${padL(dt.getMonth() + 1)}-${dt.getFullYear()}`;

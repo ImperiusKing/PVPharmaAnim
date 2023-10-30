@@ -1,9 +1,12 @@
 import { gql } from '@apollo/client';
+import Lottie from 'lottie-react';
 import React, { useState } from 'react';
 import ReactVisibilitySensor from 'react-visibility-sensor';
 import client from '../apollo-client'; // Relative path to apolloClient.js
 import PVText from '../public/PV_text.svg';
 import History from '../public/lichsu1.png';
+import vibrating from '../public/vibrating.json';
+
 //framer.motion
 import { motion } from 'framer-motion';
 
@@ -31,10 +34,9 @@ import { Product } from '../components/home/ProductCard';
 import { ProductCarousel } from '../components/home/ProductCarousel';
 import { WorkCard } from '../components/home/WorkCard';
 
-const Home = ({ page, products, highlights, works, awards }) => {
+const Home = ({ page, products, chains, works, awards, news }) => {
   const [historyVisible, setHistoryVisible] = useState(false);
   function onChange(isVisible) {
-    console.log({ isVisible });
     if (!historyVisible && isVisible) {
       setHistoryVisible(true);
     }
@@ -142,7 +144,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
           }}
         >
           {/* <img src={page.heroBackground3} /> */}
-          <img src='/thumbnail2.png' />
+          <img src='/thumbnail2.png' alt='thumbnail 2' />
         </div>
         <div className='hidden'>
           <iframe
@@ -158,7 +160,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
           ></iframe>
         </div>
       </div>
-      {/* Products */}
+      {/* Chains */}
       <div
         data-aos='fade-up'
         data-aos-offset='510'
@@ -169,13 +171,13 @@ const Home = ({ page, products, highlights, works, awards }) => {
           {page.heroTitle4}
         </h4>
         <div className='w-90% flex mx-auto justify-center gap-[50px] ml-[50px] mr-[50px]'>
-          {products.map((product, index) => (
+          {chains.map((chain, index) => (
             <Product
               index={index}
-              key={product.image.id}
-              name={product.title}
-              image={product.image.url}
-              description={product.description}
+              key={chain.image.id}
+              name={chain.title}
+              image={chain.image.url}
+              description={chain.description}
             />
           ))}
         </div>
@@ -213,7 +215,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
           direction='rtl'
         />
       </div>
-      <Blog title='Tin tức' />
+      <Blog title='Tin tức' news={news} />
       {/* Highlight */}
       <div
         data-aos='fade-up'
@@ -224,12 +226,7 @@ const Home = ({ page, products, highlights, works, awards }) => {
         <h4 className='uppercase font-bold text-[#414042] text-[45px] mb-10'>
           {page.heroTitle5}
         </h4>
-        <HighlightCarousel highlights={highlights} />
-        {/* <Link href='/' className='rounded-[2rem] p-[2px] bg-primary'>
-          <div className='px-12 py-4 rounded-[2rem] border-2 border-white uppercase text-white font-bold text-[12px]'>
-            Về chúng tôi
-          </div>
-        </Link> */}
+        <HighlightCarousel highlights={products} />
       </div>
       {/* History */}
       <ReactVisibilitySensor onChange={onChange} offset={{ top: 50 }}>
@@ -264,65 +261,6 @@ const Home = ({ page, products, highlights, works, awards }) => {
               )
             );
           })}
-          {/* {[...Array(10).keys()].map((_, index) => {
-    const imageNumber = index + 2; // Start from h2.png
-    const topPositions = [
-      '66.7%', '32.7%', '55%', '20%', '42%', '5%', '34.5%', '24%', '8.5%'
-    ];
-    const leftPositions = [
-      '12.5%', '18.2%', '30.5%', '37.5%', '46%', '54%', '65%', '74%', '82.5%'
-    ];
-
-    if (index === 0 && !historyVisible) return null; // Skip rendering the first image when historyVisible is false
-
-   
-  })} */}
-
-          {/* <img
-            src='h2.png'
-            alt='test'
-            className='absolute top-[66.7%] left-[12.5%] w-[22.5%] h-[41%] z-20'
-          />
-          <img
-            src='h3.png'
-            alt='test'
-            className='absolute top-[32.7%] left-[18.2%] w-[22.5%] h-[41%] z-20'
-          />
-          <img
-            src='h4.png'
-            alt='test'
-            className='absolute top-[55%] left-[30.5%] w-[22.5%] h-[41%] z-20'
-          />
-          <img
-            src='h5.png'
-            alt='test'
-            className='absolute top-[20%] left-[37.5%] w-[22.5%] h-[41%] z-20'
-          />
-          <img
-            src='h6.png'
-            alt='test'
-            className='absolute top-[42%] left-[46%] w-[22.5%] h-[41%] z-20'
-          />
-          <img
-            src='h7.png'
-            alt='test'
-            className='absolute top-[5%] left-[54%] w-[22.5%] h-[41%] z-20'
-          />
-          <img
-            src='h8.png'
-            alt='test'
-            className='absolute top-[34.5%] left-[65%] w-[22.5%] h-[41%] z-20'
-          />
-          <img
-            src='h9.png'
-            alt='test'
-            className='absolute top-[24%] left-[74%] w-[22.5%] h-[41%] z-20'
-          />
-          <img
-            src='h10.png'
-            alt='test'
-            className='absolute top-[8.5%] left-[82.5%] w-[22.5%] h-[41%] z-20'
-          /> */}
         </div>
       </ReactVisibilitySensor>
       {/* Awards */}
@@ -339,6 +277,16 @@ const Home = ({ page, products, highlights, works, awards }) => {
       </div>
       {/* Footer */}
       <Footer />
+      <button className='sticky bottom-0 left-[100%] rounded-[50%] w-[9rem] h-[9rem] bg-primary'>
+        <a href='tel:18006833'>
+          <Lottie
+            animationData={vibrating}
+            loop
+            style={{ width: '9rem' }}
+            width={2000}
+          />
+        </a>
+      </button>
     </div>
   );
 };
@@ -346,14 +294,14 @@ const Home = ({ page, products, highlights, works, awards }) => {
 export async function getStaticProps() {
   // Use useQuery hook from @apollo/client to fetch the data in the component
   const {
-    data: { page },
+    data: { page, news, products },
     loading,
     error,
   } = await client.query({
     query: GET_PAGE_DATA,
   });
 
-  const products = [
+  const chains = [
     {
       title: page.dc1Title,
       description: page.dc1Text,
@@ -382,79 +330,6 @@ export async function getStaticProps() {
         width: page.dc3Background.width,
         height: page.dc3Background.height,
         url: page.dc3Background.url,
-      },
-    },
-  ];
-
-  const highlights = [
-    {
-      title: page.sp1Title,
-      image: {
-        id: page.sp1Background.id,
-        url: page.sp1Background.url,
-      },
-    },
-    {
-      title: page.sp2Title,
-      image: {
-        id: page.sp2Background.id,
-        url: page.sp2Background.url,
-      },
-    },
-    {
-      title: page.sp3Title,
-      image: {
-        id: page.sp3Background.id,
-        url: page.sp3Background.url,
-      },
-    },
-    {
-      title: page.sp4Title,
-      image: {
-        id: page.sp4Background.id,
-        url: page.sp4Background.url,
-      },
-    },
-    {
-      title: page.sp5Title,
-      image: {
-        id: page.sp5Background.id,
-        url: page.sp5Background.url,
-      },
-    },
-    {
-      title: page.sp1Title,
-      image: {
-        id: page.sp1Background.id + '1',
-        url: page.sp1Background.url,
-      },
-    },
-    {
-      title: page.sp2Title,
-      image: {
-        id: page.sp2Background.id + '2',
-        url: page.sp2Background.url,
-      },
-    },
-    {
-      title: page.sp3Title,
-      image: {
-        id: page.sp3Background.id + '3',
-        url: page.sp3Background.url,
-      },
-    },
-    {
-      title: page.sp4Title,
-      image: {
-        id: page.sp4Background.id + '4',
-        url: page.sp4Background.url,
-      },
-    },
-    {
-      title: page.sp5Title,
-      image: {
-        id: page.sp5Background.id + '5',
-        url: page.sp5Background.url,
       },
     },
   ];
@@ -568,10 +443,11 @@ export async function getStaticProps() {
   return {
     props: {
       page,
+      chains,
       products,
-      highlights,
       works,
       awards,
+      news,
     },
   };
 }
@@ -722,46 +598,6 @@ const GET_PAGE_DATA = gql`
       id
       name
       slug
-      sp1Background {
-        id
-        width
-        height
-        size
-        url
-      }
-      sp1Title
-      sp2Background {
-        id
-        width
-        height
-        size
-        url
-      }
-      sp2Title
-      sp3Background {
-        id
-        width
-        height
-        size
-        url
-      }
-      sp3Title
-      sp4Background {
-        id
-        width
-        height
-        size
-        url
-      }
-      sp4Title
-      sp5Background {
-        id
-        width
-        height
-        size
-        url
-      }
-      sp5Title
       tt1Text
       tt1Textx
       tt1Title
@@ -779,6 +615,27 @@ const GET_PAGE_DATA = gql`
       tt5Title
       tt6Text
       tt6Title
+    }
+    news(first: 3, orderBy: publishedAt_DESC) {
+      id
+      publishedAt
+      title
+      type
+      content
+      description
+      slug
+      background {
+        url
+      }
+    }
+    products(where: { isFeatured: true }) {
+      id
+      title
+      images(first: 1) {
+        url
+        id
+      }
+      description
     }
   }
 `;

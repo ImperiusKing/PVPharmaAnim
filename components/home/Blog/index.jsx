@@ -1,7 +1,8 @@
 import React from 'react';
+import { formatDate, truncateContent } from '../../../pages/news';
 import { BlogCard } from './BlogCard';
 
-export const Blog = ({ title }) => {
+export const Blog = ({ title, news }) => {
   return (
     <section className='pt-20  pb-10 lg:pt-[120px] lg:pb-20'>
       <div className='w-full'>
@@ -22,24 +23,15 @@ export const Blog = ({ title }) => {
         </div>
 
         <div className='flex flex-wrap -mx-4'>
-          <BlogCard
-            date='Dec 22, 2023'
-            CardTitle='Meet AutoManage, the best AI management tools'
-            CardDescription='Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-            image='https://i.ibb.co/Cnwd4q6/image-01.jpg'
-          />
-          <BlogCard
-            date='Dec 22, 2023'
-            CardTitle='Meet AutoManage, the best AI management tools'
-            CardDescription='Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-            image='https://i.ibb.co/Y23YC07/image-02.jpg'
-          />
-          <BlogCard
-            date='Dec 22, 2023'
-            CardTitle='Meet AutoManage, the best AI management tools'
-            CardDescription='Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-            image='https://i.ibb.co/7jdcnwn/image-03.jpg'
-          />
+          {news.map((item) => (
+            <BlogCard
+              key={item.id}
+              date={formatDate(new Date(item.publishedAt))}
+              CardTitle={item.title}
+              CardDescription={truncateContent(item.content)}
+              image={item.background.url}
+            />
+          ))}
         </div>
       </div>
     </section>

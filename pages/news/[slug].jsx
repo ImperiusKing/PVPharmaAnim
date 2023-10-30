@@ -1,7 +1,6 @@
 import { gql } from '@apollo/client';
+import { AiOutlineContainer, AiTwotoneCalendar } from 'react-icons/ai';
 import client from '../../apollo-client';
-import { AiTwotoneCalendar } from 'react-icons/ai';
-import { AiOutlineContainer } from 'react-icons/ai';
 
 const GET_NEWS_QUERY = gql`
   query NewsPage($slug: String!) {
@@ -11,6 +10,9 @@ const GET_NEWS_QUERY = gql`
       title
       type
       content
+      contentRichText {
+        html
+      }
       description
       slug
       title1
@@ -81,7 +83,7 @@ export default function Page({ news }) {
     { title: news.title3, image: news.image3?.url, paragraph: news.paragraph3 },
     { title: news.title4, image: news.image4?.url, paragraph: news.paragraph4 },
     { title: news.title5, image: news.image5?.url, paragraph: news.paragraph5 },
-    { title: news.title6, image: news.image6?.url, paragraph: news.paragraph6 },  
+    { title: news.title6, image: news.image6?.url, paragraph: news.paragraph6 },
     { title: news.title7, image: news.image7?.url, paragraph: news.paragraph7 },
     { title: news.title8, image: news.image8?.url, paragraph: news.paragraph8 },
     { title: news.title9, image: news.image9?.url, paragraph: news.paragraph9 },
@@ -92,31 +94,48 @@ export default function Page({ news }) {
       <div className='w-full mx-auto space-y-4 text-center'>
         <h1 className='text-4xl font-bold'>{news.title}</h1>
         <p className='text-[1.25rem] font-bold text-[#373737] flex items-center justify-center gap-1'>
-          <AiOutlineContainer />
-          {" "}{(news.type)}
-          <AiTwotoneCalendar className="ml-6" />
-          <time datetime='2021-02-12'>
+          <AiOutlineContainer /> {getNewsTypeLabel(news.type[0])}
+          <AiTwotoneCalendar className='ml-6' />
+          <time dateTime='2021-02-12'>
             {formatDate(new Date(news.publishedAt))}
           </time>
         </p>
       </div>
       <div className='dark:text-gray-100'>
-        {news.background?.url && 
-          <img src={news.background.url} alt={news.title} width="400" style={{display: 'block', margin: 'auto'}} />
-        }
-        <p className='mt-5 text-[1.25rem]'>{news.content}</p>
+        {news.background?.url && (
+          <img
+            src={news.background.url}
+            alt={news.title}
+            width='400'
+            style={{ display: 'block', margin: 'auto' }}
+          />
+        )}
+        <p
+          className='mt-5 text-[1.25rem]'
+          dangerouslySetInnerHTML={{ __html: news.contentRichText.html }}
+        />
       </div>
       {newsArray.map((item, index) => (
         <div key={index} className='dark:text-gray-100'>
           <h2 className='font-bold text-2xl my-5'>{item.title}</h2>
-          {item.image && 
-            <img src={item.image} alt={item.title} width="400" style={{display: 'block', margin: 'auto'}} />
-          }
-          <p className='mt-5 text-[1.25rem]' dangerouslySetInnerHTML={{ 
-              __html: item.paragraph 
-                  ? item.paragraph.replace(/"(.*?)"/g, '<i>"$1"</i>').replace(/\n/g, '<br />') 
-                  : '' 
-          }}></p>
+          {item.image && (
+            <img
+              src={item.image}
+              alt={item.title}
+              width='400'
+              style={{ display: 'block', margin: 'auto' }}
+            />
+          )}
+          <p
+            className='mt-5 text-[1.25rem]'
+            dangerouslySetInnerHTML={{
+              __html: item.paragraph
+                ? item.paragraph
+                    .replace(/"(.*?)"/g, '<i>"$1"</i>')
+                    .replace(/\n/g, '<br />')
+                : '',
+            }}
+          ></p>
         </div>
       ))}
     </article>
