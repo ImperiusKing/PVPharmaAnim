@@ -11,6 +11,31 @@ const GET_NEWS_QUERY = gql`
       content
       description
       slug
+      title1
+      title2
+      title3
+      title4
+      title5
+      paragraph1
+      paragraph2
+      paragraph3
+      paragraph4
+      paragraph5
+      image1 {
+        url
+      }
+      image2 {
+        url
+      }
+      image3 {
+        url
+      }
+      image4 {
+        url
+      }
+      image5 {
+        url
+      }
       background {
         url
       }
@@ -31,7 +56,7 @@ function formatDate(dt) {
 export default function Page({ news }) {
   console.log({ news });
   return (
-    <article className='max-w-[80rem] px-6 py-24 mx-auto space-y-12 dark:bg-gray-800 dark:text-gray-50'>
+    <article className='max-w-[80rem] px-6 py-24 mx-auto space-y-5 dark:bg-gray-800 dark:text-gray-50'>
       <div className='w-full mx-auto space-y-4 text-center'>
         <h1 className='text-4xl font-bold leadi md:text-5xl'>{news.title}</h1>
         <p className='text-sm dark:text-gray-400'>
@@ -51,8 +76,33 @@ export default function Page({ news }) {
         </p>
       </div>
       <div className='dark:text-gray-100'>
-        <img src={news.background.url} alt={news.title} />
+        <img src={news.background.url} alt={news.title} width="400" style={{display: 'block', margin: 'auto'}} />
         <p>{news.content}</p>
+      </div>
+      <div className='dark:text-gray-100'>
+        <h2 className='font-bold text-2xl'>{news.title1}</h2>
+        <img src={news.image1.url} alt={news.title1} width="400" style={{display: 'block', margin: 'auto'}} />
+        <p className='mt-2'>{news.paragraph1}</p>
+      </div>
+      <div className='dark:text-gray-100'>
+        <h2 className='font-bold text-2xl'>{news.title2}</h2>
+        {/* <img src={news.image2.url} alt={news.title2} /> */}
+        <p className='mt-2'>{news.paragraph2}</p>
+      </div>
+      <div className='dark:text-gray-100'>
+        <h2 className='font-bold text-2xl'>{news.title3}</h2>
+        {/* <img src={news.image3.url} alt={news.title3} /> */}
+        <p className='mt-2'>{news.paragraph3}</p>
+      </div>
+      <div className='dark:text-gray-100'>
+        <h2 className='font-bold text-2xl'>{news.title4}</h2>
+        {/* <img src={news.image4.url} alt={news.title4} /> */}
+        <p className='mt-2'>{news.paragraph4}</p>
+      </div>
+      <div className='dark:text-gray-100'>
+        <h2 className='font-bold text-2xl'>{news.title5}</h2>
+        {/* <img src={news.image5.url} alt={news.title5} /> */}
+        <p className='mt-2'>{news.paragraph5}</p>
       </div>
       {/* <div className='pt-12 border-t dark:border-gray-700'>
         <div className='flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row'>
