@@ -91,10 +91,10 @@ export default function Page({ news }) {
     <article className='max-w-[80rem] px-6 py-24 mx-auto space-y-5 dark:bg-gray-800 dark:text-gray-50'>
       <div className='w-full mx-auto space-y-4 text-center'>
         <h1 className='text-4xl font-bold'>{news.title}</h1>
-        <p className='text-[1.25rem] font-bold text-[#373737] flex items-center justify-center gap-3'>
+        <p className='text-[1.25rem] font-bold text-[#373737] flex items-center justify-center gap-1'>
           <AiOutlineContainer />
           {" "}{(news.type)}
-          <AiTwotoneCalendar />
+          <AiTwotoneCalendar className="ml-6" />
           <time datetime='2021-02-12'>
             {formatDate(new Date(news.publishedAt))}
           </time>
