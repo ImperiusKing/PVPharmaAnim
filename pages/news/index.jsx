@@ -88,7 +88,7 @@ const News = ({ news, newsTypes }) => {
                 key={newsItem.id}
                 date={formatDate(new Date(newsItem.publishedAt))}
                 CardTitle={newsItem.title}
-                CardDescription={newsItem.description}
+                CardDescription={truncateContent(newsItem.content)}
                 image={newsItem.background.url}
               />
             ))}
@@ -97,6 +97,15 @@ const News = ({ news, newsTypes }) => {
     </div>
   );
 };
+
+function truncateContent(content, wordLimit = 50) {
+  const words = content.split(/\s+/); // splits by spaces
+  if (words.length <= wordLimit) {
+    return content;
+  }
+  return `${words.slice(0, wordLimit).join(' ')} ...`;
+}
+
 
 function getProductTypeLabel(productType) {
   switch (productType) {
@@ -114,11 +123,7 @@ function getProductTypeLabel(productType) {
 function formatDate(dt) {
   const padL = (nr, len = 2, chr = `0`) => `${nr}`.padStart(2, chr);
 
-  return `${padL(dt.getDate())}-${padL(
-    dt.getMonth() + 1
-  )}-${dt.getFullYear()} ${padL(dt.getHours())}:${padL(dt.getMinutes())}:${padL(
-    dt.getSeconds()
-  )}`;
+  return `${padL(dt.getDate())}-${padL(dt.getMonth() + 1)}-${dt.getFullYear()}`;
 }
 
 function isInSelectedTypes(newsTypes, selectedTypes) {

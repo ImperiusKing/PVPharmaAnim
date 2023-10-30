@@ -80,12 +80,32 @@ export default function Page({ product }) {
             {product.who && <TabsTrigger value='who' className='text-[1.1rem]'>ĐỐI TƯỢNG</TabsTrigger>}
             {product.howToUse && <TabsTrigger value='howtoUse' className='text-[1.1rem]'>HƯỚNG DẪN SỬ DỤNG</TabsTrigger>}
             {product.note && <TabsTrigger value='note' className='text-[1.1rem]'>LƯU Ý</TabsTrigger>}
-        </TabsList>
-            {product.ingredient && <TabsContent value='ingredients' className='text-[1rem] text-black font-light'>{product.ingredient}</TabsContent>}
-            {product.usage && <TabsContent value='usage' className='text-[1rem] text-black font-light'>{product.usage}</TabsContent>}
-            {product.who && <TabsContent value='who' className='text-[1rem] text-black font-light'>{product.who}</TabsContent>}
-            {product.howToUse && <TabsContent value='howtoUse' className='text-[1rem] text-black font-light'>{product.howToUse}</TabsContent>}
-            {product.note && <TabsContent value='note' className='text-[1rem] text-black font-light'>{product.note}</TabsContent>}
+        </TabsList >
+            {product.ingredient && 
+              <TabsContent value='ingredients' className='text-[1rem] text-black font-light'>
+                  <div className='ml-5' dangerouslySetInnerHTML={{ __html: product.ingredient.replace(/\n/g, '<br />') }}></div>
+              </TabsContent>
+            }
+            {product.usage && 
+              <TabsContent value='usage' className='text-[1rem]  text-black font-light'>
+                  <div  className='ml-5'dangerouslySetInnerHTML={{ __html: product.usage.replace(/\n/g, '<br />') }}></div>
+              </TabsContent>
+            }
+            {product.who && 
+              <TabsContent value='who' className='text-[1rem] text-black font-light'>
+                  <div className='ml-5' dangerouslySetInnerHTML={{ __html: product.who.replace(/\n/g, '<br />') }}></div>
+              </TabsContent>
+            }
+            {product.howToUse && 
+              <TabsContent value='howtoUse' className='text-[1rem] text-black font-light'>
+                <div className='ml-5' dangerouslySetInnerHTML={{ __html: product.howToUse.replace(/\n/g, '<br />') }}></div>
+              </TabsContent>
+            }
+            {product.note && 
+              <TabsContent value='note' className='text-[1rem] text-black font-light'>
+                  <div className='ml-5' dangerouslySetInnerHTML={{ __html: product.note.replace(/\n/g, '<br />') }}></div>
+              </TabsContent>
+            }
       </Tabs>
     </div>
   );
