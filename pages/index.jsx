@@ -622,7 +622,6 @@ const GET_PAGE_DATA = gql`
       title
       type
       content
-      description
       slug
       background {
         url
