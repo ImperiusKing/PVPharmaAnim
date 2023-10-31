@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'LemonMilk';
+  font-family: "LemonMilk";
   font-weight: 500;
-  src: url(/font/LEMONMILK-Light.otf) format('woff');
+  src: url(/font/LEMONMILK-Light.otf) format("woff");
 }
 
 @font-face {
-  font-family: 'LemonMilk-bold';
+  font-family: "LemonMilk-bold";
   font-weight: 400;
-  src: url(/font/LEMONMILK-Bold.otf) format('woff');
+  src: url(/font/LEMONMILK-Bold.otf) format("woff");
 }
 
 @font-face {
-  font-family: 'UTM Neo Sans IntelBold';
-  src: url('/fonts/UTM Neo Sans IntelBold.ttf') format('truetype');
+  font-family: "UTM Neo Sans IntelBold";
+  src: url("/fonts/UTM Neo Sans IntelBold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -72,6 +72,11 @@
     top: 50%;
     left: 50%;
     display: flex;
+  }
+  .centered-content img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%; /* to ensure the image doesn't exceed its container */
   }
   .container {
     width: 60vmin;
@@ -280,7 +285,7 @@ html {
 }
 
 .slider-controler .slider-arrow::after {
-  content: '';
+  content: "";
 }
 
 .swiper-pagination {
