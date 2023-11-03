@@ -3,6 +3,7 @@ import { formatDate, truncateContent } from '../../../pages/news';
 import { BlogCard } from './BlogCard';
 
 export const Blog = ({ title, news }) => {
+  console.log({ news: news[0].contentRichText.html });
   return (
     <section className='pt-20  pb-10 lg:pt-[120px] lg:pb-20'>
       <div className='w-full'>
@@ -28,8 +29,9 @@ export const Blog = ({ title, news }) => {
               key={item.id}
               date={formatDate(new Date(item.publishedAt))}
               CardTitle={item.title}
-              CardDescription={truncateContent(item.content)}
+              CardDescription={truncateContent(item.contentRichText.html)}
               image={item.background.url}
+              path={item.slug}
             />
           ))}
         </div>

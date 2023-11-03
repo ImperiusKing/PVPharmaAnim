@@ -621,7 +621,9 @@ const GET_PAGE_DATA = gql`
       publishedAt
       title
       type
-      content
+      contentRichText {
+        html
+      }
       slug
       background {
         url

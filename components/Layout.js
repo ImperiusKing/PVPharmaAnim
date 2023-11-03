@@ -2,8 +2,8 @@
 //const inter = Inter({ subsets: ['latin'] });
 // components
 // import Nav from '../components/Nav';
-import Header from "../components/Header";
-import { Footer } from "../components/home/Footer";
+import Header from '../components/Header.jsx';
+import { Footer } from '../components/home/Footer';
 
 const Layout = ({ children }) => {
   return (
