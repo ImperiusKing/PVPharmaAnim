@@ -73,6 +73,9 @@
     left: 50%;
     display: flex;
   }
+  .centered-content {
+    line-height: 1.8; /* Adjust the value to your preference */
+  }
   .centered-content img {
     display: block;
     margin: 0 auto;
