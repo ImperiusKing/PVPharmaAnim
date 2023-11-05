@@ -1,7 +1,3 @@
-// font settings
-//const inter = Inter({ subsets: ['latin'] });
-// components
-// import Nav from '../components/Nav';
 import Header from '../components/Header.jsx';
 import { Footer } from '../components/home/Footer';
 
