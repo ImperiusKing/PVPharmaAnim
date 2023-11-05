@@ -74,11 +74,10 @@ const Products = ({ products, productTypes }) => {
                         setSelectedTypes(newSelectedTypes);
                       }
                     }}
-                    className={`${
-                      isActive
-                        ? 'bg-primary text-white te hover:bg-white hover:text-black'
-                        : 'hover:bg-primary hover:text-white bg-white text-black'
-                    } transition-all border-[1px] border-black px-6 py-2 rounded-full`}
+                    className={`${isActive
+                      ? 'bg-primary text-white te hover:bg-white hover:text-black'
+                      : 'hover:bg-primary hover:text-white bg-white text-black'
+                      } transition-all border-[1px] border-black px-6 py-2 rounded-full`}
                   >
                     {getProductTypeLabel(type)}
                   </button>
@@ -88,7 +87,7 @@ const Products = ({ products, productTypes }) => {
           </div>
         </div>
 
-        <div className='grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
+        <div className='grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-8'>
           {products
             .filter((product) => isInSelectedTypes(product.type, selectedTypes))
             .map((product) => (
@@ -103,7 +102,7 @@ const Products = ({ products, productTypes }) => {
                         className='h-full w-full bg-white object-cover object-center group-hover:opacity-75'
                       />
                     </div>
-                    <h3 className='mt-2 font-semibold text-[1.2rem] text-gray-700'>
+                    <h3 className='mt-2 font-semibold text-[1.2rem] text-gray-400 hover:text-gray-900'>
                       {product.title}
                     </h3>
                     {/* <p className='mt-1 text-lg font-medium text-gray-900'>

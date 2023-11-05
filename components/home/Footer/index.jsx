@@ -5,9 +5,6 @@ import { VerifiedLogo } from "./VerifiedLogo";
 export const Footer = () => {
   return (
     <footer
-      data-aos="fade-up"
-      data-aos-offset="0"
-      data-aos-delay="100"
       className="bg-[#414042] text-white w-full mt-[8rem] pb-8"
     >
       <div className="px-[10%] w-full p-4 py-6 lg:py-8">
@@ -22,36 +19,36 @@ export const Footer = () => {
             </a>
           </div>
           <div>
-            <h2 className="mt-6 text-[1.4rem] font-bold text-white uppercase dark:text-white">
+            <h2 className="mt-6 text-lg font-black text-white uppercase dark:text-white">
               VỀ DƯỢC PHÚC VINH
             </h2>
-            <ul className="mt-5 text-white text-[1.15rem] dark:text-gray-400 font-light flex flex-col space-y-2">
+            <ul className="mt-3 fold-bold text-gray-400 text-[1.15rem]  dark:text-gray-400 flex flex-col space-y-2">
               <li className="">
-                <a href="https://flowbite.com/" className="hover:underline">
+                <a href="https://flowbite.com/" className="text-md font-semibold hover:text-white">
                   Mục tiêu - Sứ mệnh - Giá trị cốt lõi
                 </a>
               </li>
               <li>
-                <a href="https://tailwindcss.com/" className="hover:underline">
+                <a href="https://tailwindcss.com/" className="text-md font-semibold hover:text-white">
                   Lịch sử hình thành và phát triển
                 </a>
               </li>
               <li>
-                <a href="https://tailwindcss.com/" className="hover:underline">
+                <a href="https://tailwindcss.com/" className="text-md font-semibold hover:text-white">
                   Hệ thống phân phối
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h2 className="mt-6 text-[1.4rem] font-bold text-white uppercase dark:text-white">
+            <h2 className="mt-6 text-lg font-black text-white uppercase dark:text-white">
               SẢN PHẨM
             </h2>
-            <ul className="mt-5 text-white text-[1.15rem] dark:text-gray-400 font-light flex flex-col space-y-2">
+            <ul className="mt-3 fold-bold text-gray-400 text-[1.15rem]  dark:text-gray-400 flex flex-col space-y-2">
               <li className="">
                 <a
                   href="https://github.com/themesberg/flowbite"
-                  className="hover:underline "
+                  className="text-md font-semibold hover:text-white"
                 >
                   Thuốc tân dược
                 </a>
@@ -59,7 +56,7 @@ export const Footer = () => {
               <li>
                 <a
                   href="https://discord.gg/4eeurUVvTy"
-                  className="hover:underline"
+                  className="text-md font-semibold hover:text-white"
                 >
                   Thuốc từ dược liệu
                 </a>
@@ -67,7 +64,7 @@ export const Footer = () => {
               <li>
                 <a
                   href="https://discord.gg/4eeurUVvTy"
-                  className="hover:underline"
+                  className="text-md font-semibold hover:text-white"
                 >
                   Thực phẩm bảo vệ sức khỏe
                 </a>
@@ -75,14 +72,14 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h2 className="mt-6 text-[1.4rem] font-bold text-white uppercase dark:text-white">
+            <h2 className="mt-6 text-lg font-black text-white uppercase dark:text-white">
               TRUYỀN THÔNG
             </h2>
-            <ul className="mt-5 text-white text-[1.15rem] dark:text-gray-400 font-light flex flex-col space-y-2">
+            <ul className="mt-3 fold-bold text-gray-400 text-[1.15rem]  dark:text-gray-400 flex flex-col space-y-2">
               <li className="">
                 <a
                   href="https://github.com/themesberg/flowbite"
-                  className="hover:underline "
+                  className="text-md font-semibold hover:text-white "
                 >
                   Tin tức
                 </a>
@@ -90,7 +87,7 @@ export const Footer = () => {
               <li>
                 <a
                   href="https://discord.gg/4eeurUVvTy"
-                  className="hover:underline"
+                  className="text-md font-semibold hover:text-white"
                 >
                   Tuyển dụng
                 </a>
@@ -98,7 +95,7 @@ export const Footer = () => {
               <li>
                 <a
                   href="https://discord.gg/4eeurUVvTy"
-                  className="hover:underline"
+                  className="text-md font-semibold hover:text-white"
                 >
                   Cẩm nang sức khỏe
                 </a>
@@ -109,7 +106,7 @@ export const Footer = () => {
             <div className="flex mt-6 my-8 space-x-5 sm:justify-center sm:mt-6">
               <a
                 href="#"
-                className="text-white hover:text-white dark:hover:text-white"
+                className="text-gray-400 hover:text-white dark:hover:text-white"
               >
                 <svg
                   width="36"
@@ -212,7 +209,7 @@ export const Footer = () => {
             <h4 className="uppercase text-[1.2rem] font-bold text-white sm:text-center">
               CÔNG TY CỔ PHẦN DƯỢC PHÚC VINH
             </h4>
-            <p className="text-[1rem] text-white sm:text-center">
+            <p className="text-md text-gray-400 sm:text-center">
               PV Pharmaceutical Joint Stock Company
             </p>
             <div className="flex items-center space-x-2">
@@ -232,7 +229,7 @@ export const Footer = () => {
                   fill="white"
                 />
               </svg>
-              <p className="text-[.9rem] text-white sm:text-center">
+              <p className="text-sm text-gray-400 sm:text-center">
                 Lô CN4 - 6.2 KCN Thạch Thất - Quốc Oai, xã Phùng Xá, huyện Thạch
                 Thất,TP. Hà Nội.
               </p>
@@ -240,7 +237,7 @@ export const Footer = () => {
           </div>
           <div className="sm:flex-shrink-0 ml-auto flex flex-col justify-center items-end w-1/4">
             <Image src={hotline} alt="Hotline" className="w-[50%] mr-8" />
-            <h4 className="uppercase text-sm font-bold text-white sm:text-center mr-10">
+            <h4 className="uppercase text-sm font-bold text-gray-400 sm:text-center mr-10">
               Tổng đài tư vấn miễn phí
             </h4>
           </div>

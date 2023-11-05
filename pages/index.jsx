@@ -276,8 +276,8 @@ const Home = ({ page, products, chains, works, awards, news }) => {
         <AwardCarousel awards={awards} />
       </div>
       {/* Footer */}
-      <button className="sticky bottom-0 left-[100%] rounded-[50%] w-[9rem] h-[9rem] bg-primary">
-        <a href="tel:18006833">
+      <button className="sticky bottom-0 mr-5 left-[100%] rounded-[50%] w-[5rem] h-[5rem] bg-primary">
+        <a href="tel:18006833" className="flex justify-center items-center">
           <Lottie
             animationData={vibrating}
             loop

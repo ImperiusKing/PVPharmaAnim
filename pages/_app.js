@@ -6,6 +6,7 @@ import Transition from '../components/Transition';
 import Layout from '../components/Layout';
 import '../styles/globals.css';
 
+
 function MyApp({ Component, pageProps }) {
   const [show, setShown] = useState(false);
 
