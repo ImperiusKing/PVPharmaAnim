@@ -40,7 +40,7 @@ function SearchBox(props) {
   }
 
   return (
-    <div className='flex flex-col items-center bg-gray-100 rounded-xl'>
+    <div className='flex flex-col items-center bg-gray-100 rounded-xl relative'>
       <form
         action=''
         role='search'
