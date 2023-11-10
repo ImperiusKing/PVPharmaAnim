@@ -1,11 +1,11 @@
-import React, { useRef, useState } from "react";
-import { useInstantSearch, useSearchBox } from "react-instantsearch";
+import React, { useRef } from 'react';
+import { useInstantSearch, useSearchBox } from 'react-instantsearch';
 
 export function SearchBox({ inputValue, onInputChange }) {
   const { refine } = useSearchBox();
   const { status } = useInstantSearch();
   const inputRef = useRef(null);
-  const isSearchStalled = status === "stalled";
+  const isSearchStalled = status === 'stalled';
 
   function setQuery(newQuery) {
     onInputChange(newQuery); // Use the passed handler to change the state
@@ -15,8 +15,8 @@ export function SearchBox({ inputValue, onInputChange }) {
   return (
     <div>
       <form
-        action=""
-        role="search"
+        action=''
+        role='search'
         noValidate
         onSubmit={(event) => {
           event.preventDefault();
@@ -30,7 +30,7 @@ export function SearchBox({ inputValue, onInputChange }) {
           event.preventDefault();
           event.stopPropagation();
 
-          setQuery("");
+          setQuery('');
 
           if (inputRef.current) {
             inputRef.current.focus();
@@ -39,22 +39,23 @@ export function SearchBox({ inputValue, onInputChange }) {
       >
         <input
           ref={inputRef}
-          autoComplete="off"
-          autoCorrect="off"
-          autoCapitalize="off"
-          placeholder="Search for products"
+          autoComplete='off'
+          autoCorrect='off'
+          autoCapitalize='off'
+          placeholder='Search for products'
           spellCheck={false}
           maxLength={512}
-          type="search"
+          type='search'
           value={inputValue}
           onChange={(event) => {
             setQuery(event.currentTarget.value);
           }}
           autoFocus
+          className=''
         />
-        <button type="submit">Submit</button>
+        <button type='submit'>Submit</button>
         <button
-          type="reset"
+          type='reset'
           hidden={inputValue.length === 0 || isSearchStalled}
         >
           Reset
