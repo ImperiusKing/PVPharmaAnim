@@ -90,7 +90,7 @@ function SearchBox(props) {
         >
           Reset
         </button> */}
-        <span hidden={!isSearchStalled}>Searching…</span>
+        {/* <span hidden={!isSearchStalled}>Searching…</span> */}
       </form>
     </div>
   );

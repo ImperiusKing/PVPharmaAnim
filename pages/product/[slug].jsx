@@ -39,7 +39,7 @@ export default function Page({ product }) {
   const router = useRouter();
   console.log({ product });
   return (
-    <div className='flex justify-center min-h-screen'>
+    <div className='flex justify-center'>
       {' '}
       {/* This will center its child vertically and has a gray background for clarity */}
       <div className='max-w-7xl mx-auto p-4 bg-white rounded-lg'>

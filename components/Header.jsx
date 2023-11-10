@@ -54,7 +54,7 @@ const Header = () => {
               </NavigationMenuTrigger>
             </Link>
             <NavigationMenuContent>
-              <ul className="grid gap-3 p-6 md:w-[200px] lg:w-[200px]">
+              <ul className="grid gap-2 p-2 md:w-[150px] lg:w-[150px]">
                 {/* <li className="row-span-3">
                   <NavigationMenuLink asChild>
                     <a
@@ -75,16 +75,16 @@ const Header = () => {
                   href="/product/type/thuocDongDuoc"
                   title="Thuốc đông dược"
                 >
-                  Re-usable components built using Radix UI and Tailwind CSS.
+                  {/* Re-usable components built using Radix UI and Tailwind CSS. */}
                 </ListItem>
                 <ListItem
                   href="/product/type/thuocTanDuoc"
                   title="Thuốc tân dược"
                 >
-                  How to install dependencies and structure your app.
+                  {/* How to install dependencies and structure your app. */}
                 </ListItem>
                 <ListItem href="/product/type/TPCN" title="Thực phẩm chức năng">
-                  Styles for headings, paragraphs, lists...etc
+                  {/* Styles for headings, paragraphs, lists...etc */}
                 </ListItem>
               </ul>
             </NavigationMenuContent>
@@ -96,27 +96,44 @@ const Header = () => {
               </NavigationMenuTrigger>
             </Link>
             <NavigationMenuContent>
-              <ul className="grid gap-3 p-6 md:w-[200px] lg:w-[200px]">
+              <ul className="grid gap-2 p-2 md:w-[150px] lg:w-[150px]">
                 <ListItem
                   href="/news/type/TinTucPhucVinh"
                   title="Tin Phúc Vinh"
                 >
-                  Re-usable components built using Radix UI and Tailwind CSS.
+                  {/* Re-usable components built using Radix UI and Tailwind CSS. */}
                 </ListItem>
                 <ListItem href="/news/type/CamNangYHoc" title="Cẩm nang y học">
-                  How to install dependencies and structure your app.
+                  {/* How to install dependencies and structure your app. */}
                 </ListItem>
                 <ListItem
                   href="/news/type/TinTucTuyenDung"
                   title="Tin tức tuyển dụng"
                 >
-                  Styles for headings, paragraphs, lists...etc
+                  {/* Styles for headings, paragraphs, lists...etc */}
                 </ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Search />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger as="a" legacyBehavior>
+              vi
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid gap-2 p-2 md:w-[80px] lg:w-[80px]">
+                <ListItem
+                  href=""
+                  title="Tiếng Việt"
+                >
+                </ListItem>
+                <ListItem href="" title="English">
+                </ListItem>
+
+              </ul>
+            </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
