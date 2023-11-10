@@ -1,9 +1,10 @@
-'use client';
+"use client";
 
-import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch } from 'react-instantsearch';
-import { Command, CommandInput } from './Command';
-import { HitList } from './SearchHit';
+import algoliasearch from "algoliasearch/lite";
+import { InstantSearch } from "react-instantsearch";
+import { Command, CommandInput } from "./Command";
+import { HitList } from "./SearchHit";
+import { AiOutlineSearch } from "react-icons/ai";
 
 const algoliaClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID,
@@ -21,8 +22,8 @@ const searchClient = {
   },
 };
 
-import React, { useRef, useState } from 'react';
-import { useInstantSearch, useSearchBox } from 'react-instantsearch';
+import React, { useRef, useState } from "react";
+import { useInstantSearch, useSearchBox } from "react-instantsearch";
 
 function SearchBox(props) {
   const { query, refine } = useSearchBox(props);
@@ -30,7 +31,7 @@ function SearchBox(props) {
   const [inputValue, setInputValue] = useState(query);
   const inputRef = useRef(null);
 
-  const isSearchStalled = status === 'stalled';
+  const isSearchStalled = status === "stalled";
 
   function setQuery(newQuery) {
     setInputValue(newQuery);
@@ -39,11 +40,10 @@ function SearchBox(props) {
   }
 
   return (
-    <div>
-      <CommandInput />
+    <div className="flex flex-col items-center bg-gray-100 rounded-xl">
       <form
-        action=''
-        role='search'
+        action=""
+        role="search"
         noValidate
         onSubmit={(event) => {
           event.preventDefault();
@@ -57,7 +57,7 @@ function SearchBox(props) {
           event.preventDefault();
           event.stopPropagation();
 
-          setQuery('');
+          setQuery("");
 
           if (inputRef.current) {
             inputRef.current.focus();
@@ -66,26 +66,29 @@ function SearchBox(props) {
       >
         <input
           ref={inputRef}
-          autoComplete='off'
-          autoCorrect='off'
-          autoCapitalize='off'
-          placeholder='Search for products'
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          placeholder="Nhập từ khóa"
           spellCheck={false}
           maxLength={512}
-          type='search'
+          type="search"
           value={inputValue}
           onChange={(event) => {
             setQuery(event.currentTarget.value);
           }}
           autoFocus
+          className="h-12 text-lg font-md px-2.5 px-5 bg-gray-100 rounded-xl"
         />
-        <button type='submit'>Submit</button>
-        <button
-          type='reset'
+        <button type="submit" className="text-xl text-gray-500 px-2">
+          <AiOutlineSearch />
+        </button>
+        {/* <button
+          type="reset"
           hidden={inputValue.length === 0 || isSearchStalled}
         >
           Reset
-        </button>
+        </button> */}
         <span hidden={!isSearchStalled}>Searching…</span>
       </form>
     </div>
@@ -93,13 +96,17 @@ function SearchBox(props) {
 }
 
 export default function Search() {
+  const [inputValue, setInputValue] = useState("");
+
   return (
-    <InstantSearch searchClient={algoliaClient} indexName='dev_pvpharma'>
-      {/* <SearchBox /> */}
+    <InstantSearch searchClient={algoliaClient} indexName="dev_pvpharma">
       <Command>
-        {/* <CommandInput /> */}
-        <SearchBox />
-        <HitList />
+        <SearchBox
+          inputValue={inputValue}
+          onInputChange={setInputValue} // Pass the handler to change the state
+        />
+        {inputValue.length > 0 && <HitList />}
+        {/* <HitList /> */}
       </Command>
     </InstantSearch>
   );
