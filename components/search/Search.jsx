@@ -1,8 +1,13 @@
 'use client';
 
 import algoliasearch from 'algoliasearch/lite';
+import React, { useRef, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { InstantSearch } from 'react-instantsearch';
+import {
+  InstantSearch,
+  useInstantSearch,
+  useSearchBox,
+} from 'react-instantsearch';
 import { Command } from './Command';
 import { HitList } from './SearchHit';
 
@@ -10,34 +15,11 @@ const algoliaClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID,
   process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_ONLY_API_KEY
 );
-// let initial = true;
 
-const searchClient = {
-  search(requests) {
-    //  if (initial) {
-    //    initial = false;
-    //    return;
-    //  }
-    return algoliaClient.search(requests);
-  },
-};
-
-import React, { useRef, useState } from 'react';
-import { useInstantSearch, useSearchBox } from 'react-instantsearch';
-
-function SearchBox(props) {
-  const { query, refine } = useSearchBox(props);
+function SearchBox({ inputValue, onInputChange }) {
+  const { refine } = useSearchBox();
   const { status } = useInstantSearch();
-  const [inputValue, setInputValue] = useState(query);
   const inputRef = useRef(null);
-
-  const isSearchStalled = status === 'stalled';
-
-  function setQuery(newQuery) {
-    setInputValue(newQuery);
-
-    refine(newQuery);
-  }
 
   return (
     <div className='flex flex-col items-center bg-gray-100 rounded-xl relative'>
@@ -57,7 +39,8 @@ function SearchBox(props) {
           event.preventDefault();
           event.stopPropagation();
 
-          setQuery('');
+          refine('');
+          onInputChange('');
 
           if (inputRef.current) {
             inputRef.current.focus();
@@ -75,8 +58,8 @@ function SearchBox(props) {
           type='search'
           value={inputValue}
           onChange={(event) => {
-            setQuery(event.currentTarget.value);
-            props.onInputChange(event.currentTarget.value);
+            refine(event.currentTarget.value);
+            onInputChange(event.currentTarget.value);
           }}
           autoFocus
           className='h-12 text-lg font-md px-5 bg-gray-100 rounded-xl focus:border-none focus:outline-0 focus-visible:outline-0'
@@ -99,7 +82,6 @@ function SearchBox(props) {
 export default function Search() {
   const [inputValue, setInputValue] = useState('');
 
-  console.log({ inputValue });
   return (
     <InstantSearch searchClient={algoliaClient} indexName='dev_pvpharma'>
       <Command>

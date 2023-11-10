@@ -29,7 +29,6 @@ const handler = async (req, res) => {
     );
     // setting the Algolia index related to your blog
     const index = algoliaClient.initIndex('dev_pvpharma');
-    const pageSize = 20;
     // retrieving all posts from the headless CMS
     const {
       data: { news, products },
@@ -42,12 +41,14 @@ const handler = async (req, res) => {
       title: item.title,
       slug: item.slug,
       description: item.description,
+      url: `/news/${item.slug}`,
     }));
     const algoliaProducts = products.map((item) => ({
       objectID: item.id,
       title: item.title,
       slug: item.slug,
       description: item.description,
+      url: `/product/${item.id}`,
     }));
 
     await Promise.all([

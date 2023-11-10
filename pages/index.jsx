@@ -292,7 +292,7 @@ const Home = ({ page, products, chains, works, awards, news }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
   // Use useQuery hook from @apollo/client to fetch the data in the component
   const {
     data: { page, news, products },
@@ -300,6 +300,9 @@ export async function getStaticProps() {
     error,
   } = await client.query({
     query: GET_PAGE_DATA,
+    variables: {
+      locale: context.locale,
+    },
   });
 
   const chains = [
@@ -454,7 +457,7 @@ export async function getStaticProps() {
 }
 
 const GET_PAGE_DATA = gql`
-  query PageHome {
+  query PageHome($locale: Locale!) {
     page(where: { slug: "home" }) {
       id
       dc1Background {
@@ -614,8 +617,43 @@ const GET_PAGE_DATA = gql`
       tt5Text
       tt5Textx
       tt5Title
-      tt6Text
-      tt6Title
+      localizations(locales: [$locale]) {
+        dc1Text
+        dc1Title
+        dc2Text
+        dc2Title
+        dc3Text
+        dc3Title
+        heroLink
+        heroText
+        heroText2
+        heroText3
+        heroTitle
+        heroTitle2
+        heroTitle3
+        heroTitle4
+        heroTitle5
+        heroTitle6
+        heroTitle7
+        id
+        name
+        slug
+        tt1Text
+        tt1Textx
+        tt1Title
+        tt2Text
+        tt2Textx
+        tt2Title
+        tt3Text
+        tt3Textx
+        tt3Title
+        tt4Text
+        tt4Textx
+        tt4Title
+        tt5Text
+        tt5Textx
+        tt5Title
+      }
     }
     news(first: 3, orderBy: publishedAt_DESC) {
       id

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Highlight, useHits } from 'react-instantsearch';
 import { CommandGroup, CommandItem, CommandList } from './Command';
 
@@ -30,30 +31,14 @@ export function truncateContent(content, wordLimit = 30) {
 function Hit({ hit }) {
   return (
     <CommandItem>
-      <div className='flex flex-col justify-center h-full'>
-        <h1>
-          <Highlight attribute='title' hit={hit} />
-        </h1>
-        <p className='mt-1'>{truncateContent(hit.description)}</p>
-      </div>
+      <Link href={hit.url}>
+        <div className='flex flex-col justify-center h-full'>
+          <h1>
+            <Highlight attribute='title' hit={hit} />
+          </h1>
+          <p className='mt-1'>{truncateContent(hit.description)}</p>
+        </div>
+      </Link>
     </CommandItem>
   );
 }
-
-// function Hit({ hit }) {
-//   return (
-//     <CommandItem className="flex items-center space-x-4">
-//       {" "}
-//       {/* Adjust spacing as needed */}
-//       <div className="flex-1">
-//         <h1 className="text-lg font-bold">
-//           {" "}
-//           {/* Add styling for the title as needed */}
-//           <Highlight attribute="title" hit={hit} />
-//         </h1>
-//       </div>
-//       <p className="flex-1">{hit.description}</p>{" "}
-//       {/* Add styling for the description as needed */}
-//     </CommandItem>
-//   );
-// }
