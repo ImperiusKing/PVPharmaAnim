@@ -1,19 +1,19 @@
-import { gql } from '@apollo/client';
-import client from '../../../apollo-client';
-import { BlogCard } from '../../../components/home/Blog/BlogCard';
+import { gql } from "@apollo/client";
+import client from "../../../apollo-client";
+import { BlogCard } from "../../../components/home/Blog/BlogCard";
 
 const News = ({ news }) => {
   return (
-    <div className='bg-white'>
-      <div className='mx-auto w-full'>
-        <div className='relative overflow-hidden bg-[#F5F5F5] w-full'>
-          <div className='py-16'>
-            <div className='relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8'>
-              <div className='w-[60%] mx-auto text-center'>
-                <h1 className='text-4xl font-black tracking-tight text-gray-900 sm:text-6xl'>
+    <div className="bg-white">
+      <div className="mx-auto w-full">
+        <div className="relative overflow-hidden bg-[#F5F5F5] w-full">
+          <div className="py-16">
+            <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
+              <div className="w-[60%] mx-auto text-center">
+                <h1 className="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl">
                   TIN TỨC
                 </h1>
-                <p className='mt-6 text-xl text-gray-600'>
+                <p className="mt-6 text-xl text-gray-600">
                   Sản phẩm của Dược Phúc Vinh được đi sâu nghiên cứu, phát triển
                   và sản xuất một cách toàn diện với sứ mệnh: Mang đến cho cộng
                   đồng những dược phẩm chất lượng, an toàn, có tác dụng phòng và
@@ -24,7 +24,7 @@ const News = ({ news }) => {
           </div>
         </div>
 
-        <div className='flex flex-wrap -mx-4'>
+        <div className="flex flex-wrap -mx-4 mt-5">
           {news.map((newsItem) => (
             <BlogCard
               path={newsItem.slug}
@@ -42,13 +42,13 @@ const News = ({ news }) => {
 };
 
 export function truncateContent(content, wordLimit = 50) {
-  if (!content || typeof content !== 'string') {
-    return ''; // or return some default value
+  if (!content || typeof content !== "string") {
+    return ""; // or return some default value
   }
 
   const words = content.split(/\s+/); // splits by spaces
   if (words.length > wordLimit) {
-    return words.slice(0, wordLimit).join(' ') + '...'; // truncates and adds an ellipsis
+    return words.slice(0, wordLimit).join(" ") + "..."; // truncates and adds an ellipsis
   }
   return content;
 }
@@ -65,7 +65,7 @@ export async function getStaticProps({ params }) {
   } = await client.query({
     query: GET_ALL_NEWS,
     fetchPolicy:
-      process.env.NODE_ENV === 'development' ? 'no-cache' : 'cache-first',
+      process.env.NODE_ENV === "development" ? "no-cache" : "cache-first",
     variables: {
       type: [params.slug],
     },

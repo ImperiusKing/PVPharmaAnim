@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import { AiOutlineContainer, AiTwotoneCalendar } from "react-icons/ai";
 import client from "../../apollo-client";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 const GET_NEWS_QUERY = gql`
   query NewsPage($slug: String!) {
@@ -29,11 +30,11 @@ function formatDate(dt) {
 function getNewsTypeLabel(newsType) {
   switch (newsType) {
     case "TinTucPhucVinh":
-      return "TIN PHÚC VINH";
+      return "Tin Phúc Vinh";
     case "CamNangYHoc":
-      return "CẨM NANG Y HỌC";
+      return "Cẩm nang y học";
     case "TinTucTuyenDung":
-      return "TIN TỨC TUYỂN DỤNG";
+      return "Tin tức tuyển dụng";
     default:
       return ""; // Handle any unknown types.
   }
@@ -41,8 +42,11 @@ function getNewsTypeLabel(newsType) {
 
 export default function Page({ news }) {
   return (
-    <article className="max-w-[80rem] px-6 py-24 mx-auto space-y-5 dark:bg-gray-800 dark:text-gray-50">
-      <header className="w-full mx-auto space-y-4 text-center">
+    <article className="max-w-[80rem] px-6 py-10 mx-auto space-y-5 dark:bg-gray-800 dark:text-gray-50">
+      <div className="w-full">
+        <Breadcrumbs product={news} />
+      </div>
+      <header className="w-full pt-5 mx-auto space-y-4 text-center">
         <h1 className="text-4xl font-bold">{news.title}</h1>
         <div className="text-[1.25rem] font-bold text-[#373737] flex items-center justify-center gap-1">
           <AiOutlineContainer /> {getNewsTypeLabel(news.type[0])}

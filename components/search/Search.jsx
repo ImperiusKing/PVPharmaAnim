@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import algoliasearch from 'algoliasearch/lite';
-import React, { useRef, useState } from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
+import algoliasearch from "algoliasearch/lite";
+import React, { useRef, useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 import {
   InstantSearch,
   useInstantSearch,
   useSearchBox,
-} from 'react-instantsearch';
-import { Command } from './Command';
-import { HitList } from './SearchHit';
+} from "react-instantsearch";
+import { Command } from "./Command";
+import { HitList } from "./SearchHit";
 
 const algoliaClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID,
@@ -22,10 +22,10 @@ function SearchBox({ inputValue, onInputChange }) {
   const inputRef = useRef(null);
 
   return (
-    <div className='flex flex-col items-center bg-gray-100 rounded-xl relative'>
+    <div className="flex flex-col items-center bg-gray-100 rounded-xl relative">
       <form
-        action=''
-        role='search'
+        action=""
+        role="search"
         noValidate
         onSubmit={(event) => {
           event.preventDefault();
@@ -39,8 +39,8 @@ function SearchBox({ inputValue, onInputChange }) {
           event.preventDefault();
           event.stopPropagation();
 
-          refine('');
-          onInputChange('');
+          refine("");
+          onInputChange("");
 
           if (inputRef.current) {
             inputRef.current.focus();
@@ -49,22 +49,22 @@ function SearchBox({ inputValue, onInputChange }) {
       >
         <input
           ref={inputRef}
-          autoComplete='off'
-          autoCorrect='off'
-          autoCapitalize='off'
-          placeholder='Nhập từ khóa'
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          placeholder="Nhập từ khóa"
           spellCheck={false}
           maxLength={512}
-          type='search'
+          type="search"
           value={inputValue}
           onChange={(event) => {
             refine(event.currentTarget.value);
             onInputChange(event.currentTarget.value);
           }}
           autoFocus
-          className='h-12 text-lg font-md px-5 bg-gray-100 rounded-xl focus:border-none focus:outline-0 focus-visible:outline-0'
+          className="h-12 text-lg font-md px-5 bg-gray-100 rounded-xl focus:border-none focus:outline-0 focus-visible:outline-0"
         />
-        <button type='submit' className='text-xl text-gray-500 px-2'>
+        <button type="" className="text-xl text-gray-500 px-2">
           <AiOutlineSearch />
         </button>
         {/* <button
@@ -80,10 +80,10 @@ function SearchBox({ inputValue, onInputChange }) {
 }
 
 export default function Search() {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   return (
-    <InstantSearch searchClient={algoliaClient} indexName='dev_pvpharma'>
+    <InstantSearch searchClient={algoliaClient} indexName="dev_pvpharma">
       <Command>
         <SearchBox
           inputValue={inputValue}

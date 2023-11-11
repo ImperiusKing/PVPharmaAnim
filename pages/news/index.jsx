@@ -77,7 +77,7 @@ const News = ({ news, newsTypes }) => {
           </div>
         </div>
 
-        <div className="flex flex-wrap -mx-4">
+        <div className="flex flex-wrap -mx-4 mt-5">
           {news
             .filter((newsItem) =>
               isInSelectedTypes(newsItem.type, selectedTypes)
@@ -105,7 +105,7 @@ export function truncateContent(content, wordLimit = 50) {
 
   const words = content.split(/\s+/); // splits by spaces
   if (words.length > wordLimit) {
-    return words.slice(0, wordLimit).join(" ") + "..."; // truncates and adds an ellipsis
+    return words.slice(0, wordLimit).join(" ") + " ..."; // truncates and adds an ellipsis
   }
   return content;
 }
