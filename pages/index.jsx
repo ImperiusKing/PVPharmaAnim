@@ -11,6 +11,22 @@ import vibrating from '../public/vibrating.json';
 //framer.motion
 import { motion } from 'framer-motion';
 
+const translations = {
+  'aboutUs': {
+    'en': 'ABOUT US',
+    'vi': 'VỀ CHÚNG TÔI',
+    // Add other languages here if needed
+  },
+  // Add other translatable texts here
+};
+
+function translate(key, locale = 'en') {
+  console.log('Translating:', key, locale);
+  const translation = translations[key][locale] || translations[key]['en'];
+  console.log('Translation:', translation);
+  return translation;
+}
+
 const fadeInVariantsUp = {
   initial: { opacity: 0, y: 100 },
   animate: { opacity: 1, y: 50 },
@@ -37,6 +53,7 @@ import { generateData } from '../utils/generatePageData';
 import { mergeLocalizations } from '../utils/mergeLocalizations';
 
 const Home = ({ page, products, chains, works, awards, news }) => {
+  console.log(page);
   const [historyVisible, setHistoryVisible] = useState(false);
   function onChange(isVisible) {
     if (!historyVisible && isVisible) {
@@ -92,7 +109,7 @@ const Home = ({ page, products, chains, works, awards, news }) => {
               {page.heroText2}
             </p>
             <button className='bg-primary border-white w-fit border-2 mt-12 text-white px-6 py-2 rounded-full ml-20'>
-              VỀ CHÚNG TÔI
+              {translate('aboutUs', 'vi')}
             </button>
           </div>
           <div className='flex flex-col bg-[#E6E7E8] w-[70%] items-center pb-[14rem] pt-[4rem]'>
@@ -471,6 +488,16 @@ const GET_PAGE_DATA = gql`
         tt5Text
         tt5Textx
         tt5Title
+        gt1Title
+        gt2Title
+        gt3Title
+        gt4Title
+        gt5Title
+        gt6Title
+        gt7Title
+        gt8Title
+        gt9Title
+        gt10Title
       }
     }
     news(first: 3, orderBy: publishedAt_DESC) {

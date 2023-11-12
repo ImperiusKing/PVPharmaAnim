@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 import { cn } from '../lib/utils';
 import {
   NavigationMenu,
@@ -31,9 +31,14 @@ export const navData = [
   // { name: 'contact', path: '/contact' },
 ];
 
+
 const Header = () => {
   const { asPath } = useRouter();
-  console.log(asPath);
+  const [currentLanguage, setCurrentLanguage] = useState('Tiếng Việt 🇻🇳');
+  const toggleLanguage = () => {
+    setCurrentLanguage(currentLanguage === 'Tiếng Việt 🇻🇳' ? 'English 🇺🇸' : 'Tiếng Việt 🇻🇳');
+  };
+
   return (
     <div className='sticky z-10 bg-white w-full h-50px top-0 left-0 flex items-center font-medium justify-around'>
       <div className='z-2 p-5 md:w-auto w-full flex justify-between'>
@@ -107,24 +112,22 @@ const Header = () => {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger as='a' legacyBehavior>
-              {/* {locale === 'vi' ? 'Tiếng Việt 🇻🇳' : 'English 🇺🇸'} */}
+              {currentLanguage}
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className='grid gap-2 p-2 md:w-[120px] lg:w-[120px]'>
-                <Link
+                <ListItem
                   href={asPath}
                   locale='vi'
-                  className='flex justify-between w-full'
-                >
-                  Tiếng Việt 🇻🇳
-                </Link>
-                <Link
+                  title='Tiếng Việt 🇻🇳'
+                  onClick={() => setCurrentLanguage('Tiếng Việt 🇻🇳')}
+                />
+                <ListItem
                   href={asPath}
                   locale='en'
-                  className='flex justify-between w-full'
-                >
-                  English 🇺🇸
-                </Link>
+                  title='English 🇺🇸'
+                  onClick={() => setCurrentLanguage('English 🇺🇸')}
+                />
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
@@ -135,12 +138,21 @@ const Header = () => {
 };
 
 const ListItem = React.forwardRef(
-  ({ className, title, children, ...props }, ref) => {
+  ({ onClick, title, children, locale, href, className = '', ...props }, ref) => {
+    const router = useRouter();
+
+    const handleClick = (e) => {
+      e.preventDefault();
+      onClick(); // This will now set the current language
+      router.push(href, href, { locale });
+    };
+
     return (
       <li>
         <NavigationMenuLink asChild>
           <a
             ref={ref}
+            onClick={handleClick}
             className={cn(
               'block select-none space-y-0 rounded-md p-2.5 leading-none no-underline outline-none transition-colors hover:bg-primary hover:text-white focus:bg-accent focus:text-accent-foreground',
               className
