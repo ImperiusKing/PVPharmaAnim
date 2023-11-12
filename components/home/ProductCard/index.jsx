@@ -11,7 +11,7 @@ export const Product = ({ name, image, description, index }) => {
 
   let text = description;
   if (!fullText) {
-    if (description.length > 180) {
+    if (description?.length > 180) {
       text = `${description.substring(0, 180)}...`;
     }
   }

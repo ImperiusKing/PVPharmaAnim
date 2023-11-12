@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import ReactVisibilitySensor from 'react-visibility-sensor';
 
 export const WorkCard = ({ amount, description, descriptionx }) => {
-  const index = Math.min(amount.lastIndexOf('+'), amount.lastIndexOf('K'));
-  const number = Number(
-    amount.substring(0, index >= 0 ? index : amount.length - 1)
+  const index = Math.min(
+    amount?.lastIndexOf('+') ?? 0,
+    amount?.lastIndexOf('K') ?? 0
   );
-  const restString = index >= 0 ? amount.substring(index) : '+';
+  const number = Number(
+    amount?.substring(0, index >= 0 ? index : amount?.length - 1)
+  );
+  const restString = index >= 0 ? amount?.substring(index) : '+';
   const [counter, setCounter] = useState(0);
   const [visible, setVisible] = useState(false);
 

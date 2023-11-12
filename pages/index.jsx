@@ -33,6 +33,8 @@ import { PartnerCarousel } from '../components/home/PartnerCarousel';
 import { Product } from '../components/home/ProductCard';
 import { ProductCarousel } from '../components/home/ProductCarousel';
 import { WorkCard } from '../components/home/WorkCard';
+import { generateData } from '../utils/generatePageData';
+import { mergeLocalizations } from '../utils/mergeLocalizations';
 
 const Home = ({ page, products, chains, works, awards, news }) => {
   const [historyVisible, setHistoryVisible] = useState(false);
@@ -293,11 +295,8 @@ const Home = ({ page, products, chains, works, awards, news }) => {
 };
 
 export async function getStaticProps(context) {
-  // Use useQuery hook from @apollo/client to fetch the data in the component
   const {
     data: { page, news, products },
-    loading,
-    error,
   } = await client.query({
     query: GET_PAGE_DATA,
     variables: {
@@ -305,148 +304,11 @@ export async function getStaticProps(context) {
     },
   });
 
-  const chains = [
-    {
-      title: page.dc1Title,
-      description: page.dc1Text,
-      image: {
-        id: page.dc1Background.id,
-        width: page.dc1Background.width,
-        height: page.dc1Background.height,
-        url: page.dc1Background.url,
-      },
-    },
-    {
-      title: page.dc2Title,
-      description: page.dc2Text,
-      image: {
-        id: page.dc2Background.id,
-        width: page.dc2Background.width,
-        height: page.dc2Background.height,
-        url: page.dc2Background.url,
-      },
-    },
-    {
-      title: page.dc3Title,
-      description: page.dc3Text,
-      image: {
-        id: page.dc3Background.id,
-        width: page.dc3Background.width,
-        height: page.dc3Background.height,
-        url: page.dc3Background.url,
-      },
-    },
-  ];
-
-  const works = [
-    {
-      id: Math.floor(Math.random() * 10000),
-      amount: page.tt1Title,
-      description: page.tt1Text,
-      descriptionx: page.tt1Textx,
-    },
-    {
-      id: Math.floor(Math.random() * 10000),
-      amount: page.tt2Title,
-      description: page.tt2Text,
-      descriptionx: page.tt2Textx,
-    },
-    {
-      id: Math.floor(Math.random() * 10000),
-      amount: page.tt3Title,
-      description: page.tt3Text,
-      descriptionx: page.tt3Textx,
-    },
-    {
-      id: Math.floor(Math.random() * 10000),
-      amount: page.tt4Title,
-      description: page.tt4Text,
-      descriptionx: page.tt4Textx,
-    },
-    {
-      id: Math.floor(Math.random() * 10000),
-      amount: page.tt5Title,
-      description: page.tt5Text,
-      descriptionx: page.tt5Textx,
-    },
-  ];
-
-  const awards = [
-    {
-      title: page.gt1Title,
-      image: {
-        id: page.gt1Background.id,
-        url: page.gt1Background.url,
-      },
-    },
-    {
-      title: page.gt2Title,
-      image: {
-        id: page.gt2Background.id,
-        url: page.gt2Background.url,
-      },
-    },
-    {
-      title: page.gt3Title,
-      image: {
-        id: page.gt3Background.id,
-        url: page.gt3Background.url,
-      },
-    },
-    {
-      title: page.gt4Title,
-      image: {
-        id: page.gt4Background.id,
-        url: page.gt4Background.url,
-      },
-    },
-    {
-      title: page.gt5Title,
-      image: {
-        id: page.gt5Background.id,
-        url: page.gt5Background.url,
-      },
-    },
-    {
-      title: page.gt6Title,
-      image: {
-        id: page.gt6Background.id,
-        url: page.gt6Background.url,
-      },
-    },
-    {
-      title: page.gt7Title,
-      image: {
-        id: page.gt7Background.id,
-        url: page.gt7Background.url,
-      },
-    },
-    {
-      title: page.gt8Title,
-      image: {
-        id: page.gt8Background.id,
-        url: page.gt8Background.url,
-      },
-    },
-    {
-      title: page.gt9Title,
-      image: {
-        id: page.gt9Background.id,
-        url: page.gt9Background.url,
-      },
-    },
-    {
-      title: page.gt10Title,
-      image: {
-        id: page.gt10Background.id,
-        url: page.gt10Background.url,
-      },
-    },
-  ];
+  const { chains, awards, works } = generateData(page);
 
   return {
     props: {
-      page,
+      page: mergeLocalizations(page),
       chains,
       products,
       works,
@@ -467,8 +329,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      dc1Text
-      dc1Title
       dc2Background {
         id
         width
@@ -476,8 +336,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      dc2Text
-      dc2Title
       dc3Background {
         id
         width
@@ -485,8 +343,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      dc3Text
-      dc3Title
       gt1Background {
         id
         width
@@ -494,7 +350,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      gt1Title
       gt2Background {
         id
         width
@@ -502,7 +357,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      gt2Title
       gt3Background {
         id
         width
@@ -510,7 +364,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      gt3Title
       gt4Background {
         id
         width
@@ -518,7 +371,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      gt4Title
       gt5Background {
         id
         width
@@ -526,7 +378,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      gt5Title
       gt6Background {
         id
         width
@@ -534,7 +385,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      gt6Title
       gt7Background {
         id
         width
@@ -542,7 +392,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      gt7Title
       gt8Background {
         id
         width
@@ -550,7 +399,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      gt8Title
       gt9Background {
         id
         width
@@ -558,7 +406,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      gt9Title
       gt10Background {
         id
         width
@@ -566,7 +413,6 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      gt10Title
       heroBackground {
         id
         width
@@ -588,36 +434,11 @@ const GET_PAGE_DATA = gql`
         size
         url
       }
-      heroLink
-      heroText
-      heroText2
-      heroText3
-      heroTitle
-      heroTitle2
-      heroTitle3
-      heroTitle4
-      heroTitle5
-      heroTitle6
-      heroTitle7
       id
       name
       slug
-      tt1Text
-      tt1Textx
-      tt1Title
-      tt2Text
-      tt2Textx
-      tt2Title
-      tt3Text
-      tt3Textx
-      tt3Title
-      tt4Text
-      tt4Textx
-      tt4Title
-      tt5Text
-      tt5Textx
-      tt5Title
       localizations(locales: [$locale]) {
+        locale
         dc1Text
         dc1Title
         dc2Text
@@ -635,9 +456,6 @@ const GET_PAGE_DATA = gql`
         heroTitle5
         heroTitle6
         heroTitle7
-        id
-        name
-        slug
         tt1Text
         tt1Textx
         tt1Title

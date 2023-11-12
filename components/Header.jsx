@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { cn } from '../lib/utils';
 import {
@@ -31,6 +32,8 @@ export const navData = [
 ];
 
 const Header = () => {
+  const { asPath } = useRouter();
+  console.log(asPath);
   return (
     <div className='sticky z-10 bg-white w-full h-50px top-0 left-0 flex items-center font-medium justify-around'>
       <div className='z-2 p-5 md:w-auto w-full flex justify-between'>
@@ -108,22 +111,22 @@ const Header = () => {
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className='grid gap-2 p-2 md:w-[120px] lg:w-[120px]'>
-                <ListItem title='Tiếng Việt 🇻🇳'></ListItem>
-                <ListItem title='English 🇺🇸'></ListItem>
-                {/* <Button
-                  className="text-white flex justify-between w-full"
-                  onClick={() => {
-                    setLocale("vi");
-                  }}
+                {/* <ListItem title='Tiếng Việt 🇻🇳'></ListItem>
+                <ListItem title='English 🇺🇸'></ListItem> */}
+                <Link
+                  href={asPath}
+                  locale='vi'
+                  className='flex justify-between w-full'
                 >
                   Tiếng Việt 🇻🇳
-                </Button>
-                <Button
-                  className="text-white flex justify-between w-full"
-                  onClick={() => setLocale("en")}
+                </Link>
+                <Link
+                  href={asPath}
+                  locale='en'
+                  className='flex justify-between w-full'
                 >
                   English 🇺🇸
-                </Button> */}
+                </Link>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
