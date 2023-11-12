@@ -111,8 +111,6 @@ const Header = () => {
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className='grid gap-2 p-2 md:w-[120px] lg:w-[120px]'>
-                {/* <ListItem title='Tiếng Việt 🇻🇳'></ListItem>
-                <ListItem title='English 🇺🇸'></ListItem> */}
                 <Link
                   href={asPath}
                   locale='vi'
