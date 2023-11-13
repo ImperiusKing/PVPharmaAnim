@@ -122,7 +122,11 @@ const Products = ({ products, productTypes }) => {
                       </p>
                       <div className="flex justify-center mt-4 space-x-4 text-white">
                         <Button
-                          onClick={() => router.push(`/product/${product.id}`)}
+                          onClick={() =>
+                            router.push(
+                              `/product/type/${product.type}/${product.slug}`
+                            )
+                          }
                         >
                           Xác nhận
                         </Button>
