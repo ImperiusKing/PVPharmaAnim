@@ -42,6 +42,7 @@ const inter = Inter({
 
 //variants
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { AwardCarousel } from '../components/home/AwardCarousel';
 import { Blog } from '../components/home/Blog';
 import { HighlightCarousel } from '../components/home/HighlighCarousel';
@@ -53,6 +54,7 @@ import { generateData } from '../utils/generatePageData';
 import { mergeLocalizations } from '../utils/mergeLocalizations';
 
 const Home = ({ page, products, chains, works, awards, news }) => {
+  const router = useRouter();
   const [historyVisible, setHistoryVisible] = useState(false);
   function onChange(isVisible) {
     if (!historyVisible && isVisible) {
@@ -108,7 +110,7 @@ const Home = ({ page, products, chains, works, awards, news }) => {
               {page.heroText2}
             </p>
             <button className='bg-primary border-white w-fit border-2 mt-12 text-white px-6 py-2 rounded-full ml-20'>
-              {translate('aboutUs', 'vi')}
+              {translate('aboutUs', router.locale)}
             </button>
           </div>
           <div className='flex flex-col bg-[#E6E7E8] w-[70%] items-center pb-[14rem] pt-[4rem]'>
