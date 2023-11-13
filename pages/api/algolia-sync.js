@@ -15,6 +15,7 @@ const GET_PAGE_DATA = gql`
       title
       slug
       description
+      type
     }
   }
 `;
@@ -48,7 +49,7 @@ const handler = async (req, res) => {
       title: item.title,
       slug: item.slug,
       description: item.description,
-      url: `/product/${item.id}`,
+      url: `/product/type/${item.type[0]}/${item.slug}`,
     }));
 
     await Promise.all([

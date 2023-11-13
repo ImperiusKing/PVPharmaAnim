@@ -79,7 +79,6 @@ export default function Page({ news }) {
 }
 
 export async function getStaticProps({ params, locale }) {
-  console.log({ locale });
   const {
     data: { news },
   } = await client.query({

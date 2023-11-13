@@ -320,11 +320,12 @@ export async function getStaticProps(context) {
     },
   });
 
-  const { chains, awards, works } = generateData(page);
+  const pageData = mergeLocalizations(page);
+  const { chains, awards, works } = generateData(pageData);
 
   return {
     props: {
-      page: mergeLocalizations(page),
+      page: pageData,
       chains,
       products,
       works,

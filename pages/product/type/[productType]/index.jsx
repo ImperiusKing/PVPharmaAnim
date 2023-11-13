@@ -41,7 +41,7 @@ const Products = ({ products }) => {
             <Dialog key={product.id}>
               <DialogTrigger>
                 {' '}
-                <a href='#' className='group'>
+                <>
                   <div className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7'>
                     <img
                       src={product.images[0].url}
@@ -52,7 +52,7 @@ const Products = ({ products }) => {
                   <h3 className='mt-2 font-semibold text-[1.2rem] text-gray-400 hover:text-gray-900'>
                     {product.title}
                   </h3>
-                </a>
+                </>
               </DialogTrigger>
               <DialogContent className='bg-white'>
                 <DialogHeader>
@@ -65,7 +65,11 @@ const Products = ({ products }) => {
                     </p>
                     <div className='flex justify-center mt-4 space-x-4 text-white'>
                       <Button
-                        onClick={() => router.push(`/product/${product.id}`)}
+                        onClick={() =>
+                          router.push(
+                            `/product/type/${router.query.productType}/${product.slug}`
+                          )
+                        }
                       >
                         Xác nhận
                       </Button>
@@ -107,6 +111,7 @@ const GET_ALL_PRODUCTS = gql`
       id
       isFeatured
       title
+      slug
       titleXd
       who
       usage
@@ -140,11 +145,14 @@ export async function getStaticPaths() {
     `,
   });
 
-  const paths = data.data.__type.enumValues.map((type) => ({
-    params: {
-      productType: type.name,
-    },
-  }));
+  const paths = ['vi', 'en'].flatMap((locale) =>
+    data.data.__type.enumValues.map((type) => ({
+      params: {
+        productType: type.name,
+      },
+      locale,
+    }))
+  );
 
   return {
     paths: [...paths],

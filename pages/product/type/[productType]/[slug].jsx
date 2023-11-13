@@ -10,8 +10,8 @@ import {
 } from '../../../../components/Tabs';
 
 const GET_PRODUCT_QUERY = gql`
-  query ProductPage($slug: String!) {
-    product(where: { slug: $slug }) {
+  query ProductPage($slug: String!, $locale: Locale!) {
+    product(where: { slug: $slug }, locales: [$locale]) {
       id
       isFeatured
       title
@@ -178,12 +178,12 @@ export default function Page({ product }) {
   );
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, locale }) {
   const {
     data: { product },
   } = await client.query({
     query: GET_PRODUCT_QUERY,
-    variables: { slug: params.slug },
+    variables: { slug: params.slug, locale },
     fetchPolicy:
       process.env.NODE_ENV === 'development' ? 'no-cache' : 'cache-first',
   });
@@ -207,17 +207,21 @@ export async function getStaticPaths() {
     `,
   });
 
-  const paths = data.data.products
-    .filter((product) => product.type.length && product.slug != null)
-    .map((product) => {
-      return {
-        params: {
-          slug: product.slug,
-          productType: product.type[0],
-        },
-      };
-    });
+  const paths = ['vi', 'en'].flatMap((locale) =>
+    data.data.products
+      .filter((product) => product.type.length && product.slug != null)
+      .map((product) => {
+        return {
+          params: {
+            slug: product.slug,
+            productType: product.type[0],
+          },
+          locale,
+        };
+      })
+  );
 
+  console.log(JSON.stringify(paths, null, 4));
   return {
     paths: [...paths],
     fallback: false,
