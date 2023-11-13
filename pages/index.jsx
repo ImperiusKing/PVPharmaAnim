@@ -12,9 +12,9 @@ import vibrating from '../public/vibrating.json';
 import { motion } from 'framer-motion';
 
 const translations = {
-  'aboutUs': {
-    'en': 'ABOUT US',
-    'vi': 'VỀ CHÚNG TÔI',
+  aboutUs: {
+    en: 'ABOUT US',
+    vi: 'VỀ CHÚNG TÔI',
     // Add other languages here if needed
   },
   // Add other translatable texts here
@@ -53,7 +53,6 @@ import { generateData } from '../utils/generatePageData';
 import { mergeLocalizations } from '../utils/mergeLocalizations';
 
 const Home = ({ page, products, chains, works, awards, news }) => {
-  console.log(page);
   const [historyVisible, setHistoryVisible] = useState(false);
   function onChange(isVisible) {
     if (!historyVisible && isVisible) {
@@ -454,6 +453,48 @@ const GET_PAGE_DATA = gql`
       id
       name
       slug
+      dc1Text
+      dc1Title
+      dc2Text
+      dc2Title
+      dc3Text
+      dc3Title
+      heroLink
+      heroText
+      heroText2
+      heroText3
+      heroTitle
+      heroTitle2
+      heroTitle3
+      heroTitle4
+      heroTitle5
+      heroTitle6
+      heroTitle7
+      tt1Text
+      tt1Textx
+      tt1Title
+      tt2Text
+      tt2Textx
+      tt2Title
+      tt3Text
+      tt3Textx
+      tt3Title
+      tt4Text
+      tt4Textx
+      tt4Title
+      tt5Text
+      tt5Textx
+      tt5Title
+      gt1Title
+      gt2Title
+      gt3Title
+      gt4Title
+      gt5Title
+      gt6Title
+      gt7Title
+      gt8Title
+      gt9Title
+      gt10Title
       localizations(locales: [$locale]) {
         locale
         dc1Text
