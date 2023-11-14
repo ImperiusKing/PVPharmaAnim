@@ -1,10 +1,26 @@
 import Link from "next/link";
 import { AiOutlineRight } from "react-icons/ai";
+import { useRouter } from "next/router";
 
-export default function Breadcrumbs({ product }) {
+const translations = {
+  home: {
+    en: "Home",
+    vi: "Trang chủ",
+  },
+};
+
+function getTranslation(key, locale = "en") {
+  const translation = translations[key][locale] || translations[key]["en"];
+  return translation;
+}
+
+export default function Breadcrumbs({ product, category }) {
   // Assuming product.type and product.title are available and correctly passed as props
+  const router = useRouter();
   const productType = product.type || "Kháng sinh uống"; // Default value or dynamic type
   const productTitle = product.title || "BIOCEME™"; // Default value or dynamic title
+
+  console.log("Breadcrumb type:", category);
 
   return (
     <nav aria-label="Breadcrumb" className="text-gray-500 font-medium text-md">
@@ -12,7 +28,7 @@ export default function Breadcrumbs({ product }) {
         <li>
           <Link href="/">
             <span className="hover:text-primary transition-colors duration-200 cursor-pointer">
-              Trang chủ
+              {getTranslation("home", router.locale)}
             </span>
           </Link>
         </li>
@@ -20,7 +36,7 @@ export default function Breadcrumbs({ product }) {
         <li>
           <Link href="/product">
             <span className="hover:text-primary transition-colors duration-200 cursor-pointer">
-              Sản phẩm
+              {category}
             </span>
           </Link>
         </li>

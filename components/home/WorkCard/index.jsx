@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
-import ReactVisibilitySensor from 'react-visibility-sensor';
+import { useEffect, useState } from "react";
+import ReactVisibilitySensor from "react-visibility-sensor";
 
 export const WorkCard = ({ amount, description, descriptionx }) => {
   const index = Math.min(
-    amount?.lastIndexOf('+') ?? 0,
-    amount?.lastIndexOf('K') ?? 0
+    amount?.lastIndexOf("+") ?? 0,
+    amount?.lastIndexOf("K") ?? 0
   );
   const number = Number(
     amount?.substring(0, index >= 0 ? index : amount?.length - 1)
   );
-  const restString = index >= 0 ? amount?.substring(index) : '+';
+  const restString = index >= 0 ? amount?.substring(index) : "+";
   const [counter, setCounter] = useState(0);
   const [visible, setVisible] = useState(false);
 
@@ -30,17 +30,17 @@ export const WorkCard = ({ amount, description, descriptionx }) => {
 
   return (
     <ReactVisibilitySensor onChange={onChange}>
-      <div className='flex w-[60%] items-center space-x-2 border-b-2 border-[#cccdcf] pb-1 last:border-b-0'>
-        <div className='text-[#58595B] font-bold w-[80px] text-[5rem]'>
+      <div className="flex w-[60%] items-center space-x-2 border-b-2 border-[#cccdcf] pb-1 last:border-b-0">
+        <div className="text-[#58595B] font-bold w-[80px] text-[5rem]">
           {counter}
           {restString}
         </div>
-        <div className='flex flex-col'>
-          <div className='text-[#58595B] text-[1.5rem] text-semibold w-[300px] leading-[22px] pl-[90px]'>
+        <div className="flex flex-col">
+          <div className="text-[#58595B] text-[1.5rem] text-semibold w-[400px] leading-[22px] pl-[90px]">
             {description}
           </div>
-          <div className='text-[#58595B] text-[1.5rem] text-semibold w-[350px] leading-[22px] pl-[90px]'>
-            {' '}
+          <div className="text-[#58595B] text-[1.5rem] text-semibold w-[400px] leading-[22px] pl-[90px]">
+            {" "}
             {/* Adjust margin-top and margin-left as needed */}
             {descriptionx}
           </div>
