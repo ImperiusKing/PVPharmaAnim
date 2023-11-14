@@ -572,17 +572,19 @@ const GET_PAGE_DATA = gql`
       }
     }
     news(first: 3, orderBy: publishedAt_DESC) {
-      id
       publishedAt
-      title
-      type
-      description
-      contentRichText {
-        html
-      }
-      slug
       background {
         url
+      }
+      localizations(locales: [$locale]) {
+        id
+        title
+        type
+        description
+        contentRichText {
+          html
+        }
+        slug
       }
     }
     products(where: { isFeatured: true }) {

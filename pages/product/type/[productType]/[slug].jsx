@@ -11,26 +11,28 @@ import {
 } from "../../../../components/Tabs";
 
 const GET_PRODUCT_QUERY = gql`
-  query ProductPage($slug: String!, $locale: Locale!) {
-    product(where: { slug: $slug }, locales: [$locale]) {
+  query ProductPage($slug: String!) {
+    product(where: { slug: $slug }) {
       id
       isFeatured
-      title
-      titleXd
-      who
-      usage
-      type
-      summary5
-      summary4
-      summary3
-      summary2
-      summary1
-      note
-      ingredient
-      howToUse
-      description
       images {
         url
+      }
+      localizations(locales: [$locale]) {
+        title
+        titleXd
+        who
+        usage
+        type
+        summary5
+        summary4
+        summary3
+        summary2
+        summary1
+        note
+        ingredient
+        howToUse
+        description
       }
     }
   }

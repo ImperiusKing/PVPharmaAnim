@@ -38,7 +38,7 @@ export const Footer = () => {
                 >
                   {currentLanguage === "vi"
                     ? "Mục tiêu - Sứ mệnh - Giá trị cốt lõi"
-                    : "Goals - Mission - Core Values"}
+                    : "Goals - Missions - Core Values"}
                 </a>
               </li>
               <li>
