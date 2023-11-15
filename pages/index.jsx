@@ -163,11 +163,11 @@ const Home = ({ page, products, chains, works, awards, news }) => {
               />
             ))}
           </div>
-          <div className="bg-white w-[90%] justify-between items-center px-8 py-4 flex absolute bottom-8 left-[50%] getTranslation-x-[-50%] rounded-lg">
+          <div class="bg-white w-[90%] flex justify-center items-center py-4 absolute bottom-8 left-1/2 transform -translate-x-1/2 rounded-lg">
             <div className="w-[15%] text-[#4D4D4F] text-xl text-center">
               {getTranslation("partners", router.locale)}
             </div>
-            <div className="w-[80%]">
+            <div className="w-[80%] ml-5">
               <PartnerCarousel />
             </div>
           </div>
