@@ -128,7 +128,7 @@ export async function getStaticProps({ params, locale }) {
         process.env.NODE_ENV === 'development' ? 'no-cache' : 'cache-first',
       variables: {
         type: [params.productType],
-        locale, // Correct way to add locale to the variables
+        locale,
       },
     });
 
@@ -138,7 +138,7 @@ export async function getStaticProps({ params, locale }) {
       },
     };
   } catch (e) {
-    console.log('AAAA', JSON.stringify(e, null, 4));
+    console.log(JSON.stringify(e, null, 4));
   }
 }
 
