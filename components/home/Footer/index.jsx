@@ -7,21 +7,19 @@ import React, { useState, useEffect } from "react";
 export const Footer = () => {
   const router = useRouter();
   const [currentLanguage, setCurrentLanguage] = useState("en");
+  const createLocalizedURL = (path) => `/${currentLanguage}${path}`;
 
   useEffect(() => {
     setCurrentLanguage(router.locale === "en" ? "en" : "vi");
   }, [router.locale]);
+
   return (
     <footer className="bg-[#414042] text-white w-full mt-[8rem] pb-8">
       <div className="px-[10%] w-full p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-around">
           <div className="mb-6 md:mb-0">
             <a href="/" className="flex items-center">
-              <img
-                src="/logo1.png"
-                className="h-[50px] mr-3"
-                alt="FlowBite Logo"
-              />
+              <img src="/logo1.png" className="h-[50px] mr-3" alt="PV Logo" />
             </a>
           </div>
           <div>
@@ -33,7 +31,7 @@ export const Footer = () => {
             <ul className="mt-3 fold-bold text-gray-400 text-[1.15rem]  dark:text-gray-400 flex flex-col space-y-2">
               <li className="">
                 <a
-                  href="/aboutus"
+                  href={createLocalizedURL("/aboutus")}
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -43,7 +41,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/aboutus"
+                  href={createLocalizedURL("/aboutus")}
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -53,7 +51,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/aboutus"
+                  href={createLocalizedURL("/aboutus")}
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -70,7 +68,7 @@ export const Footer = () => {
             <ul className="mt-3 fold-bold text-gray-400 text-[1.15rem]  dark:text-gray-400 flex flex-col space-y-2">
               <li className="">
                 <a
-                  href="/product/type/thuocDongDuoc"
+                  href={createLocalizedURL("/product/type/thuocDongDuoc")}
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -80,7 +78,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/product/type/thuocTanDuoc"
+                  href={createLocalizedURL("/product/type/thuocTanDuoc")}
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -90,7 +88,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/product/type/TPCN"
+                  href={createLocalizedURL("/product/type/TPCN")}
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -107,7 +105,7 @@ export const Footer = () => {
             <ul className="mt-3 fold-bold text-gray-400 text-[1.15rem]  dark:text-gray-400 flex flex-col space-y-2">
               <li className="">
                 <a
-                  href="/news/type/TinTucPhucVinh"
+                  href={createLocalizedURL("/news/type/TinTucPhucVinh")}
                   className="text-md font-semibold hover:text-white "
                 >
                   {currentLanguage === "vi"
@@ -117,7 +115,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/news/type/TinTucTuyenDung"
+                  href={createLocalizedURL("/news/type/TinTucTuyenDung")}
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi" ? "Tuyển dụng" : "Recruitment"}
@@ -125,7 +123,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/news/type/CamNangYHoc"
+                  href={createLocalizedURL("/news/type/CamNangYHoc")}
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"

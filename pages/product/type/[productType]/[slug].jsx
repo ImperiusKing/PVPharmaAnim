@@ -326,7 +326,7 @@ export async function getStaticProps({ params, locale }) {
 }
 
 export async function getStaticPaths() {
-  const data = await client.query({
+  const response = await client.query({
     query: gql`
       query AllProducts {
         products(first: 10000) {
@@ -338,22 +338,19 @@ export async function getStaticPaths() {
     `,
   });
 
+  if (!response || !response.data || !response.data.products) {
+    console.error("Query did not return expected data:", response);
+    return { paths: [], fallback: false };
+  }
+
   const paths = ["vi", "en"].flatMap((locale) =>
-    data.data.products
+    response.data.products
       .filter((product) => product.type.length && product.slug != null)
-      .map((product) => {
-        return {
-          params: {
-            slug: product.slug,
-            productType: product.type[0],
-          },
-          locale,
-        };
-      })
+      .map((product) => ({
+        params: { slug: product.slug, productType: product.type[0] },
+        locale,
+      }))
   );
 
-  return {
-    paths: [...paths],
-    fallback: false,
-  };
+  return { paths, fallback: false };
 }

@@ -191,8 +191,8 @@ export async function getStaticPaths() {
   try {
     const { data } = await client.query({
       query: gql`
-        query AllTypes {
-          __type(name: "NewsTypes") {
+        query AllProductTypes {
+          __type(name: "ProductTypes") {
             enumValues {
               name
             }
@@ -202,21 +202,17 @@ export async function getStaticPaths() {
     });
 
     if (!data || !data.__type || !data.__type.enumValues) {
-      throw new Error(
-        "The query did not return the expected `enumValues` data."
-      );
+      console.error("Failed to fetch product types:", data);
+      return { paths: [], fallback: false };
     }
-
-    // Logging to see what enumValues we received
-    console.log("Enum Values:", data.__type.enumValues);
 
     const paths = data.__type.enumValues.flatMap((type) => {
       if (!type.name) {
         console.warn("Undefined 'name' for type:", type);
-        return []; // Skip this type if 'name' is undefined
+        return [];
       }
       return ["vi", "en"].map((locale) => ({
-        params: { slug: product.slug }, // Ensure that 'slug' matches your page file structure
+        params: { productType: type.name },
         locale,
       }));
     });

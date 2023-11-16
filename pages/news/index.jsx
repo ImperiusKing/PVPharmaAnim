@@ -1,31 +1,63 @@
-import { gql } from '@apollo/client';
-import { useState } from 'react';
-import client from '../../apollo-client';
-import { BlogCard } from '../../components/home/Blog/BlogCard';
-import { mergeLocalizationsArray } from '../../utils/mergeLocalizations';
+import { gql } from "@apollo/client";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import client from "../../apollo-client";
+import { BlogCard } from "../../components/home/Blog/BlogCard";
+import { mergeLocalizationsArray } from "../../utils/mergeLocalizations";
+
+const translations = {
+  news: {
+    en: "NEWS",
+    vi: "TIN TỨC",
+  },
+  TinTucPhucVinh: {
+    en: "PHUC VINH NEWS",
+    vi: "TIN PHUC VINH",
+  },
+  CamNangYHoc: {
+    en: "HEALTH HANDBOOK",
+    vi: "CẨM NANG Y HỌC",
+  },
+  TinTucTuyenDung: {
+    en: "RECRUITMENT NEWS",
+    vi: "TIN TỨC TUYỂN DỤNG",
+  },
+  all: {
+    en: "ALL",
+    vi: "TẤT CẢ",
+  },
+  newsDescription: {
+    en: "Dược Phúc Vinh News Page - Your source for the latest updates in the pharmaceutical industry, featuring our standout products and breakthroughs in research and development.",
+    vi: "Trang tin tức của Dược Phúc Vinh - Nơi cập nhật những thông tin mới nhất về ngành dược phẩm, các sản phẩm nổi bật, và những đột phá trong nghiên cứu và phát triển.",
+  }, // Add other product types as needed
+};
+
+function getTranslation(key, locale = "en") {
+  return translations[key]
+    ? translations[key][locale] || translations[key]["en"]
+    : "Translation not found";
+}
 
 const News = ({ news, newsTypes }) => {
+  const router = useRouter();
   const [selectedTypes, setSelectedTypes] = useState([...newsTypes]);
 
   return (
-    <div className='bg-white'>
-      <div className='mx-auto w-full'>
-        <div className='relative overflow-hidden bg-[#F5F5F5] w-full'>
-          <div className='py-16'>
-            <div className='relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8'>
-              <div className='w-[60%] mx-auto text-center'>
-                <h1 className='text-4xl font-black tracking-tight text-gray-900 sm:text-6xl'>
-                  TIN TỨC
+    <div className="bg-white">
+      <div className="mx-auto w-full">
+        <div className="relative overflow-hidden bg-[#F5F5F5] w-full">
+          <div className="py-16">
+            <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
+              <div className="w-[60%] mx-auto text-center">
+                <h1 className="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl">
+                  {getTranslation("news", router.locale)}
                 </h1>
-                <p className='mt-6 text-xl text-gray-600'>
-                  Sản phẩm của Dược Phúc Vinh được đi sâu nghiên cứu, phát triển
-                  và sản xuất một cách toàn diện với sứ mệnh: Mang đến cho cộng
-                  đồng những dược phẩm chất lượng, an toàn, có tác dụng phòng và
-                  trị bệnh cao.
+                <p className="mt-6 text-xl text-gray-600">
+                  {getTranslation("newsDescription", router.locale)}
                 </p>
               </div>
             </div>
-            <div className='flex items-center justify-center space-x-4 pt-10'>
+            <div className="flex items-center justify-center space-x-4 pt-10">
               {newsTypes.map((type) => {
                 const isActive =
                   selectedTypes.findIndex((i) => i === type) >= 0;
@@ -35,7 +67,7 @@ const News = ({ news, newsTypes }) => {
                     onClick={() => {
                       const index = selectedTypes.findIndex((i) => i === type);
                       if (index >= 0) {
-                        if (type === 'all') {
+                        if (type === "all") {
                           setSelectedTypes([]);
                           return;
                         }
@@ -45,13 +77,13 @@ const News = ({ news, newsTypes }) => {
                         );
                         setSelectedTypes(newSelectedTypes);
                       } else {
-                        if (type === 'all') {
+                        if (type === "all") {
                           setSelectedTypes([...newsTypes]);
                           return;
                         }
                         let newSelectedTypes = [...selectedTypes, type];
                         const allTypesSelected = newsTypes
-                          .filter((i) => i !== 'all')
+                          .filter((i) => i !== "all")
                           .every(
                             (i) =>
                               newSelectedTypes.findIndex(
@@ -59,18 +91,18 @@ const News = ({ news, newsTypes }) => {
                               ) >= 0
                           );
                         if (allTypesSelected) {
-                          newSelectedTypes = ['all', ...newSelectedTypes];
+                          newSelectedTypes = ["all", ...newSelectedTypes];
                         }
                         setSelectedTypes(newSelectedTypes);
                       }
                     }}
                     className={`${
                       isActive
-                        ? 'bg-primary text-white te hover:bg-white hover:text-black'
-                        : 'hover:bg-primary hover:text-white bg-white text-black'
+                        ? "bg-primary text-white te hover:bg-white hover:text-black"
+                        : "hover:bg-primary hover:text-white bg-white text-black"
                     } transition-all border-[1px] border-black px-6 py-2 rounded-full`}
                   >
-                    {getProductTypeLabel(type)}
+                    {getNewsTypeLabel(type, router.locale)}
                   </button>
                 );
               })}
@@ -78,7 +110,7 @@ const News = ({ news, newsTypes }) => {
           </div>
         </div>
 
-        <div className='flex flex-wrap -mx-4 mt-5'>
+        <div className="flex flex-wrap -mx-4 mt-5">
           {news
             .filter((newsItem) =>
               isInSelectedTypes(newsItem.type, selectedTypes)
@@ -100,34 +132,25 @@ const News = ({ news, newsTypes }) => {
 };
 
 export function truncateContent(content, wordLimit = 50) {
-  if (!content || typeof content !== 'string') {
-    return ''; // or return some default value
+  if (!content || typeof content !== "string") {
+    return ""; // or return some default value
   }
 
   const words = content.split(/\s+/); // splits by spaces
   if (words.length > wordLimit) {
-    return words.slice(0, wordLimit).join(' ') + ' ...'; // truncates and adds an ellipsis
+    return words.slice(0, wordLimit).join(" ") + " ..."; // truncates and adds an ellipsis
   }
   return content;
-}
-
-function getProductTypeLabel(productType) {
-  switch (productType) {
-    case 'TinTucPhucVinh':
-      return 'TIN PHÚC VINH';
-    case 'CamNangYHoc':
-      return 'CẨM NANG Y HỌC';
-    case 'TinTucTuyenDung':
-      return 'TIN TỨC TUYỂN DỤNG';
-    case 'all':
-      return 'TẤT CẢ';
-  }
 }
 
 export function formatDate(dt) {
   const padL = (nr, len = 2, chr = `0`) => `${nr}`.padStart(2, chr);
 
   return `${padL(dt.getDate())}-${padL(dt.getMonth() + 1)}-${dt.getFullYear()}`;
+}
+
+function getNewsTypeLabel(newsTypes, locale = "en") {
+  return getTranslation(newsTypes, locale);
 }
 
 function isInSelectedTypes(newsTypes, selectedTypes) {
@@ -142,7 +165,7 @@ export async function getStaticProps({ locale }) {
   } = await client.query({
     query: GET_ALL_NEWS,
     fetchPolicy:
-      process.env.NODE_ENV === 'development' ? 'no-cache' : 'cache-first',
+      process.env.NODE_ENV === "development" ? "no-cache" : "cache-first",
     variables: {
       locale,
     },
@@ -151,7 +174,7 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       news: mergeLocalizationsArray(news),
-      newsTypes: ['all', ...rest.__type.enumValues.map((i) => i.name)],
+      newsTypes: ["all", ...rest.__type.enumValues.map((i) => i.name)],
     },
   };
 }
