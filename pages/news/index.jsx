@@ -1,22 +1,23 @@
-import { gql } from "@apollo/client";
-import { useState } from "react";
-import client from "../../apollo-client";
-import { BlogCard } from "../../components/home/Blog/BlogCard";
+import { gql } from '@apollo/client';
+import { useState } from 'react';
+import client from '../../apollo-client';
+import { BlogCard } from '../../components/home/Blog/BlogCard';
+import { mergeLocalizationsArray } from '../../utils/mergeLocalizations';
 
 const News = ({ news, newsTypes }) => {
   const [selectedTypes, setSelectedTypes] = useState([...newsTypes]);
 
   return (
-    <div className="bg-white">
-      <div className="mx-auto w-full">
-        <div className="relative overflow-hidden bg-[#F5F5F5] w-full">
-          <div className="py-16">
-            <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-              <div className="w-[60%] mx-auto text-center">
-                <h1 className="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl">
+    <div className='bg-white'>
+      <div className='mx-auto w-full'>
+        <div className='relative overflow-hidden bg-[#F5F5F5] w-full'>
+          <div className='py-16'>
+            <div className='relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8'>
+              <div className='w-[60%] mx-auto text-center'>
+                <h1 className='text-4xl font-black tracking-tight text-gray-900 sm:text-6xl'>
                   TIN TỨC
                 </h1>
-                <p className="mt-6 text-xl text-gray-600">
+                <p className='mt-6 text-xl text-gray-600'>
                   Sản phẩm của Dược Phúc Vinh được đi sâu nghiên cứu, phát triển
                   và sản xuất một cách toàn diện với sứ mệnh: Mang đến cho cộng
                   đồng những dược phẩm chất lượng, an toàn, có tác dụng phòng và
@@ -24,7 +25,7 @@ const News = ({ news, newsTypes }) => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center justify-center space-x-4 pt-10">
+            <div className='flex items-center justify-center space-x-4 pt-10'>
               {newsTypes.map((type) => {
                 const isActive =
                   selectedTypes.findIndex((i) => i === type) >= 0;
@@ -34,7 +35,7 @@ const News = ({ news, newsTypes }) => {
                     onClick={() => {
                       const index = selectedTypes.findIndex((i) => i === type);
                       if (index >= 0) {
-                        if (type === "all") {
+                        if (type === 'all') {
                           setSelectedTypes([]);
                           return;
                         }
@@ -44,13 +45,13 @@ const News = ({ news, newsTypes }) => {
                         );
                         setSelectedTypes(newSelectedTypes);
                       } else {
-                        if (type === "all") {
+                        if (type === 'all') {
                           setSelectedTypes([...newsTypes]);
                           return;
                         }
                         let newSelectedTypes = [...selectedTypes, type];
                         const allTypesSelected = newsTypes
-                          .filter((i) => i !== "all")
+                          .filter((i) => i !== 'all')
                           .every(
                             (i) =>
                               newSelectedTypes.findIndex(
@@ -58,15 +59,15 @@ const News = ({ news, newsTypes }) => {
                               ) >= 0
                           );
                         if (allTypesSelected) {
-                          newSelectedTypes = ["all", ...newSelectedTypes];
+                          newSelectedTypes = ['all', ...newSelectedTypes];
                         }
                         setSelectedTypes(newSelectedTypes);
                       }
                     }}
                     className={`${
                       isActive
-                        ? "bg-primary text-white te hover:bg-white hover:text-black"
-                        : "hover:bg-primary hover:text-white bg-white text-black"
+                        ? 'bg-primary text-white te hover:bg-white hover:text-black'
+                        : 'hover:bg-primary hover:text-white bg-white text-black'
                     } transition-all border-[1px] border-black px-6 py-2 rounded-full`}
                   >
                     {getProductTypeLabel(type)}
@@ -77,7 +78,7 @@ const News = ({ news, newsTypes }) => {
           </div>
         </div>
 
-        <div className="flex flex-wrap -mx-4 mt-5">
+        <div className='flex flex-wrap -mx-4 mt-5'>
           {news
             .filter((newsItem) =>
               isInSelectedTypes(newsItem.type, selectedTypes)
@@ -99,27 +100,27 @@ const News = ({ news, newsTypes }) => {
 };
 
 export function truncateContent(content, wordLimit = 50) {
-  if (!content || typeof content !== "string") {
-    return ""; // or return some default value
+  if (!content || typeof content !== 'string') {
+    return ''; // or return some default value
   }
 
   const words = content.split(/\s+/); // splits by spaces
   if (words.length > wordLimit) {
-    return words.slice(0, wordLimit).join(" ") + " ..."; // truncates and adds an ellipsis
+    return words.slice(0, wordLimit).join(' ') + ' ...'; // truncates and adds an ellipsis
   }
   return content;
 }
 
 function getProductTypeLabel(productType) {
   switch (productType) {
-    case "TinTucPhucVinh":
-      return "TIN PHÚC VINH";
-    case "CamNangYHoc":
-      return "CẨM NANG Y HỌC";
-    case "TinTucTuyenDung":
-      return "TIN TỨC TUYỂN DỤNG";
-    case "all":
-      return "TẤT CẢ";
+    case 'TinTucPhucVinh':
+      return 'TIN PHÚC VINH';
+    case 'CamNangYHoc':
+      return 'CẨM NANG Y HỌC';
+    case 'TinTucTuyenDung':
+      return 'TIN TỨC TUYỂN DỤNG';
+    case 'all':
+      return 'TẤT CẢ';
   }
 }
 
@@ -135,25 +136,28 @@ function isInSelectedTypes(newsTypes, selectedTypes) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
   const {
     data: { news, ...rest },
   } = await client.query({
     query: GET_ALL_NEWS,
     fetchPolicy:
-      process.env.NODE_ENV === "development" ? "no-cache" : "cache-first",
+      process.env.NODE_ENV === 'development' ? 'no-cache' : 'cache-first',
+    variables: {
+      locale,
+    },
   });
 
   return {
     props: {
-      news,
-      newsTypes: ["all", ...rest.__type.enumValues.map((i) => i.name)],
+      news: mergeLocalizationsArray(news),
+      newsTypes: ['all', ...rest.__type.enumValues.map((i) => i.name)],
     },
   };
 }
 
 const GET_ALL_NEWS = gql`
-  query AllNews {
+  query AllNews($locale: Locale!) {
     news(first: 10000) {
       id
       publishedAt
@@ -163,6 +167,10 @@ const GET_ALL_NEWS = gql`
       slug
       background {
         url
+      }
+      localizations(locales: [$locale]) {
+        title
+        description
       }
     }
     __type(name: "NewsTypes") {
