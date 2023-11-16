@@ -16,7 +16,7 @@ export const Footer = () => {
       <div className="px-[10%] w-full p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-around">
           <div className="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" className="flex items-center">
+            <a href="/" className="flex items-center">
               <img
                 src="/logo1.png"
                 className="h-[50px] mr-3"
@@ -33,7 +33,7 @@ export const Footer = () => {
             <ul className="mt-3 fold-bold text-gray-400 text-[1.15rem]  dark:text-gray-400 flex flex-col space-y-2">
               <li className="">
                 <a
-                  href="https://flowbite.com/"
+                  href="/aboutus"
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -43,7 +43,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://tailwindcss.com/"
+                  href="/aboutus"
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -53,7 +53,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://tailwindcss.com/"
+                  href="/aboutus"
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -70,7 +70,7 @@ export const Footer = () => {
             <ul className="mt-3 fold-bold text-gray-400 text-[1.15rem]  dark:text-gray-400 flex flex-col space-y-2">
               <li className="">
                 <a
-                  href="https://github.com/themesberg/flowbite"
+                  href="/product/type/thuocDongDuoc"
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -80,7 +80,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://discord.gg/4eeurUVvTy"
+                  href="/product/type/thuocTanDuoc"
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -90,7 +90,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://discord.gg/4eeurUVvTy"
+                  href="/product/type/TPCN"
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"
@@ -107,7 +107,7 @@ export const Footer = () => {
             <ul className="mt-3 fold-bold text-gray-400 text-[1.15rem]  dark:text-gray-400 flex flex-col space-y-2">
               <li className="">
                 <a
-                  href="https://github.com/themesberg/flowbite"
+                  href="/news/type/TinTucPhucVinh"
                   className="text-md font-semibold hover:text-white "
                 >
                   {currentLanguage === "vi"
@@ -117,7 +117,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://discord.gg/4eeurUVvTy"
+                  href="/news/type/TinTucTuyenDung"
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi" ? "Tuyển dụng" : "Recruitment"}
@@ -125,7 +125,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://discord.gg/4eeurUVvTy"
+                  href="/news/type/CamNangYHoc"
                   className="text-md font-semibold hover:text-white"
                 >
                   {currentLanguage === "vi"

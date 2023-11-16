@@ -7,6 +7,31 @@ const translations = {
     en: "Home",
     vi: "Trang chủ",
   },
+  thuocDongDuoc: {
+    en: "Traditional Medicine",
+    vi: "Thuốc Đông Dược",
+  },
+  thuocTanDuoc: {
+    en: "Modern Medicine",
+    vi: "Thuốc Tân Dược",
+  },
+  TPCN: {
+    en: "Supplement",
+    vi: "TPCN",
+  },
+  TinTucPhucVinh: {
+    en: "Phuc Vinh News",
+    vi: "Tin Phúc Vinh",
+  },
+  CamNangYHoc: {
+    en: "Health Handbook",
+    vi: "Cẩm nang y học",
+  },
+  TinTucTuyenDung: {
+    en: "Recruitment News",
+    vi: "Tin tức tuyển dụng",
+  },
+  // Add other product types as needed
 };
 
 function getTranslation(key, locale = "en") {
@@ -17,6 +42,7 @@ function getTranslation(key, locale = "en") {
 export default function Breadcrumbs({ product, category }) {
   // Assuming product.type and product.title are available and correctly passed as props
   const router = useRouter();
+
   const productType = product.type || "Kháng sinh uống"; // Default value or dynamic type
   const productTitle = product.title || "BIOCEME™"; // Default value or dynamic title
 
@@ -44,7 +70,7 @@ export default function Breadcrumbs({ product, category }) {
         <li>
           <Link href={`/product/type/${encodeURIComponent(productType)}`}>
             <span className="hover:text-primary transition-colors duration-200 cursor-pointer">
-              {getProductTypeLabel(productType)}
+              {getProductTypeLabel(productType, router.locale)}
             </span>
           </Link>
         </li>
@@ -69,21 +95,7 @@ export function truncateContent(content, wordLimit = 6) {
   return content;
 }
 
-function getProductTypeLabel(productType) {
-  switch (productType[0]) {
-    case "thuocDongDuoc":
-      return "Thuốc Đông Dược";
-    case "thuocTanDuoc":
-      return "THUỐC TÂN DƯỢC";
-    case "TPCN":
-      return "THỰC PHẨM CHỨC NĂNG";
-    case "TinTucPhucVinh":
-      return "Tin Phúc Vinh";
-    case "CamNangYHoc":
-      return "Cẩm nang y học";
-    case "TinTucTuyenDung":
-      return "Tin tức tuyển dụng";
-    default:
-      return productType; // Return the product type itself if it doesn't match any case
-  }
+function getProductTypeLabel(productType, locale = "en") {
+  // Use getTranslation to fetch the label based on the locale
+  return getTranslation(productType, locale);
 }

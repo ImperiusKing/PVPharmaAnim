@@ -5,3 +5,7 @@ export function mergeLocalizations(obj) {
   }
   return result;
 }
+
+export function mergeLocalizationsArray(objects) {
+  return objects.map((obj) => mergeLocalizations(obj));
+}
