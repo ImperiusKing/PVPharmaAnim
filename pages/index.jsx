@@ -91,7 +91,10 @@ import { Product } from "../components/home/ProductCard";
 import { ProductCarousel } from "../components/home/ProductCarousel";
 import { WorkCard } from "../components/home/WorkCard";
 import { generateData } from "../utils/generatePageData";
-import { mergeLocalizations } from "../utils/mergeLocalizations";
+import {
+  mergeLocalizations,
+  mergeLocalizationsArray,
+} from "../utils/mergeLocalizations";
 
 const Home = ({ page, products, chains, works, awards, news }) => {
   const router = useRouter();
@@ -350,11 +353,13 @@ export async function getStaticProps(context) {
   });
 
   const pageData = mergeLocalizations(page);
+  const localizedNews = mergeLocalizationsArray(news);
   const { chains, awards, works } = generateData(pageData);
 
   return {
     props: {
       page: pageData,
+      news: localizedNews,
       chains,
       products,
       works,

@@ -96,7 +96,7 @@ const Products = ({ products }) => {
                       <Button
                         onClick={() =>
                           router.push(
-                            `/product/type/${router.query.productType}/${product.slug}`
+                            `/product/type/${product.type}/${product.slug}`
                           )
                         }
                       >
@@ -167,6 +167,7 @@ const GET_ALL_PRODUCTS = gql`
       ingredient
       howToUse
       description
+      slug
       localizations(locales: [$locale]) {
         title
         titleXd
@@ -190,50 +191,39 @@ export async function getStaticPaths() {
   try {
     const { data } = await client.query({
       query: gql`
-        query AllProducts {
-          products(first: 10000) {
-            id
-            type
-            slug
+        query AllTypes {
+          __type(name: "NewsTypes") {
+            enumValues {
+              name
+            }
           }
         }
       `,
     });
 
-    if (!data || !data.products) {
-      console.error("No products data found");
-      return { paths: [], fallback: false };
+    if (!data || !data.__type || !data.__type.enumValues) {
+      throw new Error(
+        "The query did not return the expected `enumValues` data."
+      );
     }
 
-    const paths = ["vi", "en"].flatMap(
-      (locale) =>
-        data.products
-          .filter((product) => product.slug && product.type) // Ensure slug and type exist
-          .map((product) => {
-            // Extract productType as a string, handle both array and string cases
-            const productType =
-              Array.isArray(product.type) && product.type.length > 0
-                ? product.type[0]
-                : typeof product.type === "string"
-                ? product.type
-                : undefined;
+    // Logging to see what enumValues we received
+    console.log("Enum Values:", data.__type.enumValues);
 
-            if (!productType) {
-              console.warn("Undefined productType for product:", product);
-              return null; // Skip this product if productType is undefined
-            }
-
-            return {
-              params: { slug: product.slug, productType },
-              locale,
-            };
-          })
-          .filter((path) => path !== null) // Remove any null paths
-    );
+    const paths = data.__type.enumValues.flatMap((type) => {
+      if (!type.name) {
+        console.warn("Undefined 'name' for type:", type);
+        return []; // Skip this type if 'name' is undefined
+      }
+      return ["vi", "en"].map((locale) => ({
+        params: { slug: product.slug }, // Ensure that 'slug' matches your page file structure
+        locale,
+      }));
+    });
 
     return { paths, fallback: false };
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.error("Error in getStaticPaths: ", error);
     return { paths: [], fallback: false };
   }
 }

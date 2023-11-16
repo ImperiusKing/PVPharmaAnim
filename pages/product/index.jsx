@@ -175,9 +175,8 @@ const Products = ({ products, productTypes }) => {
   );
 };
 
-function getProductTypeLabel(productType, locale = "en") {
-  // Use getTranslation to fetch the label based on the locale
-  return getTranslation(productType, locale);
+function getProductTypeLabel(productTypes, locale = "en") {
+  return getTranslation(productTypes, locale);
 }
 function isInSelectedTypes(productTypes, selectedTypes) {
   return productTypes.some(
@@ -185,35 +184,29 @@ function isInSelectedTypes(productTypes, selectedTypes) {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ params, locale }) {
   try {
-    // Fetch all products
-    const { data } = await client.query({
+    const {
+      data: { products },
+    } = await client.query({
       query: GET_ALL_PRODUCTS,
-      variables: { locale },
+      fetchPolicy:
+        process.env.NODE_ENV === "development" ? "no-cache" : "cache-first",
+      variables: {
+        type: [params.productType],
+        locale,
+      },
     });
 
-    const productTypesData = await client.query({
-      query: GET_PRODUCT_TYPES,
-      variables: { locale },
-    });
-
-    const productsWithLocalizations = mergeLocalizationsArray(data.products);
-
+    // Use the function after it's defined or imported
     return {
       props: {
-        products: productsWithLocalizations,
-        productTypes: productTypesData ? productTypesData.productTypes : [],
+        products: mergeLocalizationsArray(products),
       },
     };
-  } catch (error) {
-    console.error("Error during getStaticProps", error);
-    return {
-      props: {
-        products: [],
-        productTypes: [],
-      },
-    };
+  } catch (e) {
+    console.log(JSON.stringify(e, null, 4));
+    return { props: { products: [] } }; // Return empty array if there is an error
   }
 }
 
@@ -262,9 +255,11 @@ export async function getStaticPaths() {
   // Fetch product types or whatever data you need to generate the paths
   const { data } = await client.query({
     query: gql`
-      query AllProductTypes {
-        productTypes {
-          name
+      query AllTypes {
+        __type(name: "NewsTypes") {
+          enumValues {
+            name
+          }
         }
       }
     `,
