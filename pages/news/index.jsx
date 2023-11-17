@@ -1,8 +1,17 @@
 import { gql } from "@apollo/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import client from "../../apollo-client";
 import { BlogCard } from "../../components/home/Blog/BlogCard";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../../components/Select";
 import { mergeLocalizationsArray } from "../../utils/mergeLocalizations";
 
 const translations = {
@@ -26,6 +35,14 @@ const translations = {
     en: "ALL",
     vi: "TẤT CẢ",
   },
+  sortOld: {
+    en: "Sort oldest",
+    vi: "Xếp từ cũ nhất",
+  },
+  sortNew: {
+    en: "Sort newest",
+    vi: "Xếp từ mới nhất",
+  },
   newsDescription: {
     en: "Dược Phúc Vinh News Page - Your source for the latest updates in the pharmaceutical industry, featuring our standout products and breakthroughs in research and development.",
     vi: "Trang tin tức của Dược Phúc Vinh - Nơi cập nhật những thông tin mới nhất về ngành dược phẩm, các sản phẩm nổi bật, và những đột phá trong nghiên cứu và phát triển.",
@@ -39,8 +56,28 @@ function getTranslation(key, locale = "en") {
 }
 
 const News = ({ news, newsTypes }) => {
-  const router = useRouter();
+  const [sortedNews, setSortedNews] = useState(news);
   const [selectedTypes, setSelectedTypes] = useState([...newsTypes]);
+  const [selectedSortOption, setSelectedSortOption] = useState("newest"); // default sort option
+  const router = useRouter();
+
+  useEffect(() => {
+    let sortedArray = [...news];
+
+    if (selectedSortOption === "newest") {
+      // Sort by newest first
+      sortedArray.sort(
+        (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+      );
+    } else if (selectedSortOption === "oldest") {
+      // Sort by oldest first
+      sortedArray.sort(
+        (a, b) => new Date(a.publishedAt) - new Date(b.publishedAt)
+      );
+    }
+
+    setSortedNews(sortedArray);
+  }, [selectedSortOption, news]);
 
   return (
     <div className="bg-white">
@@ -109,9 +146,28 @@ const News = ({ news, newsTypes }) => {
             </div>
           </div>
         </div>
-
+        <div className="flex justify-end mt-5 mx-10">
+          <Select
+            value={selectedSortOption}
+            onValueChange={setSelectedSortOption}
+          >
+            <SelectTrigger className="w-[150px] font-medium text-md">
+              <SelectValue placeholder="" />
+            </SelectTrigger>
+            <SelectContent className="bg-white">
+              <SelectGroup>
+                <SelectItem value="newest">
+                  {getTranslation("sortNew", router.locale)}
+                </SelectItem>
+                <SelectItem value="oldest">
+                  {getTranslation("sortOld", router.locale)}
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
         <div className="flex flex-wrap -mx-4 mt-5">
-          {news
+          {sortedNews
             .filter((newsItem) =>
               isInSelectedTypes(newsItem.type, selectedTypes)
             )

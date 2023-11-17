@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import client from "../../apollo-client";
 import { Button } from "../../components/Button";
 import {
@@ -12,6 +12,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../components/Dialog";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../../components/Select";
 import { mergeLocalizationsArray } from "../../utils/mergeLocalizations";
 
 const translations = {
@@ -55,6 +64,18 @@ const translations = {
     en: "Back",
     vi: "Quay lại",
   },
+  sortAZ: {
+    en: "Sort from A->Z",
+    vi: "Xếp từ A->Z",
+  },
+  sortZA: {
+    en: "Sort from Z->A",
+    vi: "Xếp từ Z->A",
+  },
+  sortFeatured: {
+    en: "Sort by Featured",
+    vi: "Sắp xếp theo nổi bật",
+  },
 };
 
 function getTranslation(key, locale = "en") {
@@ -63,9 +84,28 @@ function getTranslation(key, locale = "en") {
 }
 
 const Products = ({ products, productTypes }) => {
+  const [sortedProducts, setSortedProducts] = useState(products);
   const [selectedTypes, setSelectedTypes] = useState([...productTypes]);
-
+  const [selectedSortOption, setSelectedSortOption] = useState("az"); // default sort option
   const router = useRouter();
+
+  useEffect(() => {
+    let sortedArray = [...products].filter((p) => p.title); // Filter out products without titles
+    if (selectedSortOption === "az") {
+      sortedArray.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
+    } else if (selectedSortOption === "za") {
+      sortedArray.sort((a, b) => (b.title || "").localeCompare(a.title || ""));
+    } else if (selectedSortOption === "featured") {
+      // Sort by isFeatured, true first then false
+      sortedArray.sort((a, b) => {
+        // Assuming isFeatured is a boolean, if not, convert it accordingly
+        return b.isFeatured - a.isFeatured;
+      });
+    }
+
+    setSortedProducts(sortedArray);
+  }, [selectedSortOption, products]);
+
   return (
     <div className="bg-white">
       <div className="mx-auto w-full">
@@ -133,9 +173,31 @@ const Products = ({ products, productTypes }) => {
             </div>
           </div>
         </div>
-
+        <div className="flex justify-end mt-5 mx-10">
+          <Select
+            value={selectedSortOption}
+            onValueChange={setSelectedSortOption}
+          >
+            <SelectTrigger className="w-[150px] font-medium text-md">
+              <SelectValue placeholder="" />
+            </SelectTrigger>
+            <SelectContent className="bg-white">
+              <SelectGroup>
+                <SelectItem value="az">
+                  {getTranslation("sortAZ", router.locale)}
+                </SelectItem>
+                <SelectItem value="za">
+                  {getTranslation("sortZA", router.locale)}
+                </SelectItem>
+                <SelectItem value="featured">
+                  {getTranslation("sortFeatured", router.locale)}
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-8 mt-5">
-          {products
+          {sortedProducts
             .filter((product) => isInSelectedTypes(product.type, selectedTypes))
             .map((product) => (
               <Dialog key={product.id}>
@@ -150,7 +212,7 @@ const Products = ({ products, productTypes }) => {
                       />
                     </div>
                     <h3 className="mt-2 font-semibold text-[1.2rem] text-gray-400 hover:text-gray-900">
-                      {product.title}
+                      {product.title} {product.titleXd}
                     </h3>
                     {/* <p className='mt-1 text-lg font-medium text-gray-900'>
                       $48

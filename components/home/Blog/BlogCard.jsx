@@ -4,7 +4,7 @@ export const BlogCard = ({ image, date, CardTitle, CardDescription, path }) => {
   return (
     <div className="w-full px-4 md:w-1/2 lg:w-1/3">
       <div className="mx-auto mb-10 max-w-[370px]">
-        <div className="mb-8 overflow-hidden rounded">
+        <div className="mb-8 overflow-hidden rounded max-h-[280px]">
           <img src={image} alt="" className="w-full" />
         </div>
         <div>
