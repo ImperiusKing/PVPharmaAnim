@@ -6,6 +6,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "../../components/Tabs";
+import { mergeLocalizations } from "../../utils/mergeLocalizations";
 
 export default function About({ aboutUs }) {
   return (
@@ -32,37 +33,62 @@ export default function About({ aboutUs }) {
             <div className="flex justify-center">
               <TabsList className="inline-flex border-b border-gray-300">
                 <TabsTrigger value="tab1" className="text-[1.1rem]">
-                  Category 1
+                  {aboutUs.title1}
                 </TabsTrigger>
                 <TabsTrigger value="tab2" className="text-[1.1rem]">
-                  Category 2
+                  {aboutUs.title2}
                 </TabsTrigger>
                 <TabsTrigger value="tab3" className="text-[1.1rem]">
-                  Category 3
+                  {aboutUs.title3}
                 </TabsTrigger>
                 <TabsTrigger value="tab4" className="text-[1.1rem]">
-                  Category 4
+                  {aboutUs.title4}
                 </TabsTrigger>
                 <TabsTrigger value="tab5" className="text-[1.1rem]">
-                  Category 5
+                  {aboutUs.title5}
                 </TabsTrigger>
               </TabsList>
             </div>
             <div className="flex justify-center mt-2">
               <TabsContent value="tab1">
-                <p>Content for Category 1</p>
+                <div
+                  className="text-[1.1rem] centered-content"
+                  dangerouslySetInnerHTML={{
+                    __html: aboutUs.description1?.html || "",
+                  }}
+                />
               </TabsContent>
               <TabsContent value="tab2">
-                <p>Content for Category 2</p>
+                <div
+                  className="text-[1.1rem] centered-content"
+                  dangerouslySetInnerHTML={{
+                    __html: aboutUs.description2?.html || "",
+                  }}
+                />
               </TabsContent>
               <TabsContent value="tab3">
-                <p>Content for Category 3</p>
+                <div
+                  className="text-[1.1rem] centered-content"
+                  dangerouslySetInnerHTML={{
+                    __html: aboutUs.description3?.html || "",
+                  }}
+                />
               </TabsContent>
               <TabsContent value="tab4">
-                <p>Content for Category 4</p>
+                <div
+                  className="text-[1.1rem] centered-content"
+                  dangerouslySetInnerHTML={{
+                    __html: aboutUs.description4?.html || "",
+                  }}
+                />
               </TabsContent>
               <TabsContent value="tab5">
-                <p>Content for Category 5</p>
+                <div
+                  className="text-[1.1rem] centered-content"
+                  dangerouslySetInnerHTML={{
+                    __html: aboutUs.description5?.html || "",
+                  }}
+                />
               </TabsContent>
             </div>
           </Tabs>
@@ -75,13 +101,16 @@ export default function About({ aboutUs }) {
 export async function getStaticProps({ locale }) {
   try {
     const { data } = await client.query({
-      query: ABOUT_US_QUERY, // Use the GraphQL query constant here
+      query: ABOUT_US_QUERY,
       variables: { locale },
     });
 
+    // Assuming 'mergeLocalizations' will handle an undefined 'aboutUs'
+    const localizedAboutUs = mergeLocalizations(data.aboutUs);
+
     return {
       props: {
-        aboutUs: data.aboutUs || {},
+        aboutUs: localizedAboutUs || {},
       },
       revalidate: 1, // In seconds
     };
@@ -90,7 +119,6 @@ export async function getStaticProps({ locale }) {
     return { props: { aboutUs: {} } };
   }
 }
-
 const ABOUT_US_QUERY = gql`
   query AboutUs($locale: Locale!) {
     aboutUs(where: { slug: "about-us" }) {
