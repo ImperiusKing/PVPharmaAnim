@@ -4,8 +4,10 @@ import {
   TabsList,
   TabsTrigger,
 } from "../../components/Tabs";
+import { gql } from "@apollo/client";
+import client from "../../apollo-client";
 
-export default function About() {
+export default function About({ aboutUs }) {
   return (
     <div className="bg-white">
       <div className="mx-auto w-full">
@@ -15,12 +17,10 @@ export default function About() {
             <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
               <div className="w-[60%] mx-auto text-center">
                 <h1 className="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl">
-                  VỀ DƯỢC PHÚC VINH
+                  {aboutUs.title}
                 </h1>
                 <p className="mt-4 text-lg leading-6 text-gray-500">
-                  Trong vòng hơn hai thập kỷ phát triển và đổi mới không ngừng,
-                  PVPharma đã trở thành một trong những công ty dược phẩm hàng
-                  đầu tại Việt Nam.
+                  {aboutUs.description}
                 </p>
               </div>
             </div>
@@ -71,3 +71,76 @@ export default function About() {
     </div>
   );
 }
+
+export async function getStaticProps({ locale }) {
+  try {
+    const { data } = await client.query({
+      query: ABOUT_US_QUERY, // Use the GraphQL query constant here
+      variables: { locale },
+    });
+
+    return {
+      props: {
+        aboutUs: data.aboutUs || {},
+      },
+      revalidate: 1, // In seconds
+    };
+  } catch (e) {
+    console.error("Error fetching about us data:", e);
+    return { props: { aboutUs: {} } };
+  }
+}
+
+const ABOUT_US_QUERY = gql`
+  query AboutUs($locale: Locale!) {
+    aboutUs(where: { slug: "aboutus" }) {
+      id
+      description
+      title
+      title1
+      title2
+      title3
+      title4
+      title5
+      description1 {
+        html
+      }
+      description2 {
+        html
+      }
+      description3 {
+        html
+      }
+      description4 {
+        html
+      }
+      description5 {
+        html
+      }
+      localizations(locales: [$locale]) {
+        description
+        title
+        title1
+        title2
+        title3
+        title4
+        title5
+        description1 {
+          html
+        }
+        description2 {
+          html
+        }
+        description3 {
+          html
+        }
+        description4 {
+          html
+        }
+        description5 {
+          html
+        }
+      }
+    }
+  }
+`;
