@@ -1,11 +1,11 @@
+import { gql } from "@apollo/client";
+import client from "../../apollo-client";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "../../components/Tabs";
-import { gql } from "@apollo/client";
-import client from "../../apollo-client";
 
 export default function About({ aboutUs }) {
   return (
@@ -93,7 +93,7 @@ export async function getStaticProps({ locale }) {
 
 const ABOUT_US_QUERY = gql`
   query AboutUs($locale: Locale!) {
-    aboutUs(where: { slug: "aboutus" }) {
+    aboutUs(where: { slug: "about-us" }) {
       id
       description
       title
