@@ -1,17 +1,16 @@
 import { gql } from "@apollo/client";
-import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import client from "../../../apollo-client";
-import { BlogCard } from "../../../components/home/Blog/BlogCard";
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "../../../components/Select";
+import { BlogCard } from "../../../components/home/Blog/BlogCard";
 import { mergeLocalizationsArray } from "../../../utils/mergeLocalizations";
 
 const translations = {
@@ -68,7 +67,7 @@ const News = ({ news }) => {
         (a, b) => new Date(a.publishedAt) - new Date(b.publishedAt)
       );
     }
-    setSortedNews(sortedArray);
+     setSortedNews(sortedArray);
   }, [selectedSortOption, news]);
 
   return (
