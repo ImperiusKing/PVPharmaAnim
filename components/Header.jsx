@@ -39,7 +39,7 @@ const Header = () => {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <Link href="/aboutus" legacyBehavior passHref>
+            <Link href="/about-us" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 {currentLanguage === "Tiếng Việt 🇻🇳"
                   ? "Về Dược Phúc Vinh"
