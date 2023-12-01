@@ -12,7 +12,9 @@ export const Blog = ({ title, description, news }) => {
               <h4 className="uppercase font-bold text-[#414042] text-[45px]">
                 {title}
               </h4>
-              <p className="mt-6 text-xl text-gray-600">{description}</p>
+              <p className="mt-4 text-lg leading-8.5 text-gray-500">
+                {description}
+              </p>
             </div>
           </div>
         </div>

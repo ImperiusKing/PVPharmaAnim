@@ -20,7 +20,7 @@ export default function About({ aboutUs }) {
                 <h1 className="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl">
                   {aboutUs.title}
                 </h1>
-                <p className="mt-4 text-lg leading-6 text-gray-500">
+                <p className="mt-4 text-lg leading-8.5 text-gray-500">
                   {aboutUs.description}
                 </p>
               </div>
@@ -52,7 +52,7 @@ export default function About({ aboutUs }) {
             <div className="flex justify-center mt-2">
               <TabsContent value="tab1">
                 <div
-                  className="text-[1.1rem] centered-content"
+                  className="mt-3 leading-8.5 text-[1.1rem] centered-content"
                   dangerouslySetInnerHTML={{
                     __html: aboutUs.description1?.html || "",
                   }}
@@ -60,7 +60,7 @@ export default function About({ aboutUs }) {
               </TabsContent>
               <TabsContent value="tab2">
                 <div
-                  className="text-[1.1rem] centered-content"
+                  className="mt-3 leading-8.5 text-[1.1rem] centered-content"
                   dangerouslySetInnerHTML={{
                     __html: aboutUs.description2?.html || "",
                   }}
@@ -68,7 +68,7 @@ export default function About({ aboutUs }) {
               </TabsContent>
               <TabsContent value="tab3">
                 <div
-                  className="text-[1.1rem] centered-content"
+                  className="mt-3 leading-8.5 text-[1.1rem] centered-content"
                   dangerouslySetInnerHTML={{
                     __html: aboutUs.description3?.html || "",
                   }}
@@ -76,7 +76,7 @@ export default function About({ aboutUs }) {
               </TabsContent>
               <TabsContent value="tab4">
                 <div
-                  className="text-[1.1rem] centered-content"
+                  className="mt-3 leading-8.5 text-[1.1rem] centered-content"
                   dangerouslySetInnerHTML={{
                     __html: aboutUs.description4?.html || "",
                   }}
@@ -84,7 +84,7 @@ export default function About({ aboutUs }) {
               </TabsContent>
               <TabsContent value="tab5">
                 <div
-                  className="text-[1.1rem] centered-content"
+                  className="mt-3 leading-8.5 text-[1.1rem] centered-content"
                   dangerouslySetInnerHTML={{
                     __html: aboutUs.description5?.html || "",
                   }}

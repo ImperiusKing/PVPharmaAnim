@@ -89,7 +89,7 @@ const News = ({ news, newsTypes }) => {
                 <h1 className="text-4xl font-black tracking-tight text-gray-900 sm:text-6xl">
                   {getTranslation("news", router.locale)}
                 </h1>
-                <p className="mt-6 text-xl text-gray-600">
+                <p className="mt-4 text-lg leading-8.5 text-gray-500">
                   {getTranslation("newsDescription", router.locale)}
                 </p>
               </div>
